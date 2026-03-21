@@ -7,10 +7,16 @@ My personal portfolio website showcasing my projects, skills, and experience as 
 
 ---
 
+🔗 Live Demo
+ https://my-portfolio-git-main-abdullahahmeds-projects.vercel.app/
+
+---
+
 ## 🛠 Built With
 - **Framework:** Next.js
 - **Styling:** CSS / Tailwind
 - **Background:** HTML Canvas (particle network animation)
+- **Hosting: Vercel
 ---
 
 ## 📌 Sections

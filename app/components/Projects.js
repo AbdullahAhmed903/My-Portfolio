@@ -1,94 +1,277 @@
+"use client";
+import ScrollReveal from "./ScrollReveal";
+
 export default function Projects() {
   const projects = [
     {
-      title: "Task-Manager (NodeJs,NestJs)",
-      desc: "A full-featured backend system for managing Tasks across Team",
-      img: "https://ik.imagekit.io/abdullahAhmed/Screenshot%202026-03-21%20041442.png",
+      number: "01",
+      title: "Task-Manager",
+      desc: "A full-featured backend system for managing tasks across teams. Includes role-based access, real-time notifications, and project boards.",
+      tags: ["NestJS", "TypeScript", "MySQL"],
       link: "https://github.com/AbdullahAhmed903/TaskManager-nestjs-mysql.git"
     },
     {
-      title: "Doctor-System (NodeJs,Express)",
-      desc: "A full-featured backend system for managing doctor appointments and patient records.",
-      img: "https://ik.imagekit.io/abdullahAhmed/Screenshot%202026-01-25%20002232.png",
+      number: "02",
+      title: "Doctor-System",
+      desc: "A full-featured backend system for managing doctor appointments and patient records with authentication and scheduling.",
+      tags: ["Node.js", "Express", "MongoDB"],
       link: "https://github.com/AbdullahAhmed903/DoctorSystem.git"
     },
     {
-      title: "Intern-Hub (MERN-stack)",
-      desc: "A dynamic web app bridging interns and companies, with real-time chat.",
-      img: "https://abdullahahmed903.github.io/portfolio/assets/imgs/Screenshot%202024-09-12%20045505.png",
+      number: "03",
+      title: "Intern-Hub",
+      desc: "A dynamic MERN stack web app bridging interns and companies, featuring real-time chat powered by Socket.IO.",
+      tags: ["MongoDB", "Express", "React", "Node.js"],
       link: "https://github.com/AbdullahAhmed903/Intern-Hub-Api.git"
     },
     {
-      title: "Book-Buddy (React)",
-      desc: "Interactive book library with search and categorization.",
-      img: "https://abdullahahmed903.github.io/portfolio/assets/imgs/Screenshot%20(329).png",
+      number: "04",
+      title: "Book-Buddy",
+      desc: "Interactive book library with search, categorization, and reading lists. Clean UI with fast filtering and dynamic rendering.",
+      tags: ["React", "JavaScript"],
       link: "https://github.com/AbdullahAhmed903/codeAplha-Task3.git"
     },
     {
-      title: "Quick-Calc (JS)",
-      desc: "User-friendly calculator for basic math operations.",
-      img: "https://abdullahahmed903.github.io/portfolio/assets/imgs/Screenshot%202024-09-11%20222348.png",
-      link: "https://github.com/AbdullahAhmed903/Calculator.git"
-    },
-    {
-      title: "Age-Finder (JS)",
-      desc: "Simple app to calculate age from birthdate.",
-      img: "https://abdullahahmed903.github.io/portfolio/assets/imgs/Screenshot%202024-09-11%20230141.png",
-      link: "https://github.com/AbdullahAhmed903/CodeAlpha-taskOne.git"
-    },
-    {
-      title: "Beat-Box (JS)",
-      desc: "Dynamic music player for uploading and playing music.",
-      img: "https://abdullahahmed903.github.io/portfolio/assets/imgs/Screenshot%20(330).png",
+      number: "05",
+      title: "Beat-Box",
+      desc: "A dynamic music player for uploading and playing music with a custom-built UI and playlist management system.",
+      tags: ["JavaScript", "HTML5 Audio"],
       link: "https://github.com/AbdullahAhmed903/CodeAlpha-taskOne.git"
     }
   ];
 
   return (
-    <section id="projects">
-      <h2 style={{ textAlign: "center", fontSize: "2.2rem", fontWeight: 700, marginBottom: 32, background: "linear-gradient(90deg, var(--accent) 0%, #8be9fd 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", letterSpacing: 1 }}>Projects</h2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "28px" }}>
-        {projects.map((p, i) => (
-          <div key={i} style={{
-            background: "var(--card-bg)",
-            border: "1px solid var(--card-border)",
-            borderRadius: 16,
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            minHeight: 320,
-            transition: "all 0.3s cubic-bezier(0.23, 1, 0.32, 1)",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
-          }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-8px)";
-              e.currentTarget.style.borderColor = "var(--accent)";
-              e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.15)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.borderColor = "var(--card-border)";
-              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
-            }}>
-            <img src={p.img} alt={p.title} style={{ width: "100%", height: 160, objectFit: "cover", borderBottom: "1px solid var(--card-border)" }} />
-            <div style={{ padding: "20px", flex: 1, display: "flex", flexDirection: "column" }}>
-              <h3 style={{ margin: 0, fontSize: "1.15rem", fontWeight: 700, color: "#8be9fd" }}>{p.title}</h3>
-              <p style={{ margin: "12px 0 20px 0", color: "var(--text-secondary)", flex: 1, fontSize: "0.95rem", lineHeight: 1.6 }}>{p.desc}</p>
-              <a href={p.link} target="_blank" rel="noopener noreferrer" style={{
-                color: "var(--accent)",
-                fontWeight: 600,
-                textDecoration: "none",
-                fontSize: "0.9rem",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px"
-              }}>
-                View Code <span>→</span>
+    <section className="projects-section">
+      <div className="projects-container">
+        <ScrollReveal>
+          <div className="projects-label">
+            <span className="label-line"></span>
+            <span>WHAT I'VE BUILT</span>
+          </div>
+        </ScrollReveal>
+        
+        <ScrollReveal delay={100}>
+          <h2 className="projects-heading">Projects</h2>
+        </ScrollReveal>
+
+        <ScrollReveal delay={200}>
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <div key={project.number} className="project-card">
+                <div className="project-number">{project.number} —</div>
+                
+                <div className="project-tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="project-tag">{tag}</span>
+                  ))}
+                </div>
+
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-desc">{project.desc}</p>
+
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="project-link"
+                >
+                  <span>View Code</span>
+                  <span className="arrow">↗</span>
+                </a>
+              </div>
+            ))}
+
+            <div className="project-card project-more">
+              <div className="project-number">More →</div>
+              <h3 className="project-title">See All</h3>
+              <p className="project-desc">
+                More projects on GitHub including smaller experiments and open source contributions.
+              </p>
+              <a 
+                href="https://github.com/AbdullahAhmed903" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="project-link"
+              >
+                <span>github.com/AbdullahAhmed903</span>
+                <span className="arrow">↗</span>
               </a>
             </div>
           </div>
-        ))}
+        </ScrollReveal>
       </div>
+
+      <style jsx>{`
+        .projects-section {
+          width: 100%;
+          padding: 80px 0;
+          background: #111118;
+        }
+
+        .projects-container {
+          max-width: 1200px;
+          width: 90%;
+          margin: 0 auto;
+        }
+
+        .projects-label {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-family: 'Courier New', monospace;
+          font-size: 0.75rem;
+          color: #00e5a0;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+        }
+
+        .label-line {
+          width: 30px;
+          height: 1px;
+          background: #00e5a0;
+        }
+
+        .projects-heading {
+          font-size: 3.5rem;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 48px 0;
+          line-height: 1.1;
+          font-family: 'Arial Black', 'Arial Bold', sans-serif;
+        }
+
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5px;
+          background: rgba(255, 255, 255, 0.07);
+          padding: 1.5px;
+          border-radius: 8px;
+        }
+
+        .project-card {
+          background: #111118;
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          transition: all 0.25s ease;
+          position: relative;
+        }
+
+        .project-card:hover {
+          background: #1a1a24;
+        }
+
+        .project-number {
+          font-family: 'Courier New', monospace;
+          font-size: 0.65rem;
+          font-weight: 700;
+          color: rgba(255, 255, 255, 0.15);
+          letter-spacing: 0.1em;
+        }
+
+        .project-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.4rem;
+        }
+
+        .project-tag {
+          font-family: 'Courier New', monospace;
+          font-size: 0.6rem;
+          color: #00e5a0;
+          background: rgba(0, 229, 160, 0.08);
+          border: 1px solid rgba(0, 229, 160, 0.15);
+          border-radius: 2px;
+          padding: 0.2rem 0.5rem;
+          letter-spacing: 0.04em;
+        }
+
+        .project-title {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0;
+          line-height: 1.3;
+        }
+
+        .project-desc {
+          font-size: 0.82rem;
+          color: #666666;
+          line-height: 1.7;
+          margin: 0;
+          flex: 1;
+        }
+
+        .project-link {
+          color: #888888;
+          font-weight: 600;
+          text-decoration: none;
+          font-size: 0.72rem;
+          font-family: 'Courier New', monospace;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          transition: all 0.2s ease;
+          width: fit-content;
+        }
+
+        .arrow {
+          transition: transform 0.2s ease;
+          display: inline-block;
+        }
+
+        .project-card:hover .arrow {
+          transform: translate(3px, -3px);
+        }
+
+        .project-more {
+          background: rgba(0, 229, 160, 0.03);
+          border: 1px solid rgba(0, 229, 160, 0.1);
+        }
+
+        .project-more .project-number {
+          color: #00e5a0;
+        }
+
+        .project-more .project-title {
+          color: #00e5a0;
+        }
+
+        .project-more .project-link {
+          color: #00e5a0;
+        }
+
+        .project-more:hover {
+          background: rgba(0, 229, 160, 0.05);
+        }
+
+        @media (max-width: 968px) {
+          .projects-heading {
+            font-size: 2.5rem;
+          }
+
+          .projects-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 640px) {
+          .projects-heading {
+            font-size: 2rem;
+          }
+
+          .projects-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .project-card {
+            padding: 1.5rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }

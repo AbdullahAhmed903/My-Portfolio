@@ -55,9 +55,9 @@ export default function GitHub() {
               </svg>
               <span>github.com/AbdullahAhmed903</span>
             </div>
-            <a 
-              href="https://github.com/AbdullahAhmed903" 
-              target="_blank" 
+            <a
+              href="https://github.com/AbdullahAhmed903"
+              target="_blank"
               rel="noopener noreferrer"
               className="github-view-profile"
             >
@@ -94,8 +94,11 @@ export default function GitHub() {
                 <span>More</span>
               </div>
             </div>
-            <div className="contribution-note">
-              GitHub contribution graph visualization
+            <div className="contribution-graph">
+              <img
+                src="https://ghchart.rshah.org/00e5a0/AbdullahAhmed903"
+                alt="Abdullah Ahmed's GitHub contribution graph"
+              />
             </div>
           </div>
         </ScrollReveal>
@@ -294,14 +297,19 @@ export default function GitHub() {
         .legend-square.l3 { background: rgba(0, 229, 160, 0.65); }
         .legend-square.l4 { background: #00e5a0; }
 
-        .contribution-note {
-          padding: 40px;
-          text-align: center;
-          color: #666666;
-          font-style: italic;
-          font-size: 0.85rem;
-          border: 2px dashed rgba(255, 255, 255, 0.07);
-          border-radius: 8px;
+        .contribution-graph {
+          width: 100%;
+          overflow: hidden;
+          border-radius: 4px;
+        }
+
+        .contribution-graph img {
+          width: 100%;
+          height: auto;
+          display: block;
+          border-radius: 4px;
+          opacity: 0.9;
+          filter: brightness(0.95);
         }
 
         .github-repos {

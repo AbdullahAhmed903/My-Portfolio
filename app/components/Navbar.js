@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import ElegantLogo from "./ElegantLogo";
 
 const navItems = [
   { label: "Home", href: "#home", id: "home" },
   { label: "About", href: "#about", id: "about" },
   { label: "Skills", href: "#skills", id: "skills" },
   { label: "Experience", href: "#experience", id: "experience" },
+  { label: "GitHub", href: "#github", id: "github" },
   { label: "Projects", href: "#projects", id: "projects" },
   { label: "Contact", href: "#contact", id: "contact" },
 ];
@@ -14,36 +14,17 @@ const navItems = [
 export default function Navbar() {
   const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
   const scrollRef = useRef(false);
 
-  // On mount, read saved preference
+  // Detect scroll
   useEffect(() => {
-    const saved = localStorage.getItem("portfolio-theme");
-    if (saved === "light") {
-      setIsDark(false);
-      document.documentElement.classList.add("light-mode");
-      document.body.classList.add("light-mode");
-    } else {
-      setIsDark(true);
-      document.documentElement.classList.remove("light-mode");
-      document.body.classList.remove("light-mode");
-    }
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  function toggleTheme() {
-    const next = !isDark;
-    setIsDark(next);
-    if (next) {
-      document.documentElement.classList.remove("light-mode");
-      document.body.classList.remove("light-mode");
-      localStorage.setItem("portfolio-theme", "dark");
-    } else {
-      document.documentElement.classList.add("light-mode");
-      document.body.classList.add("light-mode");
-      localStorage.setItem("portfolio-theme", "light");
-    }
-  }
 
   // Scroll Spy using IntersectionObserver
   useEffect(() => {
@@ -54,7 +35,7 @@ export default function Navbar() {
     };
 
     const observerCallback = (entries) => {
-      if (scrollRef.current) return; // Ignore observer during manual scroll
+      if (scrollRef.current) return;
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActive(entry.target.id);
@@ -81,7 +62,6 @@ export default function Navbar() {
       setActive(id);
       el.scrollIntoView({ behavior: "smooth" });
       
-      // Re-enable observer after scroll finishes
       setTimeout(() => {
         scrollRef.current = false;
       }, 800);
@@ -89,13 +69,14 @@ export default function Navbar() {
   }
 
   return (
-    <nav className={`custom-navbar${isDark ? "" : " light"}`}>
+    <nav className={`custom-navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-inner">
         <div className="navbar-logo">
           <a href="#home" onClick={(e) => handleNavClick(e, "home")} aria-label="Home">
-            <ElegantLogo />
+            <span className="logo-text">Abdullah</span>
           </a>
         </div>
+        
         <div className="navbar-links">
           <ul>
             {navItems.map((item) => (
@@ -111,15 +92,12 @@ export default function Navbar() {
             ))}
           </ul>
         </div>
+
         <div className="navbar-actions">
-          <button
-            className="theme-toggle-btn"
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            title={isDark ? "Light mode" : "Dark mode"}
-          >
-            {isDark ? "🌙" : "☀"}
-          </button>
+          <div className="status-indicator">
+            <span className="status-dot"></span>
+            <span className="status-text">Available for work</span>
+          </div>
           <button
             className="navbar-hamburger"
             aria-label="Open menu"
@@ -131,11 +109,19 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
       {/* Mobile menu */}
       <div className={`navbar-mobile-menu${menuOpen ? " open" : ""}`}>
+        <button
+          className="close-btn"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          ✕
+        </button>
         <ul>
-          {navItems.map((item) => (
-            <li key={item.id}>
+          {navItems.map((item, index) => (
+            <li key={item.id} style={{ animationDelay: `${index * 0.05}s` }}>
               <a
                 href={item.href}
                 className={active === item.id ? "active" : ""}
@@ -146,179 +132,274 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+        <div className="mobile-status">
+          <span className="status-dot"></span>
+          <span className="status-text">Available for work</span>
+        </div>
       </div>
+
       <style jsx>{`
         .custom-navbar {
           position: fixed;
           top: 0;
           left: 0;
           width: 100vw;
+          height: 60px;
           z-index: 100;
-          background: rgba(10, 15, 10, 0.85);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-          padding: 16px 40px;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          box-sizing: border-box;
-          transition: background 0.3s, border-bottom 0.3s;
+          background: rgba(10, 10, 15, 0.85);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          transition: all 0.3s ease;
         }
-        .custom-navbar.light {
-          background: rgba(240, 244, 240, 0.9);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+        .custom-navbar.scrolled {
+          background: rgba(10, 10, 15, 0.95);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          border-bottom-color: rgba(255, 255, 255, 0.12);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
         }
+
         .navbar-inner {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          height: 100%;
           max-width: 1400px;
           margin: 0 auto;
+          padding: 0 4rem;
         }
-        .navbar-logo {
-          flex: 1 1 0;
+
+        .navbar-logo a {
           display: flex;
           align-items: center;
+          text-decoration: none;
+          font-family: 'JetBrains Mono', 'Courier New', monospace;
+          font-size: 0.9rem;
         }
+
+        .logo-text {
+          color: #00e5a0;
+        }
+
+        .logo-dot {
+          color: #888888;
+          transition: color 0.2s ease;
+        }
+
+        .navbar-logo a:hover .logo-dot {
+          color: #00e5a0;
+        }
+
         .navbar-links {
-          flex: 2 1 0;
+          flex: 1;
           display: flex;
           justify-content: center;
         }
+
         .navbar-links ul {
           display: flex;
-          gap: 32px;
+          gap: 2.5rem;
           list-style: none;
           margin: 0;
           padding: 0;
         }
+
         .navbar-links a {
-          font-family: 'Courier New', Courier, monospace;
-          font-size: 0.85rem;
-          color: rgba(255, 255, 255, 0.6);
+          font-family: 'Syne', 'Arial', sans-serif;
+          font-size: 0.75rem;
+          color: #888888;
           text-decoration: none;
-          letter-spacing: 0.3px;
-          transition: color 0.2s, background 0.2s;
-          padding: 6px 12px;
-          border-radius: 6px;
-          font-weight: 500;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          transition: color 0.2s ease;
+          position: relative;
         }
-        .custom-navbar.light .navbar-links a {
-          color: rgba(0, 0, 0, 0.65);
+
+        .navbar-links a:hover {
+          color: #f0ede8;
         }
-        .navbar-links a:hover,
+
         .navbar-links a.active {
-          color: #00c875 !important;
+          color: #00e5a0;
         }
-        .custom-navbar.light .navbar-links a:hover,
-        .custom-navbar.light .navbar-links a.active {
-          color: #00a060 !important;
-        }
-        .navbar-actions {
-          flex: 1 1 0;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 14px;
-        }
-        .theme-toggle-btn {
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.18);
+
+        .navbar-links a.active::after {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 2px;
+          height: 2px;
+          background: #00e5a0;
           border-radius: 50%;
-          width: 36px;
-          height: 36px;
-          cursor: pointer;
-          font-size: 1.1rem;
+        }
+
+        .navbar-actions {
           display: flex;
           align-items: center;
-          justify-content: center;
-          transition: all 0.2s;
-          color: rgba(255, 255, 255, 0.8);
-          padding: 0;
+          gap: 2rem;
         }
-        .theme-toggle-btn:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.3);
+
+        .status-indicator {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
         }
-        .custom-navbar.light .theme-toggle-btn {
-          border-color: rgba(0, 0, 0, 0.15);
-          color: #0a0f0a;
+
+        .status-dot {
+          width: 6px;
+          height: 6px;
+          background: #00e5a0;
+          border-radius: 50%;
+          animation: pulse 2s ease-in-out infinite;
         }
-        .custom-navbar.light .theme-toggle-btn:hover {
-          background: rgba(0, 0, 0, 0.05);
+
+        .status-text {
+          font-family: 'JetBrains Mono', 'Courier New', monospace;
+          font-size: 0.7rem;
+          color: #00e5a0;
         }
+
         .navbar-hamburger {
           display: none;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          width: 36px;
-          height: 36px;
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          width: 40px;
+          height: 40px;
+          border: none;
           background: transparent;
-          border-radius: 50%;
           cursor: pointer;
-          transition: background 0.2s;
+          gap: 4px;
           padding: 0;
         }
-        .navbar-hamburger:hover { background: rgba(255, 255, 255, 0.06); }
+
         .navbar-hamburger span {
           display: block;
           width: 18px;
-          height: 2px;
-          background: #fff;
-          margin: 2px 0;
-          border-radius: 2px;
-          transition: background 0.3s;
+          height: 1.5px;
+          background: rgba(255, 255, 255, 0.6);
+          transition: background 0.2s ease;
         }
-        .custom-navbar.light .navbar-hamburger span { background: #0a0f0a; }
+
+        .navbar-hamburger:hover span {
+          background: #00e5a0;
+        }
+
         .navbar-mobile-menu {
           display: none;
           position: fixed;
-          top: 70px;
-          right: 24px;
-          background: #0a0f0a;
-          border-radius: 12px;
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
-          padding: 24px;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(10, 10, 15, 0.98);
           z-index: 200;
-          min-width: 200px;
           opacity: 0;
           pointer-events: none;
-          transform: translateY(-10px);
-          transition: all 0.3s;
+          transition: opacity 0.3s ease;
         }
-        .custom-navbar.light .navbar-mobile-menu {
-          background: #f0f4f0;
-          border: 1px solid rgba(0, 0, 0, 0.1);
-        }
+
         .navbar-mobile-menu.open {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           opacity: 1;
           pointer-events: auto;
-          transform: translateY(0);
         }
-        .navbar-mobile-menu ul {
-          list-style: none; margin: 0; padding: 0;
-          display: flex; flex-direction: column; gap: 20px;
-        }
-        .navbar-mobile-menu a {
-          font-family: 'Courier New', Courier, monospace;
-          font-size: 1rem;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-        }
-        .custom-navbar.light .navbar-mobile-menu a {
-          color: rgba(0, 0, 0, 0.7);
-        }
-        .navbar-mobile-menu a.active,
-        .navbar-mobile-menu a:hover { color: #00c875; }
 
-        @media (max-width: 900px) {
-          .navbar-inner { padding: 0 8px; }
+        .close-btn {
+          position: absolute;
+          top: 1.5rem;
+          right: 1.5rem;
+          background: transparent;
+          border: none;
+          color: #888888;
+          font-size: 2rem;
+          cursor: pointer;
+          transition: color 0.2s ease;
         }
-        @media (max-width: 768px) {
-          .navbar-links { display: none; }
-          .navbar-hamburger { display: flex; }
-          .custom-navbar { padding: 12px 24px; }
+
+        .close-btn:hover {
+          color: #00e5a0;
+        }
+
+        .navbar-mobile-menu ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .navbar-mobile-menu li {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+
+        .navbar-mobile-menu.open li {
+          animation: slideIn 0.3s ease forwards;
+        }
+
+        @keyframes slideIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .navbar-mobile-menu a {
+          font-family: 'Syne', 'Arial', sans-serif;
+          font-size: 2rem;
+          font-weight: 700;
+          color: #ffffff;
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .navbar-mobile-menu a.active {
+          color: #00e5a0;
+        }
+
+        .mobile-status {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: 3rem;
+        }
+
+        @media (max-width: 968px) {
+          .navbar-inner {
+            padding: 0 2rem;
+          }
+
+          .navbar-links {
+            display: none;
+          }
+
+          .status-indicator {
+            display: none;
+          }
+
+          .navbar-hamburger {
+            display: flex;
+          }
+
+          .custom-navbar {
+            height: 56px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .navbar-inner {
+            padding: 0 1.5rem;
+          }
         }
       `}</style>
     </nav>

@@ -294,3 +294,24 @@ body.light-mode .section h2 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* About section wrapper - full background */
+:global(.about-section-wrapper) {
+  background: #111118 !important;
+  padding: 0 !important;
+  border-top: none !important;
+}
+
+/* Experience section wrapper - full background */
+:global(.experience-section-wrapper) {
+  background: #111118 !important;
+  padding: 0 !important;
+  border-top: none !important;
+}
+
+/* Projects section wrapper - full background */
+:global(.projects-section-wrapper) {
+  background: #111118 !important;
+  padding: 0 !important;
+  border-top: none !important;
+}

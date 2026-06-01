@@ -5,10 +5,10 @@ export default function ParticleNetwork() {
   const canvasRef = useRef(null);
   const animationRef = useRef();
   const particles = useRef([]);
-  const PARTICLE_COUNT = 120;
-  const RADIUS = 2.5;
-  const LINE_DIST = 160;
-  const MAX_OPACITY = 0.25;
+  const PARTICLE_COUNT = 40;
+  const RADIUS = 1.5;
+  const LINE_DIST = 120;
+  const MAX_OPACITY = 0.08;
 
   function resizeCanvas(canvas) {
     const dpr = window.devicePixelRatio || 1;
@@ -39,7 +39,7 @@ export default function ParticleNetwork() {
                     document.body.classList.contains("light-mode");
     return isLight
       ? { dot: "#1a7a40", line: "26,122,64", bg: "#f0f4f0" }
-      : { dot: "#39ff6e", line: "57,255,110", bg: "#0a0f0a" };
+      : { dot: "#00c875", line: "0,200,117", bg: "#0a0a0a" };
   }
 
   function animate() {

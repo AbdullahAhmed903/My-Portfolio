@@ -1,11 +1,15 @@
 "use client";
+import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
+import Counter from "./Counter";
+import BorderBeam from "./BorderBeam";
 
 export default function GitHub() {
   const languages = [
     { name: "TypeScript", percent: 45, color: "#3178C6" },
     { name: "JavaScript", percent: 30, color: "#F7DF1E" },
-    { name: "SQL / Other", percent: 15, color: "#22C55E" },
+    { name: "SQL / PostgreSQL", percent: 15, color: "#22C55E" },
     { name: "Other", percent: 10, color: "#64748B" },
   ];
 
@@ -30,165 +34,193 @@ export default function GitHub() {
           </p>
         </ScrollReveal>
 
-        {/* Main Contribution Graph Card */}
+        {/* Main Contribution Graph Card with 3D Tilt */}
         <ScrollReveal delay={200}>
-          <div className="contribution-main-card">
-            <div className="contribution-card-header">
-              <div className="header-left">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.22-.253-4.555-1.112-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.338 4.695-4.566 4.944.36.31.68.921.68 1.857 0 1.34-.012 2.422-.012 2.753 0 .268.18.579.688.481C19.138 20.203 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z" />
-                </svg>
-                <span className="card-title">Contributions in the last year</span>
-              </div>
+          <TiltCard maxTilt={5} scale={1.01} style={{ width: "100%", marginBottom: "24px" }}>
+            <div className="contribution-main-card">
+              <BorderBeam duration={10} size={280} colorFrom="#22C55E" colorTo="#00D2FF" />
 
-              <div className="header-legend">
-                <span className="legend-txt">Less</span>
-                <div className="legend-squares">
-                  <span className="l-sq sq-0"></span>
-                  <span className="l-sq sq-1"></span>
-                  <span className="l-sq sq-2"></span>
-                  <span className="l-sq sq-3"></span>
-                  <span className="l-sq sq-4"></span>
+              <div className="contribution-card-header">
+                <div className="header-left">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.22-.253-4.555-1.112-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.338 4.695-4.566 4.944.36.31.68.921.68 1.857 0 1.34-.012 2.422-.012 2.753 0 .268.18.579.688.481C19.138 20.203 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z" />
+                  </svg>
+                  <span className="card-title">Contributions in the last year</span>
                 </div>
-                <span className="legend-txt">More</span>
-              </div>
-            </div>
 
-            {/* Contribution Image Graphic */}
-            <div className="chart-viewport">
-              <img
-                src="https://ghchart.rshah.org/39d353/AbdullahAhmed903"
-                alt="Abdullah Ahmed's GitHub contribution graph"
-                className="chart-img"
-                loading="lazy"
-              />
-            </div>
+                <div className="header-legend">
+                  <span className="legend-txt">Less</span>
+                  <div className="legend-squares">
+                    <span className="l-sq sq-0"></span>
+                    <span className="l-sq sq-1"></span>
+                    <span className="l-sq sq-2"></span>
+                    <span className="l-sq sq-3"></span>
+                    <span className="l-sq sq-4"></span>
+                  </div>
+                  <span className="legend-txt">More</span>
+                </div>
+              </div>
 
-            {/* Bottom Counter Bar */}
-            <div className="card-bottom-bar">
-              <div className="pulse-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                </svg>
+              {/* Contribution Image Graphic */}
+              <div className="chart-viewport">
+                <img
+                  src="https://ghchart.rshah.org/39d353/AbdullahAhmed903"
+                  alt="Abdullah Ahmed's GitHub contribution graph"
+                  className="chart-img"
+                  loading="lazy"
+                />
               </div>
-              <div className="counter-text">
-                <strong className="counter-num">750+</strong>
-                <span className="counter-desc">contributions in the last year</span>
+
+              {/* Bottom Counter Bar with Live Animated Counter */}
+              <div className="card-bottom-bar">
+                <div className="pulse-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                  </svg>
+                </div>
+                <div className="counter-text">
+                  <strong className="counter-num">
+                    <Counter value={750} suffix="+" />
+                  </strong>
+                  <span className="counter-desc">contributions in the last year</span>
+                </div>
               </div>
             </div>
-          </div>
+          </TiltCard>
         </ScrollReveal>
 
         {/* 5-Card Stats Grid */}
         <div className="github-cards-grid">
           {/* Card 1: Repositories */}
           <ScrollReveal delay={250}>
-            <div className="stat-metric-card">
-              <div className="metric-icon-box green-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m7.5 4.27 9 5.15"/>
-                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
-                  <path d="m3.3 7 8.7 5 8.7-5"/>
-                  <path d="M12 22V12"/>
-                </svg>
+            <TiltCard maxTilt={8} scale={1.03}>
+              <div className="stat-metric-card">
+                <div className="metric-icon-box green-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m7.5 4.27 9 5.15"/>
+                    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                    <path d="m3.3 7 8.7 5 8.7-5"/>
+                    <path d="M12 22V12"/>
+                  </svg>
+                </div>
+                <div className="metric-big-num green-text">
+                  <Counter value={15} suffix="+" />
+                </div>
+                <div className="metric-label">Repositories</div>
+                <div className="metric-subline">Open source repos created & maintained</div>
               </div>
-              <div className="metric-big-num green-text">15+</div>
-              <div className="metric-label">Repositories</div>
-              <div className="metric-subline">Open source repos created & maintained</div>
-            </div>
+            </TiltCard>
           </ScrollReveal>
 
           {/* Card 2: Total Commits */}
           <ScrollReveal delay={300}>
-            <div className="stat-metric-card">
-              <div className="metric-icon-box cyan-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="16 18 22 12 16 6"/>
-                  <polyline points="8 6 2 12 8 18"/>
-                </svg>
+            <TiltCard maxTilt={8} scale={1.03}>
+              <div className="stat-metric-card">
+                <div className="metric-icon-box cyan-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                </div>
+                <div className="metric-big-num cyan-text">
+                  <Counter value={750} suffix="+" />
+                </div>
+                <div className="metric-label">Total Commits</div>
+                <div className="metric-subline">Across all repositories</div>
               </div>
-              <div className="metric-big-num cyan-text">750+</div>
-              <div className="metric-label">Total Commits</div>
-              <div className="metric-subline">Across all repositories</div>
-            </div>
+            </TiltCard>
           </ScrollReveal>
 
           {/* Card 3: Primary Tech */}
           <ScrollReveal delay={350}>
-            <div className="stat-metric-card">
-              <div className="metric-icon-box purple-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A855F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                </svg>
+            <TiltCard maxTilt={8} scale={1.03}>
+              <div className="stat-metric-card">
+                <div className="metric-icon-box blue-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+                <div className="metric-big-num blue-text">Node / Nest</div>
+                <div className="metric-label">Primary Tech</div>
+                <div className="metric-subline">Backend development with modern tools</div>
               </div>
-              <div className="metric-big-num purple-text">Node / Nest</div>
-              <div className="metric-label">Primary Tech</div>
-              <div className="metric-subline">Backend development with modern tools</div>
-            </div>
+            </TiltCard>
           </ScrollReveal>
 
           {/* Card 4: Contributions (2024) */}
           <ScrollReveal delay={400}>
-            <div className="stat-metric-card">
-              <div className="metric-icon-box orange-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
-                  <line x1="16" x2="16" y1="2" y2="6"/>
-                  <line x1="8" x2="8" y1="2" y2="6"/>
-                  <line x1="3" x2="21" y1="10" y2="10"/>
-                </svg>
+            <TiltCard maxTilt={8} scale={1.03}>
+              <div className="stat-metric-card">
+                <div className="metric-icon-box orange-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                    <line x1="16" x2="16" y1="2" y2="6"/>
+                    <line x1="8" x2="8" y1="2" y2="6"/>
+                    <line x1="3" x2="21" y1="10" y2="10"/>
+                  </svg>
+                </div>
+                <div className="metric-big-num orange-text">
+                  <Counter value={400} suffix="+" />
+                </div>
+                <div className="metric-label">Contributions (2024)</div>
+                <div className="metric-subline">Active contributor this year</div>
               </div>
-              <div className="metric-big-num orange-text">400+</div>
-              <div className="metric-label">Contributions (2024)</div>
-              <div className="metric-subline">Active contributor this year</div>
-            </div>
+            </TiltCard>
           </ScrollReveal>
 
-          {/* Card 5: Top Languages */}
+          {/* Card 5: Top Languages with Animated Progress Bars */}
           <ScrollReveal delay={450}>
-            <div className="stat-metric-card lang-card">
-              <div className="lang-header">Top Languages</div>
-              <div className="lang-list">
-                {languages.map((lang) => (
-                  <div key={lang.name} className="lang-row">
-                    <div className="lang-info">
-                      <span className="lang-dot" style={{ backgroundColor: lang.color }}></span>
-                      <span className="lang-name">{lang.name}</span>
+            <TiltCard maxTilt={8} scale={1.03}>
+              <div className="stat-metric-card lang-card">
+                <div className="lang-header">Top Languages</div>
+                <div className="lang-list">
+                  {languages.map((lang) => (
+                    <div key={lang.name} className="lang-row">
+                      <div className="lang-info">
+                        <span className="lang-dot" style={{ backgroundColor: lang.color }}></span>
+                        <span className="lang-name">{lang.name}</span>
+                      </div>
+                      <div className="lang-percent">{lang.percent}%</div>
+                      <div className="lang-bar-track">
+                        <motion.div 
+                          className="lang-bar-fill" 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${lang.percent}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                          style={{ backgroundColor: lang.color }}
+                        />
+                      </div>
                     </div>
-                    <div className="lang-percent">{lang.percent}%</div>
-                    <div className="lang-bar-track">
-                      <div 
-                        className="lang-bar-fill" 
-                        style={{ width: `${lang.percent}%`, backgroundColor: lang.color }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            </TiltCard>
           </ScrollReveal>
         </div>
 
         {/* Center CTA Button */}
         <ScrollReveal delay={500}>
           <div className="github-cta-wrapper">
-            <a
+            <motion.a
               href="https://github.com/AbdullahAhmed903"
               target="_blank"
               rel="noopener noreferrer"
               className="github-profile-link-btn"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.98 }}
             >
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.22-.253-4.555-1.112-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.338 4.695-4.566 4.944.36.31.68.921.68 1.857 0 1.34-.012 2.422-.012 2.753 0 .268.18.579.688.481C19.138 20.203 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z" />
               </svg>
               <span>Visit github.com/AbdullahAhmed903</span>
               <span className="arrow">↗</span>
-            </a>
+            </motion.a>
           </div>
         </ScrollReveal>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         .github-section {
           width: 100%;
         }
@@ -215,17 +247,13 @@ export default function GitHub() {
 
         /* ── Main Contribution Graph Card ────────────────────────── */
         .contribution-main-card {
+          position: relative;
           background: var(--card-bg);
           border: 1px solid var(--card-border);
           border-radius: 18px;
           padding: 24px 28px;
           box-shadow: var(--card-shadow);
-          margin-bottom: 24px;
-          transition: border-color 0.25s ease;
-        }
-
-        .contribution-main-card:hover {
-          border-color: var(--card-border-hover);
+          overflow: hidden;
         }
 
         .contribution-card-header {
@@ -254,23 +282,27 @@ export default function GitHub() {
           display: flex;
           align-items: center;
           gap: 6px;
+        }
+
+        .legend-txt {
           font-family: var(--font-mono);
-          font-size: 0.78rem;
+          font-size: 0.72rem;
           color: var(--text-muted);
         }
 
         .legend-squares {
           display: flex;
+          align-items: center;
           gap: 4px;
         }
 
         .l-sq {
-          width: 11px;
-          height: 11px;
-          border-radius: 2.5px;
+          width: 10px;
+          height: 10px;
+          border-radius: 2px;
         }
 
-        .sq-0 { background: #161b22; border: 1px solid rgba(255,255,255,0.06); }
+        .sq-0 { background: #1e293b; }
         .sq-1 { background: #0e4429; }
         .sq-2 { background: #006d32; }
         .sq-3 { background: #26a641; }
@@ -279,157 +311,125 @@ export default function GitHub() {
         .chart-viewport {
           width: 100%;
           overflow-x: auto;
-          display: flex;
-          justify-content: center;
-          padding: 12px 0 16px;
+          margin-bottom: 16px;
         }
 
         .chart-img {
-          max-width: 100%;
+          width: 100%;
+          min-width: 650px;
           height: auto;
-          min-width: 720px;
-          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+          display: block;
         }
 
         .card-bottom-bar {
           display: flex;
           align-items: center;
           gap: 10px;
-          padding-top: 16px;
-          border-top: 1px solid var(--card-border);
+          padding-top: 14px;
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .pulse-icon-box {
-          width: 28px;
-          height: 28px;
-          border-radius: 6px;
-          background: rgba(34, 197, 94, 0.1);
-          border: 1px solid rgba(34, 197, 94, 0.25);
           display: flex;
           align-items: center;
-          justify-content: center;
         }
 
         .counter-text {
           display: flex;
           align-items: center;
           gap: 6px;
-          font-family: var(--font-mono);
-          font-size: 0.85rem;
+          font-size: 0.88rem;
+          color: var(--text-secondary);
         }
 
         .counter-num {
-          color: #22C55E;
-          font-weight: 700;
+          font-family: var(--font-mono);
+          color: #22c55e;
+          font-weight: 800;
         }
 
-        .counter-desc {
-          color: var(--text-muted);
-        }
-
-        /* ── 5-Card Stats Grid ─────────────────────────────────── */
+        /* ── 5-Card Stats Grid ────────────────────────────────────── */
         .github-cards-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr) 1.5fr;
+          grid-template-columns: repeat(5, 1fr);
           gap: 16px;
-          margin-bottom: 28px;
+          margin-bottom: 32px;
         }
 
         .stat-metric-card {
           background: var(--card-bg);
           border: 1px solid var(--card-border);
           border-radius: 16px;
-          padding: 22px 20px;
-          box-shadow: var(--card-shadow);
+          padding: 20px 18px;
           display: flex;
           flex-direction: column;
-          transition: all 0.25s ease;
-        }
-
-        .stat-metric-card:hover {
-          border-color: var(--card-border-hover);
-          transform: translateY(-2px);
+          box-shadow: var(--card-shadow);
+          height: 100%;
         }
 
         .metric-icon-box {
-          width: 42px;
-          height: 42px;
+          width: 40px;
+          height: 40px;
           border-radius: 10px;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 16px;
+          margin-bottom: 14px;
         }
 
-        .green-box {
-          background: rgba(34, 197, 94, 0.1);
-          border: 1px solid rgba(34, 197, 94, 0.25);
-        }
-
-        .cyan-box {
-          background: rgba(0, 210, 255, 0.1);
-          border: 1px solid rgba(0, 210, 255, 0.25);
-        }
-
-        .purple-box {
-          background: rgba(168, 85, 247, 0.1);
-          border: 1px solid rgba(168, 85, 247, 0.25);
-        }
-
-        .orange-box {
-          background: rgba(249, 115, 22, 0.1);
-          border: 1px solid rgba(249, 115, 22, 0.25);
-        }
+        .green-box { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.25); }
+        .cyan-box { background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.25); }
+        .blue-box { background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.25); }
+        .orange-box { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.25); }
 
         .metric-big-num {
-          font-family: var(--font-mono);
-          font-size: 1.55rem;
+          font-size: 1.6rem;
           font-weight: 800;
+          font-family: var(--font-mono);
           line-height: 1.1;
-          margin-bottom: 6px;
+          margin-bottom: 4px;
         }
 
-        .green-text { color: #22C55E; }
-        .cyan-text { color: #00D2FF; }
-        .purple-text { color: #A855F7; }
-        .orange-text { color: #F97316; }
+        .green-text { color: #22c55e; }
+        .cyan-text { color: #00d2ff; }
+        .blue-text { color: #38bdf8; font-size: 1.25rem; }
+        .orange-text { color: #fb923c; }
 
         .metric-label {
-          font-size: 0.92rem;
+          font-size: 0.88rem;
           font-weight: 700;
           color: var(--text-primary);
           margin-bottom: 4px;
         }
 
         .metric-subline {
-          font-size: 0.78rem;
+          font-size: 0.74rem;
           color: var(--text-muted);
-          line-height: 1.4;
+          line-height: 1.35;
         }
 
-        /* ── Top Languages Card ───────────────────────────────── */
+        /* Lang Card */
         .lang-card {
-          justify-content: flex-start;
+          padding: 16px;
         }
 
         .lang-header {
-          font-size: 0.95rem;
+          font-size: 0.85rem;
           font-weight: 700;
           color: var(--text-primary);
-          margin-bottom: 14px;
+          margin-bottom: 12px;
         }
 
         .lang-list {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 8px;
         }
 
         .lang-row {
-          display: grid;
-          grid-template-columns: 110px 38px 1fr;
-          align-items: center;
-          gap: 8px;
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
         }
 
         .lang-info {
@@ -439,100 +439,78 @@ export default function GitHub() {
         }
 
         .lang-dot {
-          width: 7px;
-          height: 7px;
+          width: 6px;
+          height: 6px;
           border-radius: 50%;
-          flex-shrink: 0;
         }
 
         .lang-name {
-          font-size: 0.78rem;
+          font-size: 0.72rem;
           color: var(--text-secondary);
-          font-weight: 500;
-          white-space: nowrap;
+          flex: 1;
         }
 
         .lang-percent {
           font-family: var(--font-mono);
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           color: var(--text-muted);
-          text-align: right;
+          align-self: flex-end;
+          margin-top: -16px;
         }
 
         .lang-bar-track {
           width: 100%;
-          height: 5px;
-          background: var(--background-subtle);
-          border-radius: 9999px;
+          height: 4px;
+          background: rgba(255, 255, 255, 0.06);
+          border-radius: 2px;
           overflow: hidden;
         }
 
         .lang-bar-fill {
           height: 100%;
-          border-radius: 9999px;
+          border-radius: 2px;
         }
 
-        /* ── CTA Button ───────────────────────────────────────── */
+        /* ── Center CTA Button ────────────────────────────────────── */
         .github-cta-wrapper {
           display: flex;
           justify-content: center;
-          margin-top: 8px;
         }
 
         .github-profile-link-btn {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          padding: 12px 28px;
+          padding: 13px 28px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           border-radius: 12px;
-          background: var(--card-bg);
-          border: 1px solid rgba(0, 210, 255, 0.25);
           color: var(--text-primary);
-          font-size: 0.95rem;
           font-weight: 600;
-          transition: all 0.25s ease;
-          text-decoration: none;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          font-size: 0.92rem;
+          box-shadow: var(--card-shadow);
         }
 
         .github-profile-link-btn:hover {
-          border-color: #00D2FF;
-          color: #00D2FF;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 25px rgba(0, 210, 255, 0.25);
+          border-color: var(--accent);
+          color: var(--accent);
+          background: rgba(0, 210, 255, 0.06);
+          box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
         }
 
         .arrow {
-          transition: transform 0.2s ease;
-          color: #00D2FF;
+          font-size: 1.1rem;
         }
 
-        .github-profile-link-btn:hover .arrow {
-          transform: translate(3px, -3px);
-        }
-
-        /* ── Responsive ────────────────────────────────────────── */
-        @media (max-width: 1200px) {
+        @media (max-width: 1100px) {
           .github-cards-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .lang-card {
-            grid-column: 1 / -1;
+            grid-template-columns: repeat(3, 1fr);
           }
         }
 
-        @media (max-width: 640px) {
-          .contribution-main-card {
-            padding: 18px 16px;
-          }
-
+        @media (max-width: 768px) {
           .github-cards-grid {
             grid-template-columns: 1fr;
-          }
-
-          .lang-row {
-            grid-template-columns: 90px 35px 1fr;
           }
         }
       `}</style>

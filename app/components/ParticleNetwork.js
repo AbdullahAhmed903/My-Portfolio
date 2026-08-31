@@ -4,11 +4,13 @@ import { useEffect, useRef } from "react";
 export default function ParticleNetwork() {
   const canvasRef = useRef(null);
   const animationRef = useRef();
+  const mouseRef = useRef({ x: -1000, y: -1000, active: false });
   const particles = useRef([]);
-  const PARTICLE_COUNT = 40;
-  const RADIUS = 1.5;
-  const LINE_DIST = 120;
-  const MAX_OPACITY = 0.08;
+  
+  const PARTICLE_COUNT = 45;
+  const RADIUS = 1.6;
+  const LINE_DIST = 130;
+  const MOUSE_DIST = 160;
 
   function resizeCanvas(canvas) {
     const dpr = window.devicePixelRatio || 1;
@@ -24,22 +26,17 @@ export default function ParticleNetwork() {
   function initParticles() {
     particles.current = Array.from({ length: PARTICLE_COUNT }, () => {
       const angle = Math.random() * 2 * Math.PI;
-      const speed = 0.3 + Math.random() * 0.25;
+      const speed = 0.25 + Math.random() * 0.35;
       return {
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
+        baseVx: Math.cos(angle) * speed,
+        baseVy: Math.sin(angle) * speed,
+        hue: Math.random() > 0.5 ? "0, 210, 255" : "14, 165, 233"
       };
     });
-  }
-
-  function getColors() {
-    const isLight = document.documentElement.classList.contains("light-mode") ||
-                    document.body.classList.contains("light-mode");
-    return isLight
-      ? { dot: "#1a7a40", line: "26,122,64", bg: "#f0f4f0" }
-      : { dot: "#00c875", line: "0,200,117", bg: "#0a0a0a" };
   }
 
   function animate() {
@@ -47,13 +44,12 @@ export default function ParticleNetwork() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     
-    const { dot, line, bg } = getColors();
-    
-    // Clear with theme background color to avoid trails but allow overlay
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    // Clear fully with transparent background so underlying CSS background gradient shows
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-    // Draw lines
+    const mouse = mouseRef.current;
+
+    // Draw particle lines between each other
     for (let i = 0; i < particles.current.length; i++) {
       for (let j = i + 1; j < particles.current.length; j++) {
         const a = particles.current[i];
@@ -62,9 +58,9 @@ export default function ParticleNetwork() {
         const dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < LINE_DIST) {
-          const opacity = MAX_OPACITY * (1 - dist / LINE_DIST);
-          ctx.strokeStyle = `rgba(${line},${opacity.toFixed(3)})`;
-          ctx.lineWidth = 1;
+          const opacity = (0.12 * (1 - dist / LINE_DIST)).toFixed(3);
+          ctx.strokeStyle = `rgba(${a.hue}, ${opacity})`;
+          ctx.lineWidth = 0.9;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -73,12 +69,38 @@ export default function ParticleNetwork() {
       }
     }
 
-    // Draw particles
-    ctx.fillStyle = dot;
+    // Connect particles to mouse cursor when hovered
+    if (mouse.active) {
+      for (let i = 0; i < particles.current.length; i++) {
+        const p = particles.current[i];
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_DIST) {
+          const opacity = (0.28 * (1 - dist / MOUSE_DIST)).toFixed(3);
+          ctx.strokeStyle = `rgba(0, 210, 255, ${opacity})`;
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+
+          // Slight gentle magnetic pull
+          p.x += dx * 0.008;
+          p.y += dy * 0.008;
+        }
+      }
+    }
+
+    // Draw glowing particles
     for (const p of particles.current) {
+      ctx.fillStyle = `rgba(${p.hue}, 0.8)`;
+      ctx.shadowColor = `rgba(${p.hue}, 0.5)`;
+      ctx.shadowBlur = 6;
       ctx.beginPath();
       ctx.arc(p.x, p.y, RADIUS, 0, 2 * Math.PI);
       ctx.fill();
+      ctx.shadowBlur = 0; // reset
     }
 
     // Move particles
@@ -101,10 +123,22 @@ export default function ParticleNetwork() {
     animationRef.current = requestAnimationFrame(animate);
 
     const handleResize = () => { resizeCanvas(canvas); initParticles(); };
+    const handleMouseMove = (e) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY, active: true };
+    };
+    const handleMouseLeave = () => {
+      mouseRef.current.active = false;
+    };
+
     window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+
     return () => {
       cancelAnimationFrame(animationRef.current);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 

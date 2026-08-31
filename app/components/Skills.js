@@ -3,62 +3,56 @@ import ScrollReveal from "./ScrollReveal";
 
 const SKILL_GROUPS = [
   {
-    label: "// LANGUAGES",
-    variant: "green",
+    label: "Languages",
     skills: [
-      { name: "JavaScript (ES6)", accent: true },
-      { name: "TypeScript", accent: false },
-      { name: "HTML5", accent: false },
-      { name: "CSS3", accent: false },
+      { name: "JavaScript (ES6+)", highlight: true },
+      { name: "TypeScript", highlight: true },
+      { name: "SQL", highlight: true },
+      { name: "HTML5 / CSS3", highlight: false },
     ],
   },
   {
-    label: "// BACKEND",
-    variant: "green",
+    label: "Backend & Systems",
     skills: [
-      { name: "Node.js", accent: true },
-      { name: "Express.js", accent: true },
-      { name: "NestJS", accent: true },
-      { name: "Redis", accent: false },
-      { name: "Swagger", accent: false },
-      { name: "Prisma", accent: false },
-      { name: "REST APIs", accent: false },
-      { name: "Socket.io", accent: false },
-      { name: "OOP", accent: false },
-      { name: "Error Handling & Validation", accent: false },
+      { name: "Node.js", highlight: true },
+      { name: "Express.js", highlight: true },
+      { name: "NestJS", highlight: true },
+      { name: "REST APIs", highlight: true },
+      { name: "Socket.IO (Real-time)", highlight: false },
+      { name: "Redis Caching", highlight: false },
+      { name: "Rate Limiting & Security", highlight: false },
+      { name: "Swagger / OpenAPI", highlight: false },
+      { name: "Clean Architecture & SOLID", highlight: false },
     ],
   },
   {
-    label: "// DATABASES",
-    variant: "default",
+    label: "Databases & ORMs",
     skills: [
-      { name: "MongoDB", accent: false },
-      { name: "Mongoose", accent: false },
-      { name: "MySQL", accent: false },
-      { name: "Supabase", accent: false },
+      { name: "PostgreSQL", highlight: true },
+      { name: "MongoDB", highlight: true },
+      { name: "MySQL", highlight: false },
+      { name: "Supabase", highlight: false },
+      { name: "Prisma ORM", highlight: false },
+      { name: "Mongoose", highlight: false },
     ],
   },
   {
-    label: "// FRONTEND",
-    variant: "purple",
+    label: "Frontend & Full Stack",
     skills: [
-      { name: "React.js", accent: true },
-      { name: "Next.js", accent: true },
-      { name: "Bootstrap", accent: false },
-      { name: "DOM Manipulation", accent: false },
+      { name: "React.js", highlight: true },
+      { name: "Next.js (App Router)", highlight: true },
+      { name: "Responsive UI", highlight: false },
+      { name: "DOM Manipulation", highlight: false },
     ],
   },
   {
-    label: "// TOOLS & PLATFORMS",
-    variant: "default",
+    label: "Cloud & Dev Tools",
     skills: [
-      { name: "Git", accent: false },
-      { name: "GitHub", accent: false },
-      { name: "Razorpay", accent: false },
-      { name: "AWS (EC2, RDS, IAM)", accent: false },
-      { name: "GitHub Projects", accent: false },
-      { name: "Postman", accent: false },
-      { name: "Notion", accent: false },
+      { name: "AWS (EC2, S3, IAM, RDS)", highlight: true },
+      { name: "Git & GitHub", highlight: true },
+      { name: "Razorpay Gateway", highlight: false },
+      { name: "Postman API Testing", highlight: false },
+      { name: "Linux / Bash", highlight: false },
     ],
   },
 ];
@@ -68,26 +62,30 @@ export default function Skills() {
     <section className="skills-section" id="skills">
       <div className="skills-container">
         <ScrollReveal>
-          <div className="skills-label">
-            <span className="label-line"></span>
-            <span>WHAT I KNOW</span>
+          <div className="section-label">
+            <span className="section-label-line"></span>
+            <span>TECH STACK</span>
           </div>
         </ScrollReveal>
         
         <ScrollReveal delay={100}>
-          <h2 className="skills-heading">Skills</h2>
+          <h2 className="section-heading">Skills & Technologies</h2>
         </ScrollReveal>
         
         <div className="skills-grid">
           {SKILL_GROUPS.map((group, index) => (
-            <ScrollReveal key={group.label} delay={200 + index * 100}>
-              <div className="skill-group">
-                <div className="group-label">{group.label}</div>
+            <ScrollReveal key={group.label} delay={150 + index * 80}>
+              <div className="skill-card">
+                <div className="group-header">
+                  <span className="group-prefix">//</span>
+                  <h3 className="group-title">{group.label}</h3>
+                </div>
+                
                 <div className="skill-tags">
                   {group.skills.map((skill) => (
                     <span 
                       key={skill.name} 
-                      className={`skill-tag ${group.variant} ${skill.accent ? 'accent' : ''}`}
+                      className={`skill-tag ${skill.highlight ? 'highlight' : ''}`}
                     >
                       {skill.name}
                     </span>
@@ -98,12 +96,10 @@ export default function Skills() {
           ))}
         </div>
       </div>
+
       <style jsx>{`
         .skills-section {
-          padding: 80px 0;
-          position: relative;
-          z-index: 1;
-          background: #0a0a0f;
+          width: 100%;
         }
 
         .skills-container {
@@ -112,129 +108,84 @@ export default function Skills() {
           margin: 0 auto;
         }
 
-        .skills-label {
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 24px;
+        }
+
+        .skill-card {
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          border-radius: 14px;
+          padding: 24px;
+          box-shadow: var(--card-shadow);
+          transition: all 0.25s ease;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .skill-card:hover {
+          border-color: var(--card-border-hover);
+          transform: translateY(-2px);
+        }
+
+        .group-header {
           display: flex;
           align-items: center;
-          gap: 12px;
-          font-family: 'Courier New', monospace;
-          font-size: 0.75rem;
-          color: #00e5a0;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
+          gap: 8px;
           margin-bottom: 16px;
         }
 
-        .label-line {
-          width: 30px;
-          height: 1px;
-          background: #00e5a0;
+        .group-prefix {
+          font-family: var(--font-mono);
+          color: var(--accent);
+          font-size: 0.9rem;
+          font-weight: 700;
         }
 
-        .skills-heading {
-          font-size: 3.5rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 48px 0;
-          line-height: 1.1;
-          font-family: 'Arial Black', 'Arial Bold', sans-serif;
-        }
-
-        .skills-grid {
-          display: flex;
-          flex-direction: column;
-          gap: 3rem;
-        }
-
-        .skill-group {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        .group-label {
-          font-family: 'Courier New', monospace;
-          font-size: 0.65rem;
-          color: #888888;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
+        .group-title {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          letter-spacing: -0.01em;
+          margin: 0;
         }
 
         .skill-tags {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;
+          gap: 8px;
         }
 
         .skill-tag {
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.07);
-          color: #888888;
-          padding: 0.5rem 1.1rem;
+          font-family: var(--font-mono);
+          font-size: 0.82rem;
+          padding: 6px 12px;
           border-radius: 6px;
-          font-family: 'Courier New', monospace;
-          font-size: 0.78rem;
-          transition: all 0.3s ease;
-          cursor: default;
-          position: relative;
-          overflow: hidden;
-          z-index: 1;
-        }
-
-        .skill-tag::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: #00e5a0;
-          transform: translateX(-100%);
-          transition: transform 0.3s ease;
-          z-index: -1;
-        }
-
-        .skill-tag:hover::before {
-          transform: translateX(0);
+          background: var(--background-subtle);
+          border: 1px solid var(--card-border);
+          color: var(--text-secondary);
+          transition: all 0.2s ease;
         }
 
         .skill-tag:hover {
-          color: #000000;
-          border-color: #00e5a0;
+          border-color: var(--accent);
+          color: var(--text-primary);
         }
 
-        /* Green variant - Languages & Backend */
-        .skill-tag.green.accent {
-          border-color: rgba(0, 229, 160, 0.3);
-          color: #00e5a0;
+        .skill-tag.highlight {
+          background: var(--pill-bg);
+          border-color: var(--pill-border);
+          color: var(--pill-text);
+          font-weight: 600;
         }
 
-        /* Purple variant - Frontend */
-        .skill-tag.purple.accent {
-          border-color: rgba(124, 106, 255, 0.3);
-          color: #7c6aff;
-        }
-
-        .skill-tag.purple::before {
-          background: #7c6aff;
-        }
-
-        .skill-tag.purple:hover {
-          border-color: #7c6aff;
-        }
-
-        @media (max-width: 768px) {
-          .skills-heading {
-            font-size: 2.5rem;
-          }
-
-          .skill-tag {
-            font-size: 0.7rem;
-            padding: 0.4rem 0.9rem;
-          }
-
-          .skills-grid {
-            gap: 2rem;
-          }
+        .skill-tag.highlight:hover {
+          background: var(--accent);
+          color: #ffffff;
+          border-color: var(--accent);
         }
       `}</style>
     </section>

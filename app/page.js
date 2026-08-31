@@ -11,35 +11,35 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <>
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <Navbar />
-        <main className={styles.main}>
-          <Hero />
-          
-          <section id="about" className={`${styles.section} about-section-wrapper`}>
-            <About />
-          </section>
+    <div style={{ position: "relative", zIndex: 1 }}>
+      <Navbar />
+      <main className={styles.main}>
+        <Hero />
+        
+        <section id="about" className={styles.section}>
+          <About />
+        </section>
 
+        <section id="skills" className={styles.section}>
           <Skills />
+        </section>
 
-          <section id="experience" className={`${styles.section} experience-section-wrapper`}>
-            <Experience />
-          </section>
+        <section id="experience" className={styles.section}>
+          <Experience />
+        </section>
 
-          <section id="github" className={styles.section}>
-            <div className={styles.sectionInner}>
-              <GitHub />
-            </div>
-          </section>
+        <section id="github" className={styles.section}>
+          <GitHub />
+        </section>
 
-          <section id="projects" className={`${styles.section} projects-section-wrapper`}>
-            <Projects />
-          </section>
+        <section id="projects" className={styles.section}>
+          <Projects />
+        </section>
 
+        <section id="contact" className={styles.section}>
           <Contact />
-        </main>
-      </div>
-    </>
+        </section>
+      </main>
+    </div>
   );
 }

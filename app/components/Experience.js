@@ -7,12 +7,14 @@ export default function Experience() {
       date: "03/2026 – Present",
       role: "Backend Developer (Node.js)",
       company: "Tensorik",
+      desc: "Architecting backend services, payment processing with Razorpay, Supabase DB optimizations, and rate-limiting middleware.",
       active: true,
     },
     {
       date: "08/2024 – 10/2024",
       role: "Frontend Developer",
       company: "CodeAlpha",
+      desc: "Built responsive interactive web applications with modern UI and client-side data state management.",
       active: false,
     },
   ];
@@ -20,23 +22,26 @@ export default function Experience() {
   const education = [
     {
       date: "09/2020 – 06/2024",
-      role: "Bachelor's Degree in Information Systems",
+      role: "B.S. Information Systems",
       company: "Port Said University (GPA: 3.6)",
+      desc: "Graduated with honors. Focused on database systems, software engineering, algorithms, and web architecture.",
       active: false,
     },
   ];
 
-  const courses = [
+  const certifications = [
     {
       date: "07/2024 – 10/2024",
-      role: "AWS Cloud",
+      role: "AWS Cloud Architect Track",
       company: "Egypt's Digital Pioneers Initiative",
+      desc: "In-depth cloud infrastructure, EC2, S3, IAM, VPC, and scalable cloud application design.",
       active: true,
     },
     {
       date: "09/2022 – 01/2023",
-      role: "Backend (Node.js)",
+      role: "Backend Diploma (Node.js)",
       company: "Route Academy",
+      desc: "Comprehensive training in RESTful APIs, Express, MongoDB, Socket.IO, security, and SOLID principles.",
       active: false,
     },
   ];
@@ -45,35 +50,36 @@ export default function Experience() {
     <section className="experience-section">
       <div className="experience-container">
         <ScrollReveal>
-          <div className="experience-label">
-            <span className="label-line"></span>
-            <span>MY JOURNEY</span>
+          <div className="section-label">
+            <span className="section-label-line"></span>
+            <span>EXPERIENCE & EDUCATION</span>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <h2 className="experience-heading">Experience</h2>
+          <h2 className="section-heading">My Journey</h2>
         </ScrollReveal>
 
         <div className="experience-grid">
-          {/* Left Column */}
+          {/* Work & Education Column */}
           <div className="experience-column">
             <ScrollReveal delay={200}>
-              <div className="column-section">
-                <h3 className="section-title">WORK EXPERIENCE</h3>
+              <div className="column-card">
+                <div className="card-header">
+                  <span className="header-icon">💼</span>
+                  <h3 className="card-title">Work Experience</h3>
+                </div>
                 <div className="timeline">
                   {workExperience.map((item, index) => (
-                    <div 
-                      key={index} 
-                      className={`timeline-item ${index === workExperience.length - 1 ? 'last' : ''}`}
-                    >
+                    <div key={index} className="timeline-item">
                       <div className={`timeline-dot ${item.active ? 'active' : ''}`}></div>
                       <div className="timeline-content">
-                        <div className={`timeline-date ${item.active ? 'active' : ''}`}>
+                        <span className={`timeline-date ${item.active ? 'active' : ''}`}>
                           {item.date}
-                        </div>
-                        <div className="timeline-role">{item.role}</div>
+                        </span>
+                        <h4 className="timeline-role">{item.role}</h4>
                         <div className="timeline-company">{item.company}</div>
+                        <p className="timeline-desc">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -82,21 +88,20 @@ export default function Experience() {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="column-section">
-                <h3 className="section-title">EDUCATION</h3>
+              <div className="column-card" style={{ marginTop: '24px' }}>
+                <div className="card-header">
+                  <span className="header-icon">🎓</span>
+                  <h3 className="card-title">Education</h3>
+                </div>
                 <div className="timeline">
                   {education.map((item, index) => (
-                    <div 
-                      key={index} 
-                      className={`timeline-item ${index === education.length - 1 ? 'last' : ''}`}
-                    >
-                      <div className={`timeline-dot ${item.active ? 'active' : ''}`}></div>
+                    <div key={index} className="timeline-item">
+                      <div className="timeline-dot"></div>
                       <div className="timeline-content">
-                        <div className={`timeline-date ${item.active ? 'active' : ''}`}>
-                          {item.date}
-                        </div>
-                        <div className="timeline-role">{item.role}</div>
+                        <span className="timeline-date">{item.date}</span>
+                        <h4 className="timeline-role">{item.role}</h4>
                         <div className="timeline-company">{item.company}</div>
+                        <p className="timeline-desc">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -105,24 +110,25 @@ export default function Experience() {
             </ScrollReveal>
           </div>
 
-          {/* Right Column */}
+          {/* Certifications Column */}
           <div className="experience-column">
-            <ScrollReveal delay={350}>
-              <div className="column-section">
-                <h3 className="section-title">COURSES & TRAINING</h3>
+            <ScrollReveal delay={250}>
+              <div className="column-card">
+                <div className="card-header">
+                  <span className="header-icon">📜</span>
+                  <h3 className="card-title">Certifications & Training</h3>
+                </div>
                 <div className="timeline">
-                  {courses.map((item, index) => (
-                    <div 
-                      key={index} 
-                      className={`timeline-item ${index === courses.length - 1 ? 'last' : ''}`}
-                    >
+                  {certifications.map((item, index) => (
+                    <div key={index} className="timeline-item">
                       <div className={`timeline-dot ${item.active ? 'active' : ''}`}></div>
                       <div className="timeline-content">
-                        <div className={`timeline-date ${item.active ? 'active' : ''}`}>
+                        <span className={`timeline-date ${item.active ? 'active' : ''}`}>
                           {item.date}
-                        </div>
-                        <div className="timeline-role">{item.role}</div>
+                        </span>
+                        <h4 className="timeline-role">{item.role}</h4>
                         <div className="timeline-company">{item.company}</div>
+                        <p className="timeline-desc">{item.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -136,8 +142,6 @@ export default function Experience() {
       <style jsx>{`
         .experience-section {
           width: 100%;
-          padding: 80px 0;
-          background: #111118;
         }
 
         .experience-container {
@@ -146,144 +150,114 @@ export default function Experience() {
           margin: 0 auto;
         }
 
-        .experience-label {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          font-family: 'Courier New', monospace;
-          font-size: 0.75rem;
-          color: #00e5a0;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          margin-bottom: 16px;
-        }
-
-        .label-line {
-          width: 30px;
-          height: 1px;
-          background: #00e5a0;
-        }
-
-        .experience-heading {
-          font-size: 3.5rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 48px 0;
-          line-height: 1.1;
-          font-family: 'Arial Black', 'Arial Bold', sans-serif;
-        }
-
         .experience-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 4rem;
+          gap: 30px;
         }
 
-        .experience-column {
+        .column-card {
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          border-radius: 14px;
+          padding: 28px;
+          box-shadow: var(--card-shadow);
+          transition: border-color 0.25s ease;
+        }
+
+        .column-card:hover {
+          border-color: var(--card-border-hover);
+        }
+
+        .card-header {
           display: flex;
-          flex-direction: column;
-          gap: 3rem;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid var(--card-border);
         }
 
-        .column-section {
-          display: flex;
-          flex-direction: column;
+        .header-icon {
+          font-size: 1.2rem;
         }
 
-        .section-title {
-          font-family: 'Courier New', monospace;
-          font-size: 0.7rem;
-          color: #00e5a0;
-          text-transform: uppercase;
-          letter-spacing: 0.12em;
-          padding-bottom: 0.8rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-          margin: 0 0 1.5rem 0;
-          font-weight: 600;
+        .card-title {
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          letter-spacing: -0.01em;
+          margin: 0;
         }
 
         .timeline {
+          position: relative;
+          padding-left: 20px;
+          border-left: 2px solid var(--card-border);
           display: flex;
           flex-direction: column;
+          gap: 28px;
         }
 
         .timeline-item {
           position: relative;
-          padding-left: 2rem;
-          padding-bottom: 2.5rem;
-          border-left: 1px solid rgba(255, 255, 255, 0.07);
-        }
-
-        .timeline-item.last {
-          border-left-color: transparent;
-          padding-bottom: 0;
         }
 
         .timeline-dot {
           position: absolute;
-          left: -5px;
-          top: 6px;
-          width: 9px;
-          height: 9px;
+          left: -27px;
+          top: 4px;
+          width: 12px;
+          height: 12px;
           border-radius: 50%;
-          background: #888888;
-          border: 2px solid #111118;
-          z-index: 1;
+          background: var(--card-bg);
+          border: 2px solid var(--text-muted);
+          transition: all 0.2s ease;
         }
 
         .timeline-dot.active {
-          background: #00e5a0;
-          box-shadow: 0 0 12px rgba(0, 229, 160, 0.6);
-        }
-
-        .timeline-content {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
+          border-color: var(--accent);
+          background: var(--accent);
+          box-shadow: 0 0 10px var(--accent);
         }
 
         .timeline-date {
-          font-family: 'Courier New', monospace;
-          font-size: 0.65rem;
-          color: #888888;
-          letter-spacing: 0.06em;
+          display: inline-block;
+          font-family: var(--font-mono);
+          font-size: 0.78rem;
+          color: var(--text-muted);
+          margin-bottom: 4px;
         }
 
         .timeline-date.active {
-          color: #00e5a0;
+          color: var(--accent);
+          font-weight: 600;
         }
 
         .timeline-role {
-          font-size: 1rem;
-          font-weight: 600;
-          color: #ffffff;
-          line-height: 1.4;
+          font-size: 1.05rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0 0 4px 0;
         }
 
         .timeline-company {
-          font-family: 'Courier New', monospace;
-          font-size: 0.78rem;
-          color: #888888;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          margin-bottom: 6px;
         }
 
-        @media (max-width: 968px) {
+        .timeline-desc {
+          font-size: 0.88rem;
+          line-height: 1.6;
+          color: var(--text-muted);
+          margin: 0;
+        }
+
+        @media (max-width: 900px) {
           .experience-grid {
             grid-template-columns: 1fr;
-            gap: 3rem;
-          }
-
-          .experience-heading {
-            font-size: 2.5rem;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .experience-heading {
-            font-size: 2rem;
-          }
-
-          .timeline-item {
-            padding-left: 1.5rem;
           }
         }
       `}</style>

@@ -1,11 +1,16 @@
 "use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
 
 const CATEGORIES = [
   {
+    id: "languages",
     number: "01",
     title: "Languages",
     desc: "Core programming languages I work with.",
+    accentGlow: "rgba(49, 120, 198, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 18 22 12 16 6"/>
@@ -36,9 +41,11 @@ const CATEGORIES = [
     ],
   },
   {
+    id: "backend",
     number: "02",
     title: "Backend & Systems",
     desc: "Building robust APIs, services and scalable backend systems.",
+    accentGlow: "rgba(0, 210, 255, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/>
@@ -115,7 +122,7 @@ const CATEGORIES = [
         name: "Rate Limiting & Security",
         highlight: false,
         icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="M9 12l2 2 4-4"/>
           </svg>
@@ -155,9 +162,11 @@ const CATEGORIES = [
     ],
   },
   {
+    id: "databases",
     number: "03",
     title: "Databases & ORMs",
     desc: "Databases and ORM tools I use for data modeling.",
+    accentGlow: "rgba(34, 197, 94, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <ellipse cx="12" cy="5" rx="9" ry="3"/>
@@ -238,9 +247,11 @@ const CATEGORIES = [
     ],
   },
   {
+    id: "fullstack",
     number: "04",
     title: "Frontend & Full Stack",
     desc: "Building responsive and dynamic user experiences.",
+    accentGlow: "rgba(97, 218, 251, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect width="18" height="12" x="3" y="3" rx="2"/>
@@ -319,9 +330,11 @@ const CATEGORIES = [
     ],
   },
   {
+    id: "cloud",
     number: "05",
     title: "Cloud & Dev Tools",
     desc: "Tools and platforms that power development and deployment.",
+    accentGlow: "rgba(255, 153, 0, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
@@ -391,7 +404,22 @@ const CATEGORIES = [
   },
 ];
 
+const FILTER_TABS = [
+  { id: "all", label: "All Skills" },
+  { id: "backend", label: "Backend" },
+  { id: "databases", label: "Databases" },
+  { id: "cloud", label: "Cloud & DevOps" },
+  { id: "languages", label: "Languages" },
+  { id: "fullstack", label: "Full Stack" },
+];
+
 export default function Skills() {
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filteredCategories = activeFilter === "all" 
+    ? CATEGORIES 
+    : CATEGORIES.filter((c) => c.id === activeFilter);
+
   return (
     <section className="skills-section" id="skills">
       <div className="skills-container">
@@ -416,8 +444,30 @@ export default function Skills() {
             </p>
           </ScrollReveal>
 
+          {/* Interactive Category Filter Pills */}
+          <ScrollReveal delay={250}>
+            <div className="filter-tabs-stack">
+              {FILTER_TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveFilter(tab.id)}
+                  className={`filter-tab-btn ${activeFilter === tab.id ? 'active' : ''}`}
+                >
+                  {tab.label}
+                  {activeFilter === tab.id && (
+                    <motion.div 
+                      layoutId="activeSkillTab"
+                      className="active-tab-indicator"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+          </ScrollReveal>
+
           {/* 3D Isometric Stack Graphic */}
-          <ScrollReveal delay={300}>
+          <ScrollReveal delay={350}>
             <div className="isometric-stack-wrap">
               <div className="stack-layer layer-4"></div>
               <div className="stack-layer layer-3"></div>
@@ -427,44 +477,59 @@ export default function Skills() {
           </ScrollReveal>
         </div>
 
-        {/* Right Column: 5 Category Rows */}
+        {/* Right Column: Dynamic Category Cards */}
         <div className="skills-right-col">
-          {CATEGORIES.map((cat, index) => (
-            <ScrollReveal key={cat.number} delay={150 + index * 80}>
-              <div className="category-row-card">
-                {/* Left side category icon button */}
-                <div className="category-icon-box">
-                  {cat.icon}
-                </div>
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeFilter}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+              className="categories-motion-grid"
+            >
+              {filteredCategories.map((cat, index) => (
+                <ScrollReveal key={cat.number} delay={100 + index * 60}>
+                  <TiltCard maxTilt={6} scale={1.01} style={{ width: "100%" }}>
+                    <div className="category-row-card" style={{ boxShadow: `0 10px 30px -10px ${cat.accentGlow}` }}>
+                      {/* Left side category icon button */}
+                      <div className="category-icon-box">
+                        {cat.icon}
+                      </div>
 
-                {/* Middle: Title, Number, and Description */}
-                <div className="category-info-box">
-                  <div className="category-header">
-                    <span className="cat-num">{cat.number}</span>
-                    <h3 className="cat-title">{cat.title}</h3>
-                  </div>
-                  <p className="cat-desc">{cat.desc}</p>
-                </div>
+                      {/* Middle: Title, Number, and Description */}
+                      <div className="category-info-box">
+                        <div className="category-header">
+                          <span className="cat-num">{cat.number}</span>
+                          <h3 className="cat-title">{cat.title}</h3>
+                        </div>
+                        <p className="cat-desc">{cat.desc}</p>
+                      </div>
 
-                {/* Right: Skill pills with real icons */}
-                <div className="category-skills-box">
-                  {cat.skills.map((skill) => (
-                    <div 
-                      key={skill.name} 
-                      className={`skill-pill-item ${skill.highlight ? 'highlight' : ''}`}
-                    >
-                      <span className="skill-icon-svg">{skill.icon}</span>
-                      <span className="skill-name-txt">{skill.name}</span>
+                      {/* Right: Skill pills with real icons & spring physics */}
+                      <div className="category-skills-box">
+                        {cat.skills.map((skill) => (
+                          <motion.div 
+                            key={skill.name} 
+                            className={`skill-pill-item ${skill.highlight ? 'highlight' : ''}`}
+                            whileHover={{ scale: 1.08, y: -2 }}
+                            whileTap={{ scale: 0.96 }}
+                          >
+                            <span className="skill-icon-svg">{skill.icon}</span>
+                            <span className="skill-name-txt">{skill.name}</span>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
+                  </TiltCard>
+                </ScrollReveal>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         .skills-section {
           width: 100%;
         }
@@ -474,7 +539,7 @@ export default function Skills() {
           width: 92%;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: 340px 1fr;
+          grid-template-columns: 320px 1fr;
           gap: 60px;
           align-items: start;
         }
@@ -493,47 +558,92 @@ export default function Skills() {
           color: var(--text-primary);
           line-height: 1.1;
           letter-spacing: -0.03em;
-          margin-bottom: 20px;
+          margin-bottom: 16px;
         }
 
         .skills-subtitle {
           font-size: 0.95rem;
           color: var(--text-secondary);
           line-height: 1.65;
-          margin-bottom: 36px;
+          margin-bottom: 24px;
+        }
+
+        /* ── Filter Tabs Stack ───────────────────────── */
+        .filter-tabs-stack {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 28px;
+        }
+
+        .filter-tab-btn {
+          position: relative;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          color: var(--text-secondary);
+          padding: 7px 14px;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: color 0.2s;
+        }
+
+        .filter-tab-btn:hover {
+          color: var(--text-primary);
+        }
+
+        .filter-tab-btn.active {
+          color: #00d2ff;
+          border-color: rgba(0, 210, 255, 0.35);
+        }
+
+        .active-tab-indicator {
+          position: absolute;
+          inset: 0;
+          border-radius: 8px;
+          background: rgba(0, 210, 255, 0.12);
+          border: 1px solid rgba(0, 210, 255, 0.4);
+          pointer-events: none;
+          z-index: 0;
         }
 
         /* 3D Isometric Stack Graphic */
         .isometric-stack-wrap {
           position: relative;
-          width: 220px;
-          height: 180px;
+          width: 200px;
+          height: 160px;
           margin-top: 10px;
         }
 
         .stack-layer {
           position: absolute;
-          width: 170px;
-          height: 90px;
+          width: 160px;
+          height: 80px;
           border-radius: 16px;
           border: 1px solid rgba(0, 210, 255, 0.25);
-          background: linear-gradient(135deg, rgba(0, 210, 255, 0.08) 0%, rgba(99, 102, 241, 0.04) 100%);
+          background: linear-gradient(135deg, rgba(0, 210, 255, 0.08) 0%, rgba(14, 165, 233, 0.04) 100%);
           backdrop-filter: blur(8px);
           transform: rotateX(60deg) rotateZ(-45deg);
           box-shadow: 0 8px 25px rgba(0, 210, 255, 0.1);
           transition: all 0.4s ease;
         }
 
-        .layer-1 { top: 0px; left: 20px; z-index: 4; border-color: rgba(0, 210, 255, 0.4); }
-        .layer-2 { top: 25px; left: 20px; z-index: 3; opacity: 0.8; }
-        .layer-3 { top: 50px; left: 20px; z-index: 2; opacity: 0.6; }
-        .layer-4 { top: 75px; left: 20px; z-index: 1; opacity: 0.4; }
+        .layer-1 { top: 0px; left: 15px; z-index: 4; border-color: rgba(0, 210, 255, 0.4); }
+        .layer-2 { top: 22px; left: 15px; z-index: 3; opacity: 0.8; }
+        .layer-3 { top: 44px; left: 15px; z-index: 2; opacity: 0.6; }
+        .layer-4 { top: 66px; left: 15px; z-index: 1; opacity: 0.4; }
 
         .isometric-stack-wrap:hover .layer-1 { transform: rotateX(60deg) rotateZ(-45deg) translateZ(20px); }
         .isometric-stack-wrap:hover .layer-2 { transform: rotateX(60deg) rotateZ(-45deg) translateZ(10px); }
 
         /* ── Right Column: Category Rows ─────────────── */
         .skills-right-col {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .categories-motion-grid {
           display: flex;
           flex-direction: column;
           gap: 16px;
@@ -545,17 +655,15 @@ export default function Skills() {
           border-radius: 16px;
           padding: 24px 28px;
           display: grid;
-          grid-template-columns: 56px 210px 1fr;
+          grid-template-columns: 56px 200px 1fr;
           gap: 24px;
           align-items: center;
           box-shadow: var(--card-shadow);
-          transition: all 0.25s ease;
+          transition: border-color 0.25s ease;
         }
 
         .category-row-card:hover {
           border-color: var(--card-border-hover);
-          transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 210, 255, 0.08);
         }
 
         /* Icon Box on the Left */
@@ -569,7 +677,6 @@ export default function Skills() {
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.2s ease;
         }
 
         .category-row-card:hover .category-icon-box {
@@ -596,127 +703,95 @@ export default function Skills() {
           font-size: 0.95rem;
           font-weight: 700;
           color: var(--accent);
-          position: relative;
-        }
-
-        .cat-num::after {
-          content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: var(--accent);
-          border-radius: 1px;
         }
 
         .cat-title {
-          font-size: 1.1rem;
+          font-size: 1.15rem;
           font-weight: 700;
           color: var(--text-primary);
-          letter-spacing: -0.01em;
           margin: 0;
+          letter-spacing: -0.01em;
         }
 
         .cat-desc {
-          font-size: 0.8rem;
+          font-size: 0.84rem;
           color: var(--text-muted);
-          line-height: 1.45;
           margin: 0;
+          line-height: 1.45;
         }
 
-        /* Right Skills Box */
+        /* Right: Skills Box */
         .category-skills-box {
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
+          gap: 10px;
           align-items: center;
         }
 
         .skill-pill-item {
-          display: inline-flex;
-          align-items: center;
-          gap: 7px;
-          padding: 6px 12px;
-          border-radius: 8px;
-          background: var(--background-subtle);
-          border: 1px solid var(--card-border);
-          color: var(--text-secondary);
-          font-family: var(--font-mono);
-          font-size: 0.8rem;
-          font-weight: 500;
-          transition: all 0.2s ease;
+          display: inline-flex !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          gap: 8px !important;
+          padding: 6px 13px !important;
+          background: var(--background-subtle) !important;
+          border: 1px solid var(--card-border) !important;
+          border-radius: 8px !important;
+          font-family: var(--font-mono) !important;
+          font-size: 0.8rem !important;
+          font-weight: 500 !important;
+          color: var(--text-secondary) !important;
+          white-space: nowrap !important;
+          cursor: default;
+          box-sizing: border-box;
+          transition: all 0.2s ease !important;
         }
 
         .skill-pill-item:hover {
-          border-color: var(--accent);
-          color: var(--text-primary);
-          transform: translateY(-1px);
+          border-color: var(--accent) !important;
+          color: var(--text-primary) !important;
+          background: rgba(0, 210, 255, 0.08) !important;
+          box-shadow: 0 0 12px rgba(0, 210, 255, 0.2) !important;
         }
 
         .skill-pill-item.highlight {
-          background: var(--pill-bg);
-          border-color: var(--pill-border);
-          color: var(--pill-text);
-          font-weight: 600;
+          background: var(--pill-bg) !important;
+          border-color: var(--pill-border) !important;
+          color: var(--pill-text) !important;
+          font-weight: 600 !important;
         }
 
         .skill-pill-item.highlight:hover {
-          background: var(--accent);
-          color: #08090C;
-          border-color: var(--accent);
+          background: rgba(0, 210, 255, 0.18) !important;
+          border-color: var(--accent) !important;
+          color: #38bdf8 !important;
         }
 
         .skill-icon-svg {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          flex-shrink: 0 !important;
+          width: 16px;
+          height: 16px;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 1100px) {
-          .category-row-card {
-            grid-template-columns: 56px 1fr;
-            gap: 16px;
-          }
-
-          .category-skills-box {
-            grid-column: 1 / -1;
-          }
+        .skill-name-txt {
+          white-space: nowrap !important;
+          display: inline-block !important;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 968px) {
           .skills-container {
             grid-template-columns: 1fr;
             gap: 40px;
           }
-
           .skills-left-col {
             position: static;
           }
-
-          .isometric-stack-wrap {
-            display: none;
-          }
-        }
-
-        @media (max-width: 640px) {
           .category-row-card {
-            padding: 18px 16px;
-          }
-
-          .category-icon-box {
-            width: 46px;
-            height: 46px;
-          }
-
-          .cat-title {
-            font-size: 1rem;
-          }
-
-          .skill-pill-item {
-            font-size: 0.75rem;
-            padding: 5px 10px;
+            grid-template-columns: 1fr;
+            gap: 16px;
           }
         }
       `}</style>

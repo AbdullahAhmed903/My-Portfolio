@@ -1,5 +1,8 @@
 "use client";
+import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
+import BorderBeam from "./BorderBeam";
 
 export default function About() {
   const highlights = [
@@ -107,7 +110,7 @@ export default function About() {
   return (
     <section className="about-section" id="about">
       <div className="about-container">
-        {/* Left Column: Bio & Highlights */}
+        {/* Left Column: Bio & Highlights & Architecture Visualizer */}
         <div className="about-left-col">
           <ScrollReveal>
             <div className="section-label">
@@ -149,6 +152,62 @@ export default function About() {
             </div>
           </ScrollReveal>
 
+          {/* Interactive Backend Architecture Pipeline Flow */}
+          <ScrollReveal delay={250}>
+            <div className="arch-flow-box">
+              <div className="arch-flow-header">
+                <div className="arch-flow-badge">
+                  <span className="flow-pulse"></span>
+                  <span>SYSTEM DATA FLOW</span>
+                </div>
+                <span className="flow-sub">High Throughput Pipeline</span>
+              </div>
+
+              <div className="arch-steps-track">
+                <div className="arch-step">
+                  <span className="step-tag">Client</span>
+                  <span className="step-name">App / Web</span>
+                </div>
+                <div className="step-connector">
+                  <motion.span
+                    className="flow-packet"
+                    animate={{ x: [0, 24, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.6, ease: "linear" }}
+                  />
+                  ➔
+                </div>
+                <div className="arch-step">
+                  <span className="step-tag">Gateway</span>
+                  <span className="step-name">Rate Limiter</span>
+                </div>
+                <div className="step-connector">
+                  <motion.span
+                    className="flow-packet"
+                    animate={{ x: [0, 24, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.6, delay: 0.4, ease: "linear" }}
+                  />
+                  ➔
+                </div>
+                <div className="arch-step highlight-step">
+                  <span className="step-tag">Service</span>
+                  <span className="step-name">NestJS / Node</span>
+                </div>
+                <div className="step-connector">
+                  <motion.span
+                    className="flow-packet"
+                    animate={{ x: [0, 24, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.6, delay: 0.8, ease: "linear" }}
+                  />
+                  ➔
+                </div>
+                <div className="arch-step">
+                  <span className="step-tag">Storage</span>
+                  <span className="step-name">Postgres / Redis</span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
           {/* Tech Highlights Header & Pills */}
           <ScrollReveal delay={300}>
             <div className="tech-highlights-wrap">
@@ -170,10 +229,15 @@ export default function About() {
 
               <div className="highlights-tags-row">
                 {highlights.map((item) => (
-                  <span key={item.label} className="tech-highlight-pill">
+                  <motion.span 
+                    key={item.label} 
+                    className="tech-highlight-pill"
+                    whileHover={{ scale: 1.06, y: -2 }}
+                    whileTap={{ scale: 0.96 }}
+                  >
                     <span className="pill-icon">{item.icon}</span>
                     <span className="pill-text">{item.label}</span>
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
@@ -182,12 +246,14 @@ export default function About() {
           {/* CTA Buttons */}
           <ScrollReveal delay={400}>
             <div className="about-actions-row">
-              <a
+              <motion.a
                 href="https://ik.imagekit.io/abdullahAhmed/Abdullah_Ahmed_Resume%202026-05-30.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download
                 className="btn-download-cv"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <span>Download Resume</span>
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -195,17 +261,22 @@ export default function About() {
                   <polyline points="7 10 12 15 17 10"/>
                   <line x1="12" x2="12" y1="15" y2="3"/>
                 </svg>
-              </a>
+              </motion.a>
 
-              <a href="#contact" className="btn-get-touch-link">
+              <motion.a 
+                href="#contact" 
+                className="btn-get-touch-link"
+                whileHover={{ scale: 1.04, x: 2 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 <span>Get In Touch</span>
                 <span className="arrow-icon">↗</span>
-              </a>
+              </motion.a>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* Right Column: Timeline Cards */}
+        {/* Right Column: 3D Tilt Timeline Cards */}
         <div className="about-right-col">
           <div className="timeline-connector-line"></div>
 
@@ -218,28 +289,32 @@ export default function About() {
                     <div className="inner-node-dot"></div>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="timeline-info-card">
-                    <div className="card-left-icon">
-                      <div className="icon-glow-circle">
-                        {card.icon}
+                  {/* 3D Tilt Card Content */}
+                  <TiltCard maxTilt={8} scale={1.02} style={{ width: "100%" }}>
+                    <div className="timeline-info-card">
+                      {idx === 0 && <BorderBeam duration={7} size={220} colorFrom="#00D2FF" colorTo="#3B82F6" />}
+                      
+                      <div className="card-left-icon">
+                        <div className="icon-glow-circle">
+                          {card.icon}
+                        </div>
+                      </div>
+
+                      <div className="card-right-details">
+                        <span className="card-category-tag">{card.tag}</span>
+                        <h3 className="card-main-title">{card.title}</h3>
+                        <p className="card-desc-text">{card.desc}</p>
+                        {card.subline && <p className="card-subline-text">{card.subline}</p>}
+
+                        {card.badge && (
+                          <div className="card-impact-badge">
+                            <span className="badge-icon-wrap">{card.badgeIcon}</span>
+                            <span>{card.badge}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
-
-                    <div className="card-right-details">
-                      <span className="card-category-tag">{card.tag}</span>
-                      <h3 className="card-main-title">{card.title}</h3>
-                      <p className="card-desc-text">{card.desc}</p>
-                      {card.subline && <p className="card-subline-text">{card.subline}</p>}
-
-                      {card.badge && (
-                        <div className="card-impact-badge">
-                          <span className="badge-icon-wrap">{card.badgeIcon}</span>
-                          <span>{card.badge}</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  </TiltCard>
                 </div>
               </ScrollReveal>
             ))}
@@ -247,7 +322,7 @@ export default function About() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         .about-section {
           width: 100%;
           position: relative;
@@ -258,15 +333,16 @@ export default function About() {
           width: 92%;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: 1.15fr 1fr;
+          grid-template-columns: 1.15fr 0.85fr;
           gap: 60px;
-          align-items: start;
+          align-items: flex-start;
         }
 
-        /* ── Left Column ────────────────────────────── */
+        /* ── Left Column ────────────────────────────────────────── */
         .about-left-col {
           display: flex;
           flex-direction: column;
+          gap: 20px;
         }
 
         .about-main-title {
@@ -274,42 +350,136 @@ export default function About() {
           font-weight: 800;
           color: var(--text-primary);
           letter-spacing: -0.03em;
-          margin: 0 0 12px 0;
+          margin: 0;
         }
 
         .about-tagline {
-          font-size: 1.1rem;
+          font-size: 1.15rem;
           font-weight: 600;
-          color: var(--text-secondary);
-          margin: 0 0 24px 0;
-          letter-spacing: -0.01em;
+          color: var(--accent);
+          margin: 0;
         }
 
         .about-paragraphs {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 14px;
+        }
+
+        .about-paragraphs p {
           font-size: 0.96rem;
-          line-height: 1.75;
-          color: var(--text-muted);
-          margin-bottom: 28px;
+          line-height: 1.7;
+          color: var(--text-secondary);
+          margin: 0;
         }
 
         .cyan-highlight {
-          color: #38BDF8;
+          color: var(--text-primary);
           font-weight: 600;
         }
 
-        :global(html.light-mode) .cyan-highlight {
-          color: #0284C7;
+        /* ── Architecture Flow Box ─────────────────────────────── */
+        .arch-flow-box {
+          background: rgba(15, 17, 23, 0.6);
+          border: 1px solid rgba(0, 210, 255, 0.2);
+          border-radius: 14px;
+          padding: 16px 18px;
+          margin: 8px 0;
+          backdrop-filter: blur(8px);
         }
 
-        /* Tech Highlights */
+        .arch-flow-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 12px;
+        }
+
+        .arch-flow-badge {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: #00d2ff;
+        }
+
+        .flow-pulse {
+          width: 6px;
+          height: 6px;
+          background: #00d2ff;
+          border-radius: 50%;
+          box-shadow: 0 0 6px #00d2ff;
+        }
+
+        .flow-sub {
+          font-size: 0.72rem;
+          color: #64748b;
+          font-family: var(--font-mono);
+        }
+
+        .arch-steps-track {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 6px;
+          overflow-x: auto;
+          padding: 4px 0;
+        }
+
+        .arch-step {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 8px;
+          padding: 6px 10px;
+          min-width: 80px;
+          text-align: center;
+        }
+
+        .highlight-step {
+          border-color: rgba(0, 210, 255, 0.4);
+          background: rgba(0, 210, 255, 0.08);
+        }
+
+        .step-tag {
+          font-size: 0.65rem;
+          color: #94a3b8;
+          font-family: var(--font-mono);
+          text-transform: uppercase;
+        }
+
+        .step-name {
+          font-size: 0.76rem;
+          font-weight: 700;
+          color: #f1f5f9;
+        }
+
+        .step-connector {
+          color: #64748b;
+          font-size: 0.8rem;
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .flow-packet {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: #00d2ff;
+          box-shadow: 0 0 6px #00d2ff;
+        }
+
+        /* ── Tech Highlights ────────────────────────────────────── */
         .tech-highlights-wrap {
           display: flex;
           flex-direction: column;
           gap: 12px;
-          margin-bottom: 32px;
         }
 
         .tech-label-header {
@@ -318,9 +488,10 @@ export default function About() {
           gap: 8px;
           font-family: var(--font-mono);
           font-size: 0.78rem;
-          color: #00D2FF;
-          font-weight: 700;
-          letter-spacing: 0.08em;
+          font-weight: 600;
+          color: var(--text-muted);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
         }
 
         .highlights-tags-row {
@@ -332,38 +503,36 @@ export default function About() {
         .tech-highlight-pill {
           display: inline-flex;
           align-items: center;
-          gap: 7px;
-          padding: 6px 14px;
+          gap: 8px;
+          padding: 7px 14px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 8px;
-          background: var(--card-bg);
-          border: 1px solid var(--card-border);
-          color: var(--text-secondary);
           font-family: var(--font-mono);
           font-size: 0.8rem;
-          font-weight: 500;
-          transition: all 0.25s ease;
+          color: var(--text-primary);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          cursor: default;
         }
 
         .tech-highlight-pill:hover {
-          border-color: #00D2FF;
-          color: var(--text-primary);
+          border-color: var(--accent);
           background: rgba(0, 210, 255, 0.06);
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 210, 255, 0.15);
+          box-shadow: 0 0 14px rgba(0, 210, 255, 0.2);
         }
 
         .pill-icon {
+          color: var(--accent);
           display: flex;
           align-items: center;
-          justify-content: center;
-          color: #00D2FF;
         }
 
-        /* CTA Buttons */
+        /* ── Action Buttons ────────────────────────────────────────── */
         .about-actions-row {
           display: flex;
-          gap: 16px;
           align-items: center;
+          gap: 16px;
+          margin-top: 8px;
           flex-wrap: wrap;
         }
 
@@ -371,70 +540,47 @@ export default function About() {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          padding: 13px 26px;
+          padding: 12px 24px;
+          background: linear-gradient(135deg, #00d2ff 0%, #3b82f6 100%);
+          color: #08090c;
+          font-weight: 700;
+          font-size: 0.92rem;
           border-radius: 10px;
-          background: linear-gradient(135deg, #00D2FF 0%, #2563EB 100%);
-          color: #FFFFFF;
-          font-size: 0.95rem;
-          font-weight: 600;
-          text-decoration: none;
-          box-shadow: 0 4px 18px rgba(0, 210, 255, 0.35);
-          transition: all 0.25s ease;
-        }
-
-        .btn-download-cv:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 25px rgba(0, 210, 255, 0.5);
+          box-shadow: 0 4px 18px rgba(0, 210, 255, 0.3);
         }
 
         .btn-get-touch-link {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          padding: 13px 24px;
-          border-radius: 10px;
-          background: var(--card-bg);
-          border: 1px solid var(--card-border);
+          padding: 12px 22px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           color: var(--text-primary);
-          font-size: 0.95rem;
           font-weight: 600;
-          text-decoration: none;
-          transition: all 0.25s ease;
+          font-size: 0.92rem;
+          border-radius: 10px;
         }
 
-        .btn-get-touch-link:hover {
-          border-color: #00D2FF;
-          color: #00D2FF;
-          transform: translateY(-2px);
-        }
-
-        .arrow-icon {
-          color: #00D2FF;
-          font-size: 1.1rem;
-        }
-
-        /* ── Right Column: Timeline Cards ─────────────── */
+        /* ── Right Column: Timeline Cards ────────────────────────── */
         .about-right-col {
           position: relative;
-          display: flex;
-          flex-direction: column;
-          padding-left: 20px;
+          padding-left: 28px;
         }
 
         .timeline-connector-line {
           position: absolute;
-          left: -4px;
-          top: 30px;
-          bottom: 40px;
+          left: 6px;
+          top: 24px;
+          bottom: 24px;
           width: 2px;
-          background: linear-gradient(to bottom, #00D2FF 0%, rgba(0, 210, 255, 0.2) 100%);
-          box-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+          background: linear-gradient(180deg, #00d2ff 0%, rgba(0, 210, 255, 0.2) 60%, transparent 100%);
         }
 
         .cards-timeline-stack {
           display: flex;
           flex-direction: column;
-          gap: 18px;
+          gap: 20px;
         }
 
         .timeline-card-wrapper {
@@ -443,54 +589,40 @@ export default function About() {
           align-items: center;
         }
 
-        /* Glowing Cyan Node */
         .timeline-glowing-node {
           position: absolute;
           left: -28px;
-          top: 50%;
-          transform: translateY(-50%);
           width: 14px;
           height: 14px;
           border-radius: 50%;
-          background: #00D2FF;
-          box-shadow: 0 0 12px #00D2FF, 0 0 20px rgba(0, 210, 255, 0.6);
+          background: rgba(0, 210, 255, 0.2);
+          border: 2px solid #00d2ff;
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 5;
-          transition: transform 0.3s ease;
+          z-index: 2;
+          box-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
         }
 
         .inner-node-dot {
-          width: 6px;
-          height: 6px;
+          width: 4px;
+          height: 4px;
+          background: #ffffff;
           border-radius: 50%;
-          background: #FFFFFF;
         }
 
-        .timeline-card-wrapper:hover .timeline-glowing-node {
-          transform: translateY(-50%) scale(1.3);
-          box-shadow: 0 0 16px #00D2FF, 0 0 28px #00D2FF;
-        }
-
-        /* Timeline Info Card */
         .timeline-info-card {
+          position: relative;
           width: 100%;
           background: var(--card-bg);
           border: 1px solid var(--card-border);
-          border-radius: 18px;
-          padding: 22px 24px;
+          border-radius: 16px;
+          padding: 20px;
           display: flex;
-          align-items: center;
-          gap: 20px;
+          gap: 16px;
+          align-items: flex-start;
           box-shadow: var(--card-shadow);
-          transition: all 0.25s ease;
-        }
-
-        .timeline-card-wrapper:hover .timeline-info-card {
-          border-color: rgba(0, 210, 255, 0.4);
-          transform: translateX(4px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 210, 255, 0.08);
+          overflow: hidden;
         }
 
         .card-left-icon {
@@ -498,117 +630,79 @@ export default function About() {
         }
 
         .icon-glow-circle {
-          width: 54px;
-          height: 54px;
-          border-radius: 50%;
-          background: rgba(0, 210, 255, 0.06);
-          border: 1px solid rgba(0, 210, 255, 0.25);
+          width: 42px;
+          height: 42px;
+          border-radius: 10px;
+          background: rgba(0, 210, 255, 0.08);
+          border: 1px solid rgba(0, 210, 255, 0.22);
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
-          transition: all 0.25s ease;
-        }
-
-        .timeline-card-wrapper:hover .icon-glow-circle {
-          background: rgba(0, 210, 255, 0.12);
-          border-color: #00D2FF;
-          box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
-          transform: scale(1.06);
         }
 
         .card-right-details {
-          display: flex;
-          flex-direction: column;
-          gap: 3px;
+          flex: 1;
         }
 
         .card-category-tag {
           font-family: var(--font-mono);
-          font-size: 0.76rem;
-          color: #00D2FF;
-          font-weight: 600;
-          letter-spacing: 0.02em;
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: var(--accent);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          display: block;
+          margin-bottom: 4px;
         }
 
         .card-main-title {
-          font-size: 1.22rem;
+          font-size: 1.1rem;
           font-weight: 700;
           color: var(--text-primary);
-          letter-spacing: -0.01em;
-          margin: 0;
+          margin: 0 0 4px 0;
         }
 
         .card-desc-text {
-          font-size: 0.85rem;
-          color: var(--text-muted);
-          line-height: 1.4;
+          font-size: 0.88rem;
+          color: var(--text-secondary);
           margin: 0;
+          line-height: 1.45;
         }
 
         .card-subline-text {
           font-size: 0.8rem;
           color: var(--text-muted);
-          margin: 0;
+          margin-top: 2px;
         }
 
         .card-impact-badge {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          margin-top: 6px;
-          padding: 4px 10px;
-          border-radius: 20px;
-          background: rgba(0, 210, 255, 0.06);
-          border: 1px solid rgba(0, 210, 255, 0.2);
-          color: #38BDF8;
+          margin-top: 10px;
+          padding: 3px 10px;
+          background: rgba(0, 210, 255, 0.08);
+          border: 1px solid rgba(0, 210, 255, 0.25);
+          border-radius: 9999px;
           font-family: var(--font-mono);
-          font-size: 0.72rem;
+          font-size: 0.74rem;
           font-weight: 600;
-          width: fit-content;
+          color: #38bdf8;
         }
 
         .badge-icon-wrap {
           display: flex;
           align-items: center;
+          color: var(--accent);
         }
 
-        /* ── Responsive ────────────────────────────────────────── */
-        @media (max-width: 1024px) {
+        @media (max-width: 968px) {
           .about-container {
             grid-template-columns: 1fr;
             gap: 40px;
           }
-
           .about-right-col {
-            padding-left: 24px;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .about-actions-row {
-            flex-direction: column;
-            width: 100%;
-          }
-
-          .btn-download-cv,
-          .btn-get-touch-link {
-            width: 100%;
-            justify-content: center;
-          }
-
-          .timeline-info-card {
-            padding: 16px;
-            gap: 14px;
-          }
-
-          .icon-glow-circle {
-            width: 44px;
-            height: 44px;
-          }
-
-          .card-main-title {
-            font-size: 1.05rem;
+            padding-left: 20px;
           }
         }
       `}</style>

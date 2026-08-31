@@ -16,9 +16,9 @@
   --accent: #00d2ff;
   --accent-bright: #38bdf8;
   --accent-dark: #0284c7;
-  --accent-secondary: #6366f1;
-  --accent-gradient: linear-gradient(135deg, #00d2ff 0%, #6366f1 100%);
-  --accent-gradient-hover: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  --accent-secondary: #2563eb;
+  --accent-gradient: linear-gradient(135deg, #00d2ff 0%, #3b82f6 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #38bdf8 0%, #60a5fa 100%);
 
   --pill-bg: rgba(0, 210, 255, 0.08);
   --pill-border: rgba(0, 210, 255, 0.22);
@@ -58,9 +58,9 @@ body.light-mode {
   --accent: #0284c7;
   --accent-bright: #0ea5e9;
   --accent-dark: #0369a1;
-  --accent-secondary: #4f46e5;
-  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
-  --accent-gradient-hover: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+  --accent-secondary: #0284c7;
+  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
 
   --pill-bg: rgba(2, 132, 199, 0.08);
   --pill-border: rgba(2, 132, 199, 0.22);
@@ -111,6 +111,32 @@ a {
   color: inherit;
   text-decoration: none;
   transition: all 0.2s ease;
+}
+
+button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -206,3 +232,65 @@ code, pre, .font-mono {
     transform: scale(1.15);
   }
 }
+
+/* ── Skill Pills Global Styles ──────────────────────────── */
+.category-skills-box {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.skill-pill-item {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 13px !important;
+  background: var(--background-subtle) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 8px !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  white-space: nowrap !important;
+  cursor: default;
+  box-sizing: border-box;
+  transition: all 0.2s ease !important;
+}
+
+.skill-pill-item:hover {
+  border-color: var(--accent) !important;
+  color: var(--text-primary) !important;
+  background: rgba(0, 210, 255, 0.08) !important;
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.2) !important;
+}
+
+.skill-pill-item.highlight {
+  background: var(--pill-bg) !important;
+  border-color: var(--pill-border) !important;
+  color: var(--pill-text) !important;
+  font-weight: 600 !important;
+}
+
+.skill-pill-item.highlight:hover {
+  background: rgba(0, 210, 255, 0.18) !important;
+  border-color: var(--accent) !important;
+  color: #38bdf8 !important;
+}
+
+.skill-icon-svg {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.skill-name-txt {
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+

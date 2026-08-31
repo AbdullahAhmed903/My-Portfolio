@@ -7,12 +7,26 @@ import Experience from "./components/Experience";
 import GitHub from "./components/GitHub";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import ScrollProgress from "./components/ScrollProgress";
+import CustomCursor from "./components/CustomCursor";
+import ParticleNetwork from "./components/ParticleNetwork";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div style={{ position: "relative", zIndex: 1 }}>
+    <div style={{ position: "relative", zIndex: 1, minHeight: "100vh", overflowX: "hidden" }}>
+      {/* Top laser reading beam */}
+      <ScrollProgress />
+
+      {/* Interactive glowing spotlight cursor */}
+      <CustomCursor />
+
+      {/* Interactive electric background network */}
+      <ParticleNetwork />
+
+      {/* Navigation Header */}
       <Navbar />
+
       <main className={styles.main}>
         <Hero />
         

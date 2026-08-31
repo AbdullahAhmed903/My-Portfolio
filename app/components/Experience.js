@@ -1,5 +1,8 @@
 "use client";
+import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import TiltCard from "./TiltCard";
+import BorderBeam from "./BorderBeam";
 
 export default function Experience() {
   const workExperience = [
@@ -8,11 +11,13 @@ export default function Experience() {
       role: "Junior Backend Developer",
       company: "Tensorik",
       desc: "Designed and developed production backend services and REST APIs for AI education, Flutter mobile LMS backend, and e-commerce using Node.js, NestJS, PostgreSQL, and Supabase.",
+      isCurrent: true,
       badgeIcon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
         </svg>
       ),
+      tags: ["Node.js", "NestJS", "PostgreSQL", "Supabase"]
     },
     {
       date: "03/2026 – 06/2026",
@@ -25,6 +30,7 @@ export default function Experience() {
           <polyline points="8 6 2 12 8 18"/>
         </svg>
       ),
+      tags: ["REST APIs", "Razorpay", "Rate Limiting", "SQL"]
     },
     {
       date: "08/2024 – 10/2024",
@@ -38,6 +44,7 @@ export default function Experience() {
           <line x1="12" x2="12" y1="17" y2="21"/>
         </svg>
       ),
+      tags: ["JavaScript", "HTML5", "CSS3", "React"]
     },
   ];
 
@@ -56,6 +63,7 @@ export default function Experience() {
           <path d="m15.5 16.5 2 2"/>
         </svg>
       ),
+      tags: ["Honors 3.6 GPA", "Database Systems", "Software Eng"]
     },
     {
       date: "07/2024 – 10/2024",
@@ -67,6 +75,7 @@ export default function Experience() {
           <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
         </svg>
       ),
+      tags: ["AWS EC2", "S3 & IAM", "Cloud Architecture"]
     },
     {
       date: "09/2022 – 01/2023",
@@ -79,6 +88,7 @@ export default function Experience() {
           <path d="M9 12l2 2 4-4"/>
         </svg>
       ),
+      tags: ["Express.js", "MongoDB", "Socket.IO", "SOLID"]
     },
   ];
 
@@ -130,19 +140,38 @@ export default function Experience() {
                       <div className="node-center-dot"></div>
                     </div>
 
-                    {/* Card */}
-                    <div className="journey-card">
-                      <div className="journey-card-content">
-                        <span className="journey-date-badge">{item.date}</span>
-                        <h4 className="journey-role-title">{item.role}</h4>
-                        <div className="journey-company-name">{item.company}</div>
-                        <p className="journey-desc-text">{item.desc}</p>
-                      </div>
+                    {/* 3D Tilt Card */}
+                    <TiltCard maxTilt={6} scale={1.02} style={{ width: "100%" }}>
+                      <div className="journey-card">
+                        {item.isCurrent && <BorderBeam duration={8} size={200} colorFrom="#00D2FF" colorTo="#22C55E" />}
+                        
+                        <div className="journey-card-content">
+                          <div className="journey-badge-row">
+                            <span className="journey-date-badge">{item.date}</span>
+                            {item.isCurrent && (
+                              <span className="live-current-tag">
+                                <span className="live-dot-green"></span>
+                                Current Role
+                              </span>
+                            )}
+                          </div>
+                          
+                          <h4 className="journey-role-title">{item.role}</h4>
+                          <div className="journey-company-name">{item.company}</div>
+                          <p className="journey-desc-text">{item.desc}</p>
 
-                      <div className="journey-side-badge">
-                        {item.badgeIcon}
+                          <div className="journey-tags-list">
+                            {item.tags.map((t) => (
+                              <span key={t} className="journey-micro-tag">{t}</span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="journey-side-badge">
+                          {item.badgeIcon}
+                        </div>
                       </div>
-                    </div>
+                    </TiltCard>
                   </div>
                 </ScrollReveal>
               ))}
@@ -174,19 +203,27 @@ export default function Experience() {
                       <div className="node-center-dot"></div>
                     </div>
 
-                    {/* Card */}
-                    <div className="journey-card">
-                      <div className="journey-card-content">
-                        <span className="journey-date-badge">{item.date}</span>
-                        <h4 className="journey-role-title">{item.role}</h4>
-                        <div className="journey-company-name">{item.company}</div>
-                        <p className="journey-desc-text">{item.desc}</p>
-                      </div>
+                    {/* 3D Tilt Card */}
+                    <TiltCard maxTilt={6} scale={1.02} style={{ width: "100%" }}>
+                      <div className="journey-card">
+                        <div className="journey-card-content">
+                          <span className="journey-date-badge">{item.date}</span>
+                          <h4 className="journey-role-title">{item.role}</h4>
+                          <div className="journey-company-name">{item.company}</div>
+                          <p className="journey-desc-text">{item.desc}</p>
 
-                      <div className="journey-side-badge">
-                        {item.badgeIcon}
+                          <div className="journey-tags-list">
+                            {item.tags.map((t) => (
+                              <span key={t} className="journey-micro-tag">{t}</span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="journey-side-badge">
+                          {item.badgeIcon}
+                        </div>
                       </div>
-                    </div>
+                    </TiltCard>
                   </div>
                 </ScrollReveal>
               ))}
@@ -195,7 +232,7 @@ export default function Experience() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         .experience-section {
           width: 100%;
         }
@@ -248,34 +285,32 @@ export default function Experience() {
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
         }
 
         .col-header-title {
-          font-size: 1.3rem;
+          font-size: 1.35rem;
           font-weight: 700;
           color: var(--text-primary);
-          letter-spacing: -0.01em;
           margin: 0;
+          letter-spacing: -0.02em;
         }
 
-        /* Timeline Stack */
+        /* ── Timeline Stack & Spine ──────────────────── */
         .timeline-stack {
           position: relative;
           display: flex;
           flex-direction: column;
-          gap: 20px;
-          padding-left: 24px;
+          gap: 24px;
+          padding-left: 28px;
         }
 
         .col-timeline-line {
           position: absolute;
-          left: 0px;
-          top: 30px;
-          bottom: 30px;
+          left: 6px;
+          top: 15px;
+          bottom: 15px;
           width: 2px;
-          background: linear-gradient(to bottom, #00D2FF 0%, rgba(0, 210, 255, 0.15) 100%);
-          box-shadow: 0 0 8px rgba(0, 210, 255, 0.35);
+          background: linear-gradient(180deg, #00d2ff 0%, rgba(0, 210, 255, 0.15) 80%, transparent 100%);
         }
 
         .timeline-entry-row {
@@ -284,137 +319,144 @@ export default function Experience() {
           align-items: center;
         }
 
-        /* Glowing Cyan Node */
         .timeline-node-point {
           position: absolute;
-          left: -31px;
-          top: 50%;
-          transform: translateY(-50%);
+          left: -28px;
           width: 14px;
           height: 14px;
           border-radius: 50%;
-          background: #00D2FF;
-          box-shadow: 0 0 12px #00D2FF, 0 0 20px rgba(0, 210, 255, 0.6);
+          background: rgba(0, 210, 255, 0.15);
+          border: 2px solid #00d2ff;
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 5;
-          transition: transform 0.3s ease;
+          z-index: 2;
+          box-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
         }
 
         .node-center-dot {
-          width: 6px;
-          height: 6px;
+          width: 4px;
+          height: 4px;
+          background: #ffffff;
           border-radius: 50%;
-          background: #FFFFFF;
         }
 
-        .timeline-entry-row:hover .timeline-node-point {
-          transform: translateY(-50%) scale(1.3);
-          box-shadow: 0 0 16px #00D2FF, 0 0 28px #00D2FF;
-        }
-
-        /* Journey Card */
+        /* ── Journey Card ────────────────────────────── */
         .journey-card {
+          position: relative;
           width: 100%;
           background: var(--card-bg);
           border: 1px solid var(--card-border);
           border-radius: 16px;
-          padding: 22px 24px;
-          display: grid;
-          grid-template-columns: 1fr 48px;
+          padding: 22px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
           gap: 16px;
-          align-items: center;
           box-shadow: var(--card-shadow);
-          transition: all 0.25s ease;
-        }
-
-        .timeline-entry-row:hover .journey-card {
-          border-color: rgba(0, 210, 255, 0.4);
-          transform: translateX(4px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 210, 255, 0.08);
+          overflow: hidden;
         }
 
         .journey-card-content {
+          flex: 1;
+        }
+
+        .journey-badge-row {
           display: flex;
-          flex-direction: column;
-          gap: 4px;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 8px;
         }
 
         .journey-date-badge {
+          display: inline-block;
           font-family: var(--font-mono);
-          font-size: 0.78rem;
-          color: #38BDF8;
+          font-size: 0.75rem;
           font-weight: 600;
-          letter-spacing: 0.02em;
+          color: var(--accent);
+          background: rgba(0, 210, 255, 0.08);
+          border: 1px solid rgba(0, 210, 255, 0.2);
+          padding: 2px 10px;
+          border-radius: 6px;
+          width: fit-content;
+        }
+
+        .live-current-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          color: #22c55e;
+          font-weight: 700;
+          background: rgba(34, 197, 94, 0.1);
+          border: 1px solid rgba(34, 197, 94, 0.3);
+          padding: 2px 8px;
+          border-radius: 9999px;
+        }
+
+        .live-dot-green {
+          width: 6px;
+          height: 6px;
+          background: #22c55e;
+          border-radius: 50%;
+          box-shadow: 0 0 6px #22c55e;
         }
 
         .journey-role-title {
-          font-size: 1.15rem;
+          font-size: 1.1rem;
           font-weight: 700;
           color: var(--text-primary);
-          margin: 0;
+          margin: 0 0 4px 0;
           letter-spacing: -0.01em;
         }
 
         .journey-company-name {
           font-size: 0.88rem;
+          color: var(--accent);
           font-weight: 600;
-          color: #00D2FF;
-          margin-bottom: 4px;
+          margin-bottom: 8px;
         }
 
         .journey-desc-text {
-          font-size: 0.84rem;
-          color: var(--text-muted);
+          font-size: 0.85rem;
+          color: var(--text-secondary);
           line-height: 1.5;
-          margin: 0;
+          margin: 0 0 12px 0;
         }
 
-        /* Right Side Badge */
+        .journey-tags-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .journey-micro-tag {
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          color: #94a3b8;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 2px 8px;
+          border-radius: 4px;
+        }
+
         .journey-side-badge {
-          width: 48px;
-          height: 48px;
-          border-radius: 12px;
-          background: rgba(0, 210, 255, 0.05);
-          border: 1px solid rgba(0, 210, 255, 0.2);
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          background: rgba(0, 210, 255, 0.06);
+          border: 1px solid rgba(0, 210, 255, 0.18);
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.25s ease;
+          flex-shrink: 0;
         }
 
-        .timeline-entry-row:hover .journey-side-badge {
-          background: rgba(0, 210, 255, 0.12);
-          border-color: #00D2FF;
-          box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
-          transform: scale(1.06);
-        }
-
-        /* ── Responsive Breakpoints ─────────────────── */
-        @media (max-width: 1024px) {
+        @media (max-width: 968px) {
           .journey-columns-grid {
             grid-template-columns: 1fr;
             gap: 40px;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .timeline-stack {
-            padding-left: 20px;
-          }
-
-          .timeline-node-point {
-            left: -27px;
-          }
-
-          .journey-card {
-            grid-template-columns: 1fr;
-            padding: 18px 16px;
-          }
-
-          .journey-side-badge {
-            display: none;
           }
         }
       `}</style>

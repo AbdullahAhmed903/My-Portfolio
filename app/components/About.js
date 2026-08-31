@@ -6,14 +6,14 @@ export default function About() {
     <section className="about-section">
       <div className="about-container">
         <ScrollReveal>
-          <div className="about-label">
-            <span className="label-line"></span>
+          <div className="section-label">
+            <span className="section-label-line"></span>
             <span>ABOUT ME</span>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <h2 className="about-heading">Who I am</h2>
+          <h2 className="section-heading">Who I Am</h2>
         </ScrollReveal>
 
         <div className="about-grid">
@@ -23,24 +23,20 @@ export default function About() {
               <div className="about-text">
                 <p>
                   Backend Developer with hands-on production experience building and scaling an AI & tech 
-                  education platform serving <em>10,000+ users</em>. Currently at <em>Tensorik</em>, where I've 
+                  education platform serving <em>10,000+ users</em>. Currently at <strong>Tensorik</strong>, where I've 
                   integrated payment systems, built admin dashboards, implemented rate limiting, and designed 
-                  database schemas using <em>Next.js</em>, <em>Supabase</em>, and <em>Node.js</em>.
+                  database schemas using <strong>Next.js</strong>, <strong>Supabase</strong>, and <strong>Node.js</strong>.
                 </p>
                 <p>
                   Experienced in <em>RESTful API design</em>, authentication, role-based access control, and 
                   collaborating on production codebases via Git. I've integrated <em>Razorpay payment gateway</em> for 
                   course enrollments, implemented API rate limiting to protect platform endpoints, and optimized 
-                  <em>PostgreSQL</em> database schemas for performance.
+                  <em>PostgreSQL</em> database schemas for high performance.
                 </p>
                 <p>
                   I hold a <em>Bachelor's Degree in Information Systems</em> (GPA: 3.6) from Port Said University 
-                  and completed comprehensive backend training at <em>Route Academy</em>, where I built projects 
+                  and completed comprehensive backend training at <strong>Route Academy</strong>, where I built systems 
                   using Node.js, Express.js, Mongoose, and Socket.IO following <em>SOLID principles</em>.
-                </p>
-                <p>
-                  Passionate about building scalable, reliable backend systems that solve real problems. 
-                  Continuously expanding my expertise with <em>AWS Cloud</em> through Egypt's Digital Pioneers Initiative.
                 </p>
               </div>
             </ScrollReveal>
@@ -51,6 +47,7 @@ export default function About() {
                 <span className="tag">Clean Architecture</span>
                 <span className="tag">AWS Cloud</span>
                 <span className="tag">Real-time Apps</span>
+                <span className="tag">Rate Limiting</span>
               </div>
             </ScrollReveal>
 
@@ -65,38 +62,42 @@ export default function About() {
                 <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1M7 10l5 5 5-5M12 4v11" />
                 </svg>
-                Download CV
+                <span>Download Resume</span>
               </a>
             </ScrollReveal>
           </div>
 
-          {/* Right Column - Stats */}
+          {/* Right Column - Highlight Cards */}
           <div className="about-right">
             <ScrollReveal delay={200}>
               <div className="stat-box">
-                <div className="stat-title">03/2026</div>
-                <div className="stat-desc">Currently at Tensorik - Backend Developer</div>
+                <div className="stat-badge">Current Role</div>
+                <div className="stat-title">Backend Developer</div>
+                <div className="stat-desc">Tensorik — Building & Scaling EdTech Backend (10K+ Users)</div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
               <div className="stat-box">
-                <div className="stat-title">GPA 3.6</div>
+                <div className="stat-badge">Education</div>
+                <div className="stat-title">GPA 3.6 / 4.0</div>
                 <div className="stat-desc">B.S. Information Systems — Port Said University</div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
               <div className="stat-box">
-                <div className="stat-title">AWS</div>
-                <div className="stat-desc">Cloud Architect — Egypt Digital Pioneers</div>
+                <div className="stat-badge">Specialization</div>
+                <div className="stat-title">AWS Cloud Architect</div>
+                <div className="stat-desc">Egypt's Digital Pioneers Initiative</div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
               <div className="stat-box">
-                <div className="stat-title">750+</div>
-                <div className="stat-desc">GitHub contributions across projects</div>
+                <div className="stat-badge">Activity</div>
+                <div className="stat-title">750+ Commits</div>
+                <div className="stat-desc">Production code, open-source repos & backend systems</div>
               </div>
             </ScrollReveal>
           </div>
@@ -106,8 +107,6 @@ export default function About() {
       <style jsx>{`
         .about-section {
           width: 100%;
-          padding: 80px 0;
-          background: #111118;
         }
 
         .about-container {
@@ -116,108 +115,70 @@ export default function About() {
           margin: 0 auto;
         }
 
-        .about-label {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          font-family: 'Courier New', monospace;
-          font-size: 0.75rem;
-          color: #00e5a0;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          margin-bottom: 16px;
-        }
-
-        .label-line {
-          width: 30px;
-          height: 1px;
-          background: #00e5a0;
-        }
-
-        .about-heading {
-          font-size: 3.5rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 48px 0;
-          line-height: 1.1;
-          font-family: 'Arial Black', 'Arial Bold', sans-serif;
-        }
-
         .about-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 5rem;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 60px;
           align-items: start;
-        }
-
-        .about-left {
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
         }
 
         .about-text {
           display: flex;
           flex-direction: column;
           gap: 16px;
+          font-size: 1.05rem;
+          line-height: 1.8;
+          color: var(--text-secondary);
         }
 
-        .about-text p {
-          line-height: 1.9;
-          color: #999999;
-          margin: 0;
-          font-size: 0.95rem;
+        .about-text strong {
+          color: var(--text-primary);
+          font-weight: 600;
         }
 
         .about-text em {
-          color: #f0ede8;
           font-style: normal;
+          color: var(--accent);
           font-weight: 500;
         }
 
         .about-tags {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;
-          margin-top: 8px;
+          gap: 10px;
+          margin-top: 24px;
         }
 
         .tag {
-          background: transparent;
-          border: 1px solid rgba(124, 106, 255, 0.25);
-          color: #7c6aff;
-          padding: 8px 16px;
-          border-radius: 6px;
-          font-family: 'Courier New', monospace;
+          font-family: var(--font-mono);
           font-size: 0.8rem;
-          transition: all 0.2s ease;
-        }
-
-        .tag:hover {
-          background: rgba(124, 106, 255, 0.08);
-          border-color: rgba(124, 106, 255, 0.4);
+          padding: 6px 14px;
+          border-radius: 6px;
+          background: var(--pill-bg);
+          border: 1px solid var(--pill-border);
+          color: var(--pill-text);
+          font-weight: 500;
         }
 
         .download-btn {
           display: inline-flex;
           align-items: center;
           gap: 8px;
+          margin-top: 28px;
           padding: 12px 24px;
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.07);
-          color: #ffffff;
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          color: var(--text-primary);
+          border-radius: 8px;
+          font-size: 0.95rem;
           font-weight: 600;
-          border-radius: 6px;
-          text-decoration: none;
-          font-size: 0.9rem;
-          transition: all 0.2s ease;
-          width: fit-content;
-          font-family: 'Courier New', monospace;
+          transition: all 0.25s ease;
         }
 
         .download-btn:hover {
-          border-color: #00e5a0;
-          color: #00e5a0;
+          border-color: var(--accent);
+          color: var(--accent);
+          transform: translateY(-2px);
         }
 
         .about-right {
@@ -227,47 +188,47 @@ export default function About() {
         }
 
         .stat-box {
-          background: transparent;
-          border-left: 2px solid #00e5a0;
-          padding: 16px 0 16px 1.5rem;
-          transition: all 0.3s ease;
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          border-radius: 12px;
+          padding: 20px 24px;
+          box-shadow: var(--card-shadow);
+          transition: all 0.25s ease;
+        }
+
+        .stat-box:hover {
+          border-color: var(--card-border-hover);
+          transform: translateY(-2px);
+        }
+
+        .stat-badge {
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          color: var(--accent);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 6px;
+          font-weight: 600;
         }
 
         .stat-title {
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: #ffffff;
+          font-size: 1.3rem;
+          font-weight: 700;
+          color: var(--text-primary);
           margin-bottom: 4px;
-          font-family: 'Arial Black', 'Arial Bold', sans-serif;
+          letter-spacing: -0.01em;
         }
 
         .stat-desc {
-          font-size: 0.72rem;
-          color: #888888;
+          font-size: 0.9rem;
+          color: var(--text-muted);
           line-height: 1.5;
-          font-family: 'Courier New', monospace;
-          letter-spacing: 0.06em;
         }
 
         @media (max-width: 968px) {
           .about-grid {
             grid-template-columns: 1fr;
-            gap: 48px;
-          }
-
-          .about-heading {
-            font-size: 2.5rem;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .about-heading {
-            font-size: 2rem;
-          }
-
-          .download-btn {
-            width: 100%;
-            justify-content: center;
+            gap: 40px;
           }
         }
       `}</style>

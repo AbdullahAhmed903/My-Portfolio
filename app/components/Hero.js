@@ -11,35 +11,40 @@ export default function Hero() {
 
   return (
     <section className="hero-section" id="home">
+      <div className="hero-ambient-glow"></div>
+      
       <div className="hero-container">
         {/* Left Column - Text */}
         <div className={`hero-left ${mounted ? 'fade-in' : ''}`}>
           <div className="hero-badge">
             <span className="badge-dot"></span>
-            <span>Node.js Backend Developer</span>
+            <span>Node.js & Backend Developer</span>
           </div>
 
           <h1 className="hero-name">
             <span className="name-solid">Abdullah</span>
-            <span className="name-outline">Ahmed</span>
+            <span className="name-gradient gradient-text">Ahmed</span>
           </h1>
 
           <p className="hero-tagline">
-            Building scalable systems
+            Architecting Scalable Backend Systems & APIs
           </p>
 
           <p className="hero-bio">
-            Backend developer with production experience at Tensorik, building and scaling 
+            Backend developer with production experience at <strong>Tensorik</strong>, building and scaling 
             an educational platform serving 10,000+ users. Specialized in payment integration, 
             API design, database optimization, and rate limiting using Next.js, Supabase, and Node.js.
           </p>
 
           <div className="hero-actions">
             <a href="#projects" className="btn-primary">
-              See my work
+              <span>View Projects</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </a>
             <a href="#contact" className="btn-secondary">
-              Get in touch
+              <span>Get in touch</span>
             </a>
           </div>
 
@@ -70,19 +75,9 @@ export default function Hero() {
         {/* Right Column - Geometric Frame with Image */}
         <div className={`hero-right ${mounted ? 'fade-in-delay' : ''}`}>
           <div className="geometric-frame">
+            <div className="frame-glow"></div>
             <div className="frame-outer"></div>
             <div className="frame-inner">
-              <div className="card-stats">
-                <div className="stat-item">
-                  <div className="stat-value">10K+</div>
-                  <div className="stat-label">Users</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-value">750+</div>
-                  <div className="stat-label">Commits</div>
-                </div>
-              </div>
-
               <div className="image-container">
                 {!imgError ? (
                   <img
@@ -99,7 +94,10 @@ export default function Hero() {
                     </svg>
                   </div>
                 )}
-                <div className="image-label">Node.js Dev</div>
+                <div className="image-label">
+                  <span className="dot"></span>
+                  <span>Node.js / Backend</span>
+                </div>
               </div>
             </div>
           </div>
@@ -108,15 +106,29 @@ export default function Hero() {
 
       <style jsx>{`
         .hero-section {
-          min-height: 100vh;
+          min-height: 90vh;
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
-          padding: 140px 0 80px;
+          padding: 130px 0 80px;
+          overflow: hidden;
         }
 
-        /* Grid overlay background - only on hero */
+        /* Ambient subtle glow behind hero */
+        .hero-ambient-glow {
+          position: absolute;
+          top: 10%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 600px;
+          height: 400px;
+          background: radial-gradient(circle, rgba(0, 210, 255, 0.07) 0%, rgba(99, 102, 241, 0.04) 50%, transparent 70%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        /* Grid overlay background */
         .hero-section::before {
           content: '';
           position: absolute;
@@ -125,9 +137,9 @@ export default function Hero() {
           width: 100%;
           height: 100%;
           background-image: 
-            linear-gradient(rgba(0, 229, 160, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 229, 160, 0.03) 1px, transparent 1px);
-          background-size: 60px 60px;
+            linear-gradient(var(--grid-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+          background-size: 50px 50px;
           pointer-events: none;
           z-index: 0;
         }
@@ -137,8 +149,8 @@ export default function Hero() {
           width: 90%;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 80px;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 60px;
           align-items: center;
           position: relative;
           z-index: 1;
@@ -156,21 +168,22 @@ export default function Hero() {
         .hero-left {
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: 20px;
         }
 
         .hero-badge {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          padding: 8px 16px;
+          padding: 6px 14px;
           background: var(--pill-bg);
           border: 1px solid var(--pill-border);
           border-radius: 20px;
-          font-family: 'Courier New', monospace;
-          font-size: 0.75rem;
-          color: var(--accent);
-          letter-spacing: 0.05em;
+          font-family: var(--font-mono);
+          font-size: 0.8rem;
+          color: var(--pill-text);
+          font-weight: 600;
+          letter-spacing: 0.02em;
           width: fit-content;
         }
 
@@ -179,110 +192,114 @@ export default function Hero() {
           height: 6px;
           background: var(--accent);
           border-radius: 50%;
-          animation: pulse 2s ease-in-out infinite;
+          animation: pulseGlow 2s ease-in-out infinite;
         }
 
         .hero-name {
-          font-size: clamp(3rem, 8vw, 5.5rem);
+          font-size: clamp(2.8rem, 6vw, 4.8rem);
           font-weight: 800;
-          line-height: 0.95;
+          line-height: 1.05;
           margin: 0;
           display: flex;
-          flex-direction: column;
-          gap: 0;
-          font-family: 'Arial Black', 'Arial Bold', sans-serif;
-          letter-spacing: -0.02em;
+          flex-wrap: wrap;
+          gap: 12px;
+          letter-spacing: -0.03em;
         }
 
         .name-solid {
           color: var(--text-primary);
         }
 
-        .name-outline {
-          color: transparent;
-          -webkit-text-stroke: 2px var(--text-very-muted);
-          text-stroke: 2px var(--text-very-muted);
-        }
-
         .hero-tagline {
-          font-family: 'Georgia', serif;
-          font-style: italic;
-          font-size: 1.1rem;
+          font-size: 1.25rem;
+          font-weight: 600;
           color: var(--text-secondary);
           margin: 0;
+          letter-spacing: -0.01em;
         }
 
         .hero-bio {
-          font-size: 0.95rem;
+          font-size: 1rem;
           color: var(--text-muted);
           line-height: 1.7;
           margin: 0;
-          max-width: 500px;
+          max-width: 540px;
+        }
+
+        .hero-bio strong {
+          color: var(--text-primary);
+          font-weight: 600;
         }
 
         .hero-actions {
           display: flex;
           gap: 16px;
-          margin-top: 8px;
+          margin-top: 10px;
+          flex-wrap: wrap;
         }
 
         .btn-primary {
-          background: var(--accent);
-          color: #000;
-          padding: 14px 32px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: var(--accent-gradient);
+          color: #ffffff;
+          padding: 12px 26px;
           font-weight: 600;
-          text-decoration: none;
-          transition: all 0.2s ease;
-          font-family: 'Courier New', monospace;
-          font-size: 0.9rem;
-          clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+          font-size: 0.95rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 14px rgba(0, 210, 255, 0.25);
+          transition: all 0.25s ease;
         }
 
         .btn-primary:hover {
-          background: var(--accent-bright);
           transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(0, 210, 255, 0.4);
         }
 
         .btn-secondary {
-          background: transparent;
-          color: var(--text-secondary);
-          padding: 14px 32px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: var(--card-bg);
+          color: var(--text-primary);
+          border: 1px solid var(--card-border);
+          padding: 12px 26px;
           font-weight: 600;
-          text-decoration: none;
-          transition: all 0.2s ease;
-          font-family: 'Courier New', monospace;
-          font-size: 0.9rem;
-          border-bottom: 1px solid var(--text-muted);
+          font-size: 0.95rem;
+          border-radius: 8px;
+          transition: all 0.25s ease;
         }
 
         .btn-secondary:hover {
-          color: var(--text-primary);
-          border-bottom-color: var(--accent);
+          border-color: var(--accent);
+          color: var(--accent);
+          transform: translateY(-2px);
         }
 
         .hero-socials {
           display: flex;
-          gap: 16px;
-          margin-top: 8px;
+          gap: 12px;
+          margin-top: 10px;
         }
 
         .social-icon {
-          width: 44px;
-          height: 44px;
+          width: 42px;
+          height: 42px;
           display: flex;
           align-items: center;
           justify-content: center;
           color: var(--text-muted);
-          transition: all 0.2s ease;
-          text-decoration: none;
+          background: var(--card-bg);
           border: 1px solid var(--card-border);
-          border-radius: 4px;
+          border-radius: 8px;
+          transition: all 0.2s ease;
         }
 
         .social-icon:hover {
           color: var(--accent);
           border-color: var(--accent);
-          transform: translateY(-3px);
+          transform: translateY(-2px);
         }
 
         .hero-right {
@@ -294,73 +311,66 @@ export default function Hero() {
         .geometric-frame {
           position: relative;
           width: 100%;
-          max-width: 450px;
+          max-width: 380px;
+        }
+
+        .frame-glow {
+          position: absolute;
+          inset: -10px;
+          background: var(--accent-gradient);
+          filter: blur(20px);
+          opacity: 0.15;
+          border-radius: 24px;
+          z-index: 0;
         }
 
         .frame-outer {
           position: absolute;
-          top: -20px;
-          left: -20px;
-          right: 20px;
-          bottom: 20px;
-          border: 2px solid var(--pill-border);
-          border-radius: 12px;
+          top: -14px;
+          left: -14px;
+          right: 14px;
+          bottom: 14px;
+          border: 1.5px dashed var(--pill-border);
+          border-radius: 20px;
           pointer-events: none;
+          z-index: 1;
         }
 
         .frame-inner {
           position: relative;
           background: var(--card-bg);
           border: 1px solid var(--card-border);
-          border-radius: 12px;
-          padding: 24px;
-          z-index: 1;
+          border-radius: 20px;
+          padding: 14px;
+          z-index: 2;
+          box-shadow: var(--card-shadow);
+          transition: border-color 0.3s ease;
         }
 
-        .card-stats {
-          display: flex;
-          gap: 24px;
-          margin-bottom: 20px;
-        }
-
-        .stat-item {
-          flex: 1;
-          background: var(--card-bg);
-          border: 1px solid var(--card-border);
-          padding: 12px;
-          border-radius: 8px;
-        }
-
-        .stat-value {
-          font-family: 'Courier New', monospace;
-          font-size: 1.8rem;
-          font-weight: 700;
-          color: var(--accent);
-          line-height: 1;
-          margin-bottom: 4px;
-        }
-
-        .stat-label {
-          font-family: 'Courier New', monospace;
-          font-size: 0.7rem;
-          color: var(--text-muted);
-          letter-spacing: 0.05em;
+        .frame-inner:hover {
+          border-color: var(--card-border-hover);
         }
 
         .image-container {
           position: relative;
           width: 100%;
-          aspect-ratio: 1;
-          border-radius: 12px;
+          aspect-ratio: 4 / 5;
+          border-radius: 14px;
           overflow: hidden;
-          background: rgba(0, 0, 0, 0.3);
+          background: var(--card-bg-elevated);
         }
 
         .profile-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          filter: grayscale(30%);
+          object-position: center 15%;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+
+        .frame-inner:hover .profile-img {
+          transform: scale(1.02);
         }
 
         .profile-placeholder {
@@ -373,39 +383,60 @@ export default function Hero() {
 
         .image-label {
           position: absolute;
-          bottom: 16px;
-          left: 16px;
-          background: var(--accent);
-          color: #000;
-          padding: 8px 16px;
-          border-radius: 6px;
-          font-family: 'Courier New', monospace;
-          font-size: 0.8rem;
+          bottom: 12px;
+          left: 12px;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(8, 9, 12, 0.8);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          color: #ffffff;
+          padding: 6px 12px;
+          border-radius: 20px;
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
           font-weight: 600;
+        }
+
+        .image-label .dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--accent);
         }
 
         @media (max-width: 968px) {
           .hero-container {
             grid-template-columns: 1fr;
-            gap: 60px;
+            gap: 50px;
+            text-align: center;
+          }
+
+          .hero-left {
+            align-items: center;
           }
 
           .hero-name {
-            font-size: 3rem;
+            justify-content: center;
+          }
+
+          .hero-actions {
+            justify-content: center;
           }
 
           .geometric-frame {
-            max-width: 100%;
+            max-width: 320px;
           }
         }
 
         @media (max-width: 640px) {
           .hero-section {
-            padding: 100px 0 60px;
+            padding: 110px 0 60px;
           }
 
           .hero-name {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
           }
 
           .hero-actions {
@@ -416,18 +447,7 @@ export default function Hero() {
           .btn-primary,
           .btn-secondary {
             width: 100%;
-            text-align: center;
-          }
-
-          .hero-socials {
             justify-content: center;
-          }
-
-          .frame-outer {
-            top: -10px;
-            left: -10px;
-            right: 10px;
-            bottom: 10px;
           }
         }
       `}</style>

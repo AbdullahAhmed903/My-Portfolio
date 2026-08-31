@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { label: "Home", href: "#home", id: "home" },
@@ -17,10 +18,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const scrollRef = useRef(false);
 
-  // Detect scroll
+  // Detect scroll for subtle border/shadow effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -73,7 +74,10 @@ export default function Navbar() {
       <div className="navbar-inner">
         <div className="navbar-logo">
           <a href="#home" onClick={(e) => handleNavClick(e, "home")} aria-label="Home">
+            <span className="logo-symbol">&lt;</span>
             <span className="logo-text">Abdullah</span>
+            <span className="logo-dot">.</span>
+            <span className="logo-symbol">/&gt;</span>
           </a>
         </div>
         
@@ -96,32 +100,28 @@ export default function Navbar() {
         <div className="navbar-actions">
           <div className="status-indicator">
             <span className="status-dot"></span>
-            <span className="status-text">Available for work</span>
+            <span className="status-text">Available</span>
           </div>
+
+          <ThemeToggle />
+
           <button
             className="navbar-hamburger"
-            aria-label="Open menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMenuOpen((v) => !v)}
           >
-            <span />
-            <span />
-            <span />
+            <span className={`bar ${menuOpen ? 'open' : ''}`} />
+            <span className={`bar ${menuOpen ? 'open' : ''}`} />
+            <span className={`bar ${menuOpen ? 'open' : ''}`} />
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div className={`navbar-mobile-menu${menuOpen ? " open" : ""}`}>
-        <button
-          className="close-btn"
-          onClick={() => setMenuOpen(false)}
-          aria-label="Close menu"
-        >
-          ✕
-        </button>
+      {/* Mobile Menu */}
+      <div className={`navbar-mobile-menu ${menuOpen ? "open" : ""}`}>
         <ul>
-          {navItems.map((item, index) => (
-            <li key={item.id} style={{ animationDelay: `${index * 0.05}s` }}>
+          {navItems.map((item) => (
+            <li key={item.id}>
               <a
                 href={item.href}
                 className={active === item.id ? "active" : ""}
@@ -132,10 +132,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="mobile-status">
-          <span className="status-dot"></span>
-          <span className="status-text">Available for work</span>
-        </div>
       </div>
 
       <style jsx>{`
@@ -144,246 +140,188 @@ export default function Navbar() {
           top: 0;
           left: 0;
           width: 100vw;
-          height: 60px;
-          z-index: 100;
-          background: rgba(10, 10, 15, 0.85);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          height: 70px;
+          z-index: 1000;
+          background: var(--navbar-bg);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid var(--navbar-border);
           transition: all 0.3s ease;
         }
 
         .custom-navbar.scrolled {
-          background: rgba(10, 10, 15, 0.95);
-          backdrop-filter: blur(24px);
-          -webkit-backdrop-filter: blur(24px);
-          border-bottom-color: rgba(255, 255, 255, 0.12);
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-inner {
+          max-width: 1200px;
+          width: 90%;
+          height: 100%;
+          margin: 0 auto;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          height: 100%;
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 0 4rem;
         }
 
         .navbar-logo a {
           display: flex;
           align-items: center;
-          text-decoration: none;
-          font-family: 'JetBrains Mono', 'Courier New', monospace;
-          font-size: 0.9rem;
+          font-family: var(--font-mono);
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          letter-spacing: -0.02em;
+        }
+
+        .logo-symbol {
+          color: var(--accent);
+          opacity: 0.8;
         }
 
         .logo-text {
-          color: #00e5a0;
+          margin: 0 2px;
         }
 
         .logo-dot {
-          color: #888888;
-          transition: color 0.2s ease;
-        }
-
-        .navbar-logo a:hover .logo-dot {
-          color: #00e5a0;
-        }
-
-        .navbar-links {
-          flex: 1;
-          display: flex;
-          justify-content: center;
+          color: var(--accent);
         }
 
         .navbar-links ul {
           display: flex;
-          gap: 2.5rem;
+          align-items: center;
+          gap: 28px;
           list-style: none;
-          margin: 0;
-          padding: 0;
         }
 
         .navbar-links a {
-          font-family: 'Syne', 'Arial', sans-serif;
-          font-size: 0.75rem;
-          color: #888888;
-          text-decoration: none;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          transition: color 0.2s ease;
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: var(--nav-link);
+          padding: 6px 0;
           position: relative;
+          transition: color 0.2s ease;
         }
 
         .navbar-links a:hover {
-          color: #f0ede8;
+          color: var(--nav-link-hover);
         }
 
         .navbar-links a.active {
-          color: #00e5a0;
+          color: var(--accent);
+          font-weight: 600;
         }
 
         .navbar-links a.active::after {
           content: '';
           position: absolute;
-          bottom: -4px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 2px;
+          bottom: -2px;
+          left: 0;
+          width: 100%;
           height: 2px;
-          background: #00e5a0;
-          border-radius: 50%;
+          background: var(--accent-gradient);
+          border-radius: 2px;
         }
 
         .navbar-actions {
           display: flex;
           align-items: center;
-          gap: 2rem;
+          gap: 14px;
         }
 
         .status-indicator {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
+          gap: 8px;
+          padding: 6px 12px;
+          background: var(--pill-bg);
+          border: 1px solid var(--pill-border);
+          border-radius: 20px;
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          color: var(--pill-text);
+          font-weight: 500;
         }
 
         .status-dot {
           width: 6px;
           height: 6px;
-          background: #00e5a0;
+          background: var(--accent);
           border-radius: 50%;
-          animation: pulse 2s ease-in-out infinite;
-        }
-
-        .status-text {
-          font-family: 'JetBrains Mono', 'Courier New', monospace;
-          font-size: 0.7rem;
-          color: #00e5a0;
+          animation: pulseGlow 2s infinite ease-in-out;
         }
 
         .navbar-hamburger {
           display: none;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          width: 40px;
-          height: 40px;
-          border: none;
-          background: transparent;
+          justify-content: space-around;
+          width: 36px;
+          height: 36px;
+          padding: 8px;
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          border-radius: 8px;
           cursor: pointer;
-          gap: 4px;
-          padding: 0;
         }
 
-        .navbar-hamburger span {
-          display: block;
-          width: 18px;
-          height: 1.5px;
-          background: rgba(255, 255, 255, 0.6);
-          transition: background 0.2s ease;
+        .bar {
+          width: 100%;
+          height: 2px;
+          background: var(--text-primary);
+          border-radius: 2px;
+          transition: all 0.3s ease;
         }
 
-        .navbar-hamburger:hover span {
-          background: #00e5a0;
+        .bar.open:nth-child(1) {
+          transform: translateY(6px) rotate(45deg);
+        }
+
+        .bar.open:nth-child(2) {
+          opacity: 0;
+        }
+
+        .bar.open:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg);
         }
 
         .navbar-mobile-menu {
           display: none;
           position: fixed;
-          top: 0;
+          top: 70px;
           left: 0;
           width: 100vw;
-          height: 100vh;
-          background: rgba(10, 10, 15, 0.98);
-          z-index: 200;
-          opacity: 0;
-          pointer-events: none;
-          transition: opacity 0.3s ease;
+          background: var(--navbar-bg);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-bottom: 1px solid var(--navbar-border);
+          padding: 24px 0;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .navbar-mobile-menu.open {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          opacity: 1;
-          pointer-events: auto;
-        }
-
-        .close-btn {
-          position: absolute;
-          top: 1.5rem;
-          right: 1.5rem;
-          background: transparent;
-          border: none;
-          color: #888888;
-          font-size: 2rem;
-          cursor: pointer;
-          transition: color 0.2s ease;
-        }
-
-        .close-btn:hover {
-          color: #00e5a0;
+          display: block;
         }
 
         .navbar-mobile-menu ul {
           list-style: none;
-          margin: 0;
-          padding: 0;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 2rem;
-        }
-
-        .navbar-mobile-menu li {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-
-        .navbar-mobile-menu.open li {
-          animation: slideIn 0.3s ease forwards;
-        }
-
-        @keyframes slideIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          gap: 20px;
         }
 
         .navbar-mobile-menu a {
-          font-family: 'Syne', 'Arial', sans-serif;
-          font-size: 2rem;
-          font-weight: 700;
-          color: #ffffff;
-          text-decoration: none;
-          transition: color 0.2s ease;
+          font-size: 1.1rem;
+          color: var(--text-secondary);
+          font-weight: 500;
         }
 
         .navbar-mobile-menu a.active {
-          color: #00e5a0;
+          color: var(--accent);
+          font-weight: 600;
         }
 
-        .mobile-status {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          margin-top: 3rem;
-        }
-
-        @media (max-width: 968px) {
-          .navbar-inner {
-            padding: 0 2rem;
-          }
-
+        @media (max-width: 900px) {
           .navbar-links {
-            display: none;
-          }
-
-          .status-indicator {
             display: none;
           }
 
@@ -391,14 +329,8 @@ export default function Navbar() {
             display: flex;
           }
 
-          .custom-navbar {
-            height: 56px;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .navbar-inner {
-            padding: 0 1.5rem;
+          .status-indicator {
+            display: none;
           }
         }
       `}</style>

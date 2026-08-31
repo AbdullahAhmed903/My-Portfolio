@@ -61,6 +61,7 @@ export default function ThemeToggle() {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
       )}
+      <span className="dock-tooltip">{isLight ? "Dark mode" : "Light mode"}</span>
 
       <style jsx>{`
         .theme-toggle-placeholder {
@@ -69,12 +70,13 @@ export default function ThemeToggle() {
         }
 
         .theme-toggle-btn {
+          position: relative;
           width: 38px;
           height: 38px;
-          border-radius: 8px;
-          border: 1px solid var(--card-border);
-          background: var(--card-bg);
-          color: var(--text-primary);
+          border-radius: 50%;
+          border: none;
+          background: transparent;
+          color: var(--text-secondary);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -83,9 +85,53 @@ export default function ThemeToggle() {
         }
 
         .theme-toggle-btn:hover {
-          border-color: var(--accent);
-          color: var(--accent);
-          transform: scale(1.05);
+          color: var(--text-primary);
+          background: rgba(255, 255, 255, 0.08);
+          transform: scale(1.1);
+        }
+
+        :global(html.light-mode) .theme-toggle-btn:hover {
+          background: rgba(0, 0, 0, 0.06);
+        }
+
+        .dock-tooltip {
+          position: absolute;
+          top: 48px;
+          left: 50%;
+          transform: translateX(-50%) translateY(4px);
+          padding: 4px 10px;
+          border-radius: 6px;
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          color: var(--text-primary);
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          font-weight: 600;
+          white-space: nowrap;
+          pointer-events: none;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.15s ease;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+          z-index: 10;
+        }
+
+        .theme-toggle-btn:hover .dock-tooltip {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 600px) {
+          .theme-toggle-placeholder,
+          .theme-toggle-btn {
+            width: 34px;
+            height: 34px;
+          }
+
+          .dock-tooltip {
+            top: -36px;
+          }
         }
       `}</style>
     </button>

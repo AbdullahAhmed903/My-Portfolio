@@ -1,17 +1,140 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import TiltCard from "./TiltCard";
 import Counter from "./Counter";
 import BorderBeam from "./BorderBeam";
 
+const DEFAULT_LANGUAGES = [
+  { name: "JavaScript", percent: 45, color: "#F7DF1E" },
+  { name: "TypeScript", percent: 30, color: "#3178C6" },
+  { name: "PostgreSQL / SQL", percent: 15, color: "#22C55E" },
+  { name: "CSS / HTML", percent: 10, color: "#38BDF8" },
+];
+
+const LANG_COLORS = {
+  JavaScript: "#F7DF1E",
+  TypeScript: "#3178C6",
+  HTML: "#E34F26",
+  CSS: "#38BDF8",
+  Python: "#3776AB",
+  SQL: "#22C55E",
+  PostgreSQL: "#22C55E",
+  Shell: "#89E051",
+  Other: "#64748B",
+};
+
 export default function GitHub() {
-  const languages = [
-    { name: "TypeScript", percent: 45, color: "#3178C6" },
-    { name: "JavaScript", percent: 30, color: "#F7DF1E" },
-    { name: "SQL / PostgreSQL", percent: 15, color: "#22C55E" },
-    { name: "Other", percent: 10, color: "#64748B" },
-  ];
+  const currentYear = new Date().getFullYear();
+  const [stats, setStats] = useState({
+    publicRepos: 23,
+    totalContributions: 1650,
+    lastYearContributions: 1220,
+    currentYearContributions: 1218,
+    languages: DEFAULT_LANGUAGES,
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadGitHubData() {
+      try {
+        // 1. Fetch user data (public repos count)
+        const userPromise = fetch("https://api.github.com/users/AbdullahAhmed903")
+          .then((res) => (res.ok ? res.json() : null))
+          .catch(() => null);
+
+        // 2. Fetch contributions breakdown across years
+        const contribPromise = fetch("https://github-contributions-api.jogruber.de/v4/AbdullahAhmed903")
+          .then((res) => (res.ok ? res.json() : null))
+          .catch(() => null);
+
+        // 3. Fetch public repos for language distribution
+        const reposPromise = fetch("https://api.github.com/users/AbdullahAhmed903/repos?per_page=100&sort=updated")
+          .then((res) => (res.ok ? res.json() : null))
+          .catch(() => null);
+
+        const [userData, contribData, reposData] = await Promise.all([
+          userPromise,
+          contribPromise,
+          reposPromise,
+        ]);
+
+        if (!isMounted) return;
+
+        setStats((prev) => {
+          let updatedRepos = prev.publicRepos;
+          let updatedLastYear = prev.lastYearContributions;
+          let updatedTotal = prev.totalContributions;
+          let updatedCurrentYear = prev.currentYearContributions;
+          let updatedLanguages = prev.languages;
+
+          if (userData?.public_repos) {
+            updatedRepos = userData.public_repos;
+          }
+
+          if (contribData?.total) {
+            if (contribData.total.lastYear) {
+              updatedLastYear = contribData.total.lastYear;
+            }
+            if (contribData.total[currentYear]) {
+              updatedCurrentYear = contribData.total[currentYear];
+            }
+            const allYearsSum = Object.entries(contribData.total)
+              .filter(([key]) => key !== "lastYear")
+              .reduce((acc, [, val]) => acc + (typeof val === "number" ? val : 0), 0);
+            if (allYearsSum > 0) {
+              updatedTotal = allYearsSum;
+            }
+          }
+
+          if (Array.isArray(reposData) && reposData.length > 0) {
+            const langCounts = {};
+            let totalCount = 0;
+            reposData.forEach((repo) => {
+              if (repo.language) {
+                langCounts[repo.language] = (langCounts[repo.language] || 0) + 1;
+                totalCount++;
+              }
+            });
+
+            if (totalCount > 0) {
+              const sortedLangs = Object.entries(langCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 4);
+
+              const computedLanguages = sortedLangs.map(([name, count]) => ({
+                name,
+                percent: Math.round((count / totalCount) * 100),
+                color: LANG_COLORS[name] || "#00D2FF",
+              }));
+
+              if (computedLanguages.length > 0) {
+                updatedLanguages = computedLanguages;
+              }
+            }
+          }
+
+          return {
+            publicRepos: updatedRepos,
+            totalContributions: updatedTotal,
+            lastYearContributions: updatedLastYear,
+            currentYearContributions: updatedCurrentYear,
+            languages: updatedLanguages,
+          };
+        });
+      } catch (err) {
+        console.error("Error loading live GitHub statistics:", err);
+      }
+    }
+
+    loadGitHubData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [currentYear]);
 
   return (
     <section className="github-section" id="github">
@@ -80,7 +203,7 @@ export default function GitHub() {
                 </div>
                 <div className="counter-text">
                   <strong className="counter-num">
-                    <Counter value={750} suffix="+" />
+                    <Counter value={stats.lastYearContributions} suffix="+" />
                   </strong>
                   <span className="counter-desc">contributions in the last year</span>
                 </div>
@@ -104,7 +227,7 @@ export default function GitHub() {
                   </svg>
                 </div>
                 <div className="metric-big-num green-text">
-                  <Counter value={15} suffix="+" />
+                  <Counter value={stats.publicRepos} suffix="+" />
                 </div>
                 <div className="metric-label">Repositories</div>
                 <div className="metric-subline">Open source repos created & maintained</div>
@@ -112,7 +235,7 @@ export default function GitHub() {
             </TiltCard>
           </ScrollReveal>
 
-          {/* Card 2: Total Commits */}
+          {/* Card 2: Total Contributions */}
           <ScrollReveal delay={300}>
             <TiltCard maxTilt={8} scale={1.03}>
               <div className="stat-metric-card">
@@ -123,9 +246,9 @@ export default function GitHub() {
                   </svg>
                 </div>
                 <div className="metric-big-num cyan-text">
-                  <Counter value={750} suffix="+" />
+                  <Counter value={stats.totalContributions} suffix="+" />
                 </div>
-                <div className="metric-label">Total Commits</div>
+                <div className="metric-label">Total Contributions</div>
                 <div className="metric-subline">Across all repositories</div>
               </div>
             </TiltCard>
@@ -147,7 +270,7 @@ export default function GitHub() {
             </TiltCard>
           </ScrollReveal>
 
-          {/* Card 4: Contributions (2024) */}
+          {/* Card 4: Contributions (Year) */}
           <ScrollReveal delay={400}>
             <TiltCard maxTilt={8} scale={1.03}>
               <div className="stat-metric-card">
@@ -160,9 +283,9 @@ export default function GitHub() {
                   </svg>
                 </div>
                 <div className="metric-big-num orange-text">
-                  <Counter value={400} suffix="+" />
+                  <Counter value={stats.currentYearContributions} suffix="+" />
                 </div>
-                <div className="metric-label">Contributions (2024)</div>
+                <div className="metric-label">{`Contributions (${currentYear})`}</div>
                 <div className="metric-subline">Active contributor this year</div>
               </div>
             </TiltCard>
@@ -174,7 +297,7 @@ export default function GitHub() {
               <div className="stat-metric-card lang-card">
                 <div className="lang-header">Top Languages</div>
                 <div className="lang-list">
-                  {languages.map((lang) => (
+                  {stats.languages.map((lang) => (
                     <div key={lang.name} className="lang-row">
                       <div className="lang-info">
                         <span className="lang-dot" style={{ backgroundColor: lang.color }}></span>
@@ -185,8 +308,7 @@ export default function GitHub() {
                         <motion.div 
                           className="lang-bar-fill" 
                           initial={{ width: 0 }}
-                          whileInView={{ width: `${lang.percent}%` }}
-                          viewport={{ once: true }}
+                          animate={{ width: `${lang.percent}%` }}
                           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                           style={{ backgroundColor: lang.color }}
                         />
@@ -509,8 +631,26 @@ export default function GitHub() {
         }
 
         @media (max-width: 768px) {
+          .github-heading {
+            font-size: clamp(2rem, 7vw, 2.8rem);
+          }
+          .github-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+          }
+          .contribution-main-card {
+            padding: 18px 14px;
+            border-radius: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
           .github-cards-grid {
             grid-template-columns: 1fr;
+          }
+          .github-profile-link-btn {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>

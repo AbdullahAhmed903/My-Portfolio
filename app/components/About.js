@@ -247,7 +247,7 @@ export default function About() {
           <ScrollReveal delay={400}>
             <div className="about-actions-row">
               <motion.a
-                href="https://ik.imagekit.io/abdullahAhmed/Abdullah_Ahmed_Resume%202026-05-30.pdf"
+                href="https://ik.imagekit.io/abdullahAhmed/Abdullah_Ahmed_Resume_2026-09-01.pdf?updatedAt=1788257012808"
                 target="_blank"
                 rel="noopener noreferrer"
                 download
@@ -702,7 +702,99 @@ export default function About() {
             gap: 40px;
           }
           .about-right-col {
+            padding-left: 24px;
+            padding-right: 0;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .about-section {
+            overflow: hidden;
+          }
+          .about-container {
+            width: 92%;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          .about-main-title {
+            font-size: clamp(2rem, 7vw, 2.8rem);
+          }
+          .about-right-col {
             padding-left: 20px;
+            padding-right: 4px;
+          }
+          .timeline-connector-line {
+            left: 3px;
+          }
+          .timeline-glowing-node {
+            left: -20px;
+            width: 12px;
+            height: 12px;
+          }
+          .timeline-info-card {
+            padding: 14px 12px;
+            gap: 12px;
+          }
+          .icon-glow-circle {
+            width: 36px;
+            height: 36px;
+          }
+          .card-main-title {
+            font-size: 1rem;
+          }
+          .card-desc-text {
+            font-size: 0.82rem;
+          }
+          .arch-steps-track {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .step-connector {
+            display: none !important;
+          }
+          .arch-step {
+            min-width: 0 !important;
+            width: 100% !important;
+            padding: 8px 6px !important;
+          }
+          .tech-highlight-pill {
+            padding: 5px 9px;
+            font-size: 0.74rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .about-container {
+            width: 90%;
+          }
+          .about-right-col {
+            padding-left: 16px;
+            padding-right: 4px;
+          }
+          .about-actions-row {
+            flex-direction: column;
+            width: 100%;
+          }
+          .btn-download-cv,
+          .btn-get-touch-link {
+            width: 100%;
+            justify-content: center;
+          }
+          .stats-quick-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+          }
+          .stat-item-box {
+            padding: 10px 8px;
+          }
+          .stat-big-number {
+            font-size: 1.1rem;
+          }
+          .stat-tiny-label {
+            font-size: 0.65rem;
           }
         }
       `}</style>

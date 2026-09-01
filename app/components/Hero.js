@@ -333,7 +333,7 @@ export default function Hero() {
           justify-content: center;
           position: relative;
           padding: 120px 0 80px;
-          overflow: hidden;
+          overflow-x: hidden;
         }
 
         .hero-ambient-glow {
@@ -436,7 +436,10 @@ export default function Hero() {
           border: 1px solid rgba(0, 210, 255, 0.2);
           border-radius: 12px;
           padding: 12px 16px;
+          width: 100%;
           max-width: 540px;
+          box-sizing: border-box;
+          overflow: hidden;
           backdrop-filter: blur(10px);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
@@ -448,6 +451,8 @@ export default function Hero() {
           margin-bottom: 8px;
           font-family: var(--font-mono);
           font-size: 0.72rem;
+          width: 100%;
+          min-width: 0;
         }
 
         .telemetry-status {
@@ -457,6 +462,7 @@ export default function Hero() {
           color: #38bdf8;
           font-weight: 700;
           letter-spacing: 0.05em;
+          flex-shrink: 0;
         }
 
         .telemetry-live-dot {
@@ -469,10 +475,14 @@ export default function Hero() {
 
         .telemetry-ping {
           color: #64748b;
+          flex-shrink: 0;
         }
 
         .telemetry-body {
           min-height: 24px;
+          width: 100%;
+          min-width: 0;
+          overflow: hidden;
         }
 
         .telemetry-row {
@@ -481,6 +491,9 @@ export default function Hero() {
           gap: 8px;
           font-family: var(--font-mono);
           font-size: 0.8rem;
+          width: 100%;
+          min-width: 0;
+          overflow: hidden;
         }
 
         .log-tag {
@@ -488,6 +501,7 @@ export default function Hero() {
           font-size: 0.72rem;
           padding: 1px 6px;
           border-radius: 4px;
+          flex-shrink: 0;
         }
 
         .log-auth { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
@@ -499,7 +513,8 @@ export default function Hero() {
 
         .log-text {
           color: #cbd5e1;
-          flex: 1;
+          flex: 1 1 0%;
+          min-width: 0;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -508,6 +523,8 @@ export default function Hero() {
         .log-latency {
           color: #94a3b8;
           font-size: 0.72rem;
+          flex-shrink: 0;
+          margin-left: auto;
         }
 
         /* ── Action Buttons ────────────────────────────────────────── */
@@ -787,34 +804,155 @@ export default function Hero() {
         }
 
         @media (max-width: 968px) {
+          .hero-section {
+            padding: 90px 0 60px;
+            min-height: auto;
+          }
           .hero-container {
             grid-template-columns: 1fr;
             gap: 40px;
             text-align: center;
+            width: 92%;
           }
           .hero-left {
             align-items: center;
+            width: 100%;
           }
           .hero-status-pill {
             margin: 0 auto;
           }
           .hero-action-buttons {
             justify-content: center;
+            width: 100%;
           }
           .hero-social-section {
             justify-content: center;
+            width: 100%;
           }
           .hero-right {
-            max-width: 480px;
+            max-width: 440px;
             margin: 0 auto;
             width: 100%;
           }
         }
 
-        @media (max-width: 520px) {
+        @media (max-width: 768px) {
           .hero-stats-banner {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+            padding: 14px 10px !important;
+          }
+          .hero-action-buttons {
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: 10px !important;
+          }
+          .btn-primary-work,
+          .btn-secondary-touch {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 12px 16px !important;
+          }
+          .floating-code-badge {
+            top: -10px !important;
+            right: 8px !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero-heading {
+            font-size: clamp(1.9rem, 7.5vw, 2.6rem);
+            line-height: 1.15;
+          }
+          .hero-tagline {
+            font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+            line-height: 1.45;
+            max-width: 100%;
+            word-break: break-word;
+          }
+          .hero-bio {
+            font-size: 0.86rem;
+            line-height: 1.6;
+            max-width: 100%;
+          }
+          .hero-telemetry-box {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 8px 10px !important;
+            box-sizing: border-box !important;
+            overflow: hidden !important;
+          }
+          .telemetry-header {
+            font-size: 0.62rem !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            gap: 4px !important;
+          }
+          /* Hide ping label on small screens — prevents header overflow */
+          .telemetry-ping {
+            display: none !important;
+          }
+          .telemetry-status {
+            font-size: 0.62rem !important;
+            letter-spacing: 0.02em !important;
+          }
+          .telemetry-body {
+            width: 100% !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          .telemetry-row {
+            font-size: 0.65rem !important;
+            gap: 5px !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+            flex-wrap: wrap !important;
+            align-items: flex-start !important;
+          }
+          .log-tag {
+            font-size: 0.6rem !important;
+            padding: 1px 4px !important;
+            flex-shrink: 0 !important;
+          }
+          .log-text {
+            min-width: 0 !important;
+            flex: 1 1 120px !important;
+            white-space: normal !important;
+            overflow: visible !important;
+            text-overflow: unset !important;
+            word-break: break-word !important;
+            line-height: 1.4 !important;
+          }
+          /* Hide per-row latency on small screens */
+          .log-latency {
+            display: none !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .stat-metric-value {
+            font-size: 1rem;
+          }
+          .stat-metric-label {
+            font-size: 0.65rem;
+          }
+          .floating-status-box {
+            padding: 8px 10px;
+            bottom: 8px;
+            left: 8px;
+            right: 8px;
+            gap: 8px;
+          }
+          .status-headline {
+            font-size: 0.78rem;
+          }
+          .status-subline {
+            font-size: 0.68rem;
+          }
+          .status-live-badge {
+            font-size: 0.65rem;
+            padding: 2px 6px;
           }
         }
       `}</style>

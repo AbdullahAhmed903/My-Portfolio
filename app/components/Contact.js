@@ -112,7 +112,7 @@ export default function Contact() {
                         <svg width="17" height="17" fill="none" stroke="#22C55E" strokeWidth="2.5" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
-                        <span className="copied-text">Copied! 🎉</span>
+                        <span className="copied-text">Copied!</span>
                       </>
                     ) : (
                       <>
@@ -159,7 +159,17 @@ export default function Contact() {
                       whileHover={{ scale: 1.04 }}
                       whileTap={{ scale: 0.96 }}
                     >
-                      {sentSuccess ? "Dispatched! 🚀" : "Send via Email ✉️"}
+                      <span>{sentSuccess ? "Dispatched!" : "Send via Email"}</span>
+                      {sentSuccess ? (
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      ) : (
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="22" y1="2" x2="11" y2="13" />
+                          <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                        </svg>
+                      )}
                     </motion.button>
                   </div>
                 </form>
@@ -434,15 +444,24 @@ export default function Contact() {
         }
 
         .btn-send-dispatch {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
           background: linear-gradient(135deg, #00d2ff 0%, #2563eb 100%);
           border: none;
           color: #08090c;
           font-weight: 700;
           font-size: 0.84rem;
-          padding: 8px 18px;
+          padding: 9px 18px;
           border-radius: 8px;
           cursor: pointer;
           font-family: var(--font-sans);
+          transition: filter 0.2s;
+        }
+
+        .btn-send-dispatch:hover {
+          filter: brightness(1.08);
         }
 
         /* ── Footer Styles ────────────────────────────────────────── */
@@ -542,15 +561,57 @@ export default function Contact() {
         }
 
         @media (max-width: 768px) {
+          .contact-heading {
+            font-size: clamp(2rem, 7vw, 2.8rem);
+          }
+          .contact-interactive-card {
+            padding: 20px 16px;
+            border-radius: 16px;
+          }
           .footer-top-row {
             flex-direction: column;
             align-items: center;
             text-align: center;
+            gap: 20px;
+          }
+          .footer-nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
           }
           .footer-bottom-row {
             flex-direction: column;
             align-items: center;
             text-align: center;
+            gap: 8px;
+          }
+        }
+
+        @media (max-width: 540px) {
+          .contact-actions-row {
+            flex-direction: column;
+            width: 100%;
+          }
+          .btn-email-box,
+          .btn-copy-box {
+            width: 100%;
+            justify-content: center;
+            font-size: 0.85rem;
+            padding: 11px 14px;
+          }
+          .btn-email-box span {
+            word-break: break-all;
+          }
+          .quick-message-form {
+            padding: 14px 12px;
+          }
+          .form-footer {
+            flex-wrap: wrap;
+            gap: 8px;
+          }
+          .btn-send-dispatch {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>

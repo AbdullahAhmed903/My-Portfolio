@@ -459,6 +459,37 @@ export default function Experience() {
             gap: 40px;
           }
         }
+
+        @media (max-width: 640px) {
+          .experience-heading {
+            font-size: clamp(2rem, 7vw, 2.8rem);
+          }
+          .timeline-stack {
+            padding-left: 20px;
+          }
+          .col-timeline-line {
+            left: 3px;
+          }
+          .timeline-node-point {
+            left: -20px;
+            width: 12px;
+            height: 12px;
+          }
+          .journey-card {
+            padding: 16px 14px;
+            gap: 12px;
+          }
+          .journey-side-badge {
+            width: 34px;
+            height: 34px;
+          }
+          .journey-role-title {
+            font-size: 1rem;
+          }
+          .journey-desc-text {
+            font-size: 0.82rem;
+          }
+        }
       `}</style>
     </section>
   );

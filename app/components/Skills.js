@@ -19,7 +19,7 @@ const CATEGORIES = [
     ),
     skills: [
       {
-        name: "JavaScript (ES6+)",
+        name: "JavaScript",
         highlight: true,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
@@ -98,7 +98,7 @@ const CATEGORIES = [
         ),
       },
       {
-        name: "Socket.IO (Real-time)",
+        name: "Socket.IO",
         highlight: false,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
@@ -107,64 +107,12 @@ const CATEGORIES = [
           </svg>
         ),
       },
-      {
-        name: "Redis Caching",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M22 8.5L12 3 2 8.5 12 14l10-5.5z" fill="#D82C20"/>
-            <path d="M2 14.5L12 20l10-5.5v-2L12 18 2 12.5v2z" fill="#A81D13"/>
-            <path d="M2 18.5L12 24l10-5.5v-2L12 22 2 16.5v2z" fill="#75130C"/>
-          </svg>
-        ),
-      },
-      {
-        name: "Rate Limiting & Security",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="M9 12l2 2 4-4"/>
-          </svg>
-        ),
-      },
-      {
-        name: "Swagger / OpenAPI",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="11" fill="#85EA2D"/>
-            <circle cx="12" cy="12" r="6" fill="#000"/>
-            <circle cx="12" cy="12" r="3" fill="#85EA2D"/>
-          </svg>
-        ),
-      },
-      {
-        name: "BullMQ (Job Queues)",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DC382D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-          </svg>
-        ),
-      },
-      {
-        name: "Clean Architecture & SOLID",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
-        ),
-      },
     ],
   },
   {
     id: "databases",
     number: "03",
-    title: "Databases & ORMs",
+    title: "Databases & ORM",
     desc: "Databases and ORM tools I use for data modeling.",
     accentGlow: "rgba(34, 197, 94, 0.15)",
     icon: (
@@ -195,32 +143,12 @@ const CATEGORIES = [
         ),
       },
       {
-        name: "SQL",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <ellipse cx="12" cy="5" rx="9" ry="3"/>
-            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-            <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
-          </svg>
-        ),
-      },
-      {
         name: "MySQL",
         highlight: false,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
             <rect width="24" height="24" rx="4" fill="#00758F"/>
             <path d="M6 16.5l3-9h2.2l3 9H12l-.6-2.2H8.6L8 16.5H6zm3.1-4.2h2.2L10.2 9h-.1l-1 3.3z" fill="#F29111"/>
-          </svg>
-        ),
-      },
-      {
-        name: "Supabase",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M21.36 10.37L13.12 1.15a1.2 1.2 0 0 0-2.1.81V10H3.84a1.2 1.2 0 0 0-.9 2l8.24 9.22a1.2 1.2 0 0 0 2.1-.81V14h7.18a1.2 1.2 0 0 0 .9-2z" fill="#3ECF8E"/>
           </svg>
         ),
       },
@@ -234,105 +162,12 @@ const CATEGORIES = [
           </svg>
         ),
       },
-      {
-        name: "Mongoose",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" fill="#880000"/>
-            <path d="M8 8h8v8H8z" fill="#FFF"/>
-          </svg>
-        ),
-      },
-    ],
-  },
-  {
-    id: "fullstack",
-    number: "04",
-    title: "Frontend & Full Stack",
-    desc: "Building responsive and dynamic user experiences.",
-    accentGlow: "rgba(97, 218, 251, 0.15)",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect width="18" height="12" x="3" y="3" rx="2"/>
-        <line x1="8" x2="16" y1="21" y2="21"/>
-        <line x1="12" x2="12" y1="15" y2="21"/>
-      </svg>
-    ),
-    skills: [
-      {
-        name: "React.js",
-        highlight: true,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="#61DAFB" strokeWidth="1.6"/>
-            <ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="#61DAFB" strokeWidth="1.6" transform="rotate(60 12 12)"/>
-            <ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="#61DAFB" strokeWidth="1.6" transform="rotate(120 12 12)"/>
-            <circle cx="12" cy="12" r="2" fill="#61DAFB"/>
-          </svg>
-        ),
-      },
-      {
-        name: "Next.js (App Router)",
-        highlight: true,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="11" fill="#000" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
-            <path d="M15 8v8M9 8v8l7-8" stroke="#FFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        ),
-      },
-      {
-        name: "HTML5",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M2.5 1.5h19l-1.7 19.3L12 23l-7.8-2.2L2.5 1.5z" fill="#E34F26"/>
-            <path d="M12 3.2v17.6l6.2-1.7 1.4-15.9H12z" fill="#EF652A"/>
-            <path d="M12 7.7H7.4l.3 3.2h4.3v-3.2zm0 6.4h-2.1l-.1-1.6H7.7l.3 3.4h4v-1.8z" fill="#EBEBEB"/>
-            <path d="M12 7.7v3.2h3.9l-.3 3.2-3.6 1v1.9l5.6-1.5.7-7.8H12z" fill="#FFF"/>
-          </svg>
-        ),
-      },
-      {
-        name: "CSS3",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M2.5 1.5h19l-1.7 19.3L12 23l-7.8-2.2L2.5 1.5z" fill="#1572B6"/>
-            <path d="M12 3.2v17.6l6.2-1.7 1.4-15.9H12z" fill="#33A9DC"/>
-            <path d="M12 7.7H7.4l.3 3.2h4.3v-3.2zm0 6.4h-2.1l-.1-1.6H7.7l.3 3.4h4v-1.8z" fill="#EBEBEB"/>
-            <path d="M12 7.7v3.2h3.9l-.3 3.2-3.6 1v1.9l5.6-1.5.7-7.8H12z" fill="#FFF"/>
-          </svg>
-        ),
-      },
-      {
-        name: "Responsive UI",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <line x1="8" x2="16" y1="21" y2="21"/>
-            <line x1="12" x2="12" y1="17" y2="21"/>
-          </svg>
-        ),
-      },
-      {
-        name: "DOM Manipulation",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="16 18 22 12 16 6"/>
-            <polyline points="8 6 2 12 8 18"/>
-          </svg>
-        ),
-      },
     ],
   },
   {
     id: "cloud",
-    number: "05",
-    title: "Cloud & Dev Tools",
+    number: "04",
+    title: "Cloud & DevOps",
     desc: "Tools and platforms that power development and deployment.",
     accentGlow: "rgba(255, 153, 0, 0.15)",
     icon: (
@@ -342,7 +177,7 @@ const CATEGORIES = [
     ),
     skills: [
       {
-        name: "AWS (EC2, S3, IAM, RDS)",
+        name: "AWS",
         highlight: true,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
@@ -381,7 +216,135 @@ const CATEGORIES = [
         ),
       },
       {
-        name: "Razorpay Gateway",
+        name: "Redis",
+        highlight: false,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path d="M22 8.5L12 3 2 8.5 12 14l10-5.5z" fill="#D82C20"/>
+            <path d="M2 14.5L12 20l10-5.5v-2L12 18 2 12.5v2z" fill="#A81D13"/>
+            <path d="M2 18.5L12 24l10-5.5v-2L12 22 2 16.5v2z" fill="#75130C"/>
+          </svg>
+        ),
+      },
+    ],
+  },
+  {
+    id: "fullstack",
+    number: "05",
+    title: "Frontend & Tools",
+    desc: "Building responsive and dynamic user experiences.",
+    accentGlow: "rgba(97, 218, 251, 0.15)",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="18" height="12" x="3" y="3" rx="2"/>
+        <line x1="8" x2="16" y1="21" y2="21"/>
+        <line x1="12" x2="12" y1="15" y2="21"/>
+      </svg>
+    ),
+    skills: [
+      {
+        name: "React",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="#61DAFB" strokeWidth="1.6"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="#61DAFB" strokeWidth="1.6" transform="rotate(60 12 12)"/>
+            <ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="#61DAFB" strokeWidth="1.6" transform="rotate(120 12 12)"/>
+            <circle cx="12" cy="12" r="2" fill="#61DAFB"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Next.js",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="11" fill="#000" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
+            <path d="M15 8v8M9 8v8l7-8" stroke="#FFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        ),
+      },
+      {
+        name: "HTML5",
+        highlight: false,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path d="M2.5 1.5h19l-1.7 19.3L12 23l-7.8-2.2L2.5 1.5z" fill="#E34F26"/>
+            <path d="M12 3.2v17.6l6.2-1.7 1.4-15.9H12z" fill="#EF652A"/>
+            <path d="M12 7.7H7.4l.3 3.2h4.3v-3.2zm0 6.4h-2.1l-.1-1.6H7.7l.3 3.4h4v-1.8z" fill="#EBEBEB"/>
+            <path d="M12 7.7v3.2h3.9l-.3 3.2-3.6 1v1.9l5.6-1.5.7-7.8H12z" fill="#FFF"/>
+          </svg>
+        ),
+      },
+      {
+        name: "CSS3",
+        highlight: false,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path d="M2.5 1.5h19l-1.7 19.3L12 23l-7.8-2.2L2.5 1.5z" fill="#1572B6"/>
+            <path d="M12 3.2v17.6l6.2-1.7 1.4-15.9H12z" fill="#33A9DC"/>
+            <path d="M12 7.7H7.4l.3 3.2h4.3v-3.2zm0 6.4h-2.1l-.1-1.6H7.7l.3 3.4h4v-1.8z" fill="#EBEBEB"/>
+            <path d="M12 7.7v3.2h3.9l-.3 3.2-3.6 1v1.9l5.6-1.5.7-7.8H12z" fill="#FFF"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Tailwind CSS",
+        highlight: false,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z" fill="#38BDF8"/>
+          </svg>
+        ),
+      },
+      {
+        name: "TypeScript",
+        highlight: false,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <rect width="24" height="24" rx="4" fill="#3178C6"/>
+            <path d="M4.5 10.5h6v2.3H8.7V20H6.3v-7.2H4.5v-2.3zm10.7 7c.6.8 1.5 1.3 2.7 1.3 1.2 0 1.9-.6 1.9-1.4 0-.9-.7-1.3-2.2-1.8-2.1-.7-3.4-1.6-3.4-3.4 0-1.9 1.5-3.3 3.6-3.3 1.6 0 2.7.6 3.4 1.7l-1.6 1.1c-.4-.7-1-1-1.8-1-1 0-1.6.6-1.6 1.2 0 .7.6 1.1 2.1 1.6 2.2.8 3.5 1.7 3.5 3.6 0 2.2-1.7 3.5-4 3.5-2 0-3.4-.8-4.1-2.2l1.5-1z" fill="#FFF"/>
+          </svg>
+        ),
+      },
+    ],
+  },
+  {
+    id: "tools",
+    number: "06",
+    title: "Other Tools",
+    desc: "Workflow utilities, payment processing and testing tools.",
+    accentGlow: "rgba(0, 210, 255, 0.15)",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+    ),
+    skills: [
+      {
+        name: "Swagger / OpenAPI",
+        highlight: false,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="11" fill="#85EA2D"/>
+            <circle cx="12" cy="12" r="6" fill="#000"/>
+            <circle cx="12" cy="12" r="3" fill="#85EA2D"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Postman",
+        highlight: false,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="#FF6C37"/>
+            <path d="M15.5 8.5l-7 3.5 3 1.5 4-5z" fill="#FFF"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Razorpay",
         highlight: false,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
@@ -391,12 +354,11 @@ const CATEGORIES = [
         ),
       },
       {
-        name: "Postman API Testing",
+        name: "BullMQ",
         highlight: false,
         icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" fill="#FF6C37"/>
-            <path d="M15.5 8.5l-7 3.5 3 1.5 4-5z" fill="#FFF"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DC382D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
           </svg>
         ),
       },
@@ -425,28 +387,50 @@ export default function Skills() {
       <div className="skills-container">
         {/* Left Column: Heading & 3D Layer Graphic */}
         <div className="skills-left-col">
-          <ScrollReveal>
-            <div className="section-label">
-              <span className="section-label-line"></span>
-              <span>TECH STACK</span>
+          <div className="skills-header-top-row">
+            <div className="skills-header-text">
+              <ScrollReveal>
+                <div className="section-label">
+                  <span className="section-label-line"></span>
+                  <span>TECH STACK</span>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={100}>
+                <h2 className="skills-main-title">
+                  Skills & <br className="desktop-break" />
+                  <span className="gradient-tech-text">Technologies</span>
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal delay={200}>
+                <p className="skills-subtitle">
+                  A collection of technologies and tools I use to build scalable, secure and high-performance applications.
+                </p>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
 
-          <ScrollReveal delay={100}>
-            <h2 className="skills-main-title">
-              Skills & <br />Technologies
-            </h2>
-          </ScrollReveal>
+            {/* Mobile Header Orbit Graphic */}
+            <div className="mobile-orbit-graphic">
+              <div className="orbit-circle orbit-outer">
+                <span className="orbit-dot dot-1"></span>
+              </div>
+              <div className="orbit-circle orbit-inner">
+                <span className="orbit-dot dot-2"></span>
+                <span className="orbit-dot dot-3"></span>
+              </div>
+              <div className="orbit-center-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+              </div>
+            </div>
+          </div>
 
-          <ScrollReveal delay={200}>
-            <p className="skills-subtitle">
-              A collection of technologies and tools I use to build scalable, secure and high-performance applications.
-            </p>
-          </ScrollReveal>
-
-          {/* Interactive Category Filter Pills */}
+          {/* Interactive Category Filter Pills (Desktop) */}
           <ScrollReveal delay={250}>
-            <div className="filter-tabs-stack">
+            <div className="filter-tabs-stack desktop-only">
               {FILTER_TABS.map((tab) => (
                 <button
                   key={tab.id}
@@ -466,9 +450,9 @@ export default function Skills() {
             </div>
           </ScrollReveal>
 
-          {/* 3D Isometric Stack Graphic */}
+          {/* 3D Isometric Stack Graphic (Desktop) */}
           <ScrollReveal delay={350}>
-            <div className="isometric-stack-wrap">
+            <div className="isometric-stack-wrap desktop-only">
               <div className="stack-layer layer-4"></div>
               <div className="stack-layer layer-3"></div>
               <div className="stack-layer layer-2"></div>
@@ -477,8 +461,11 @@ export default function Skills() {
           </ScrollReveal>
         </div>
 
-        {/* Right Column: Dynamic Category Cards */}
+        {/* Right Column: Dynamic Category Cards on Desktop / Vertical Timeline on Mobile */}
         <div className="skills-right-col">
+          {/* Vertical timeline line for mobile */}
+          <div className="mobile-timeline-track"></div>
+
           <AnimatePresence mode="wait">
             <motion.div 
               key={activeFilter}
@@ -490,42 +477,88 @@ export default function Skills() {
             >
               {filteredCategories.map((cat, index) => (
                 <ScrollReveal key={cat.number} delay={100 + index * 60}>
-                  <TiltCard maxTilt={6} scale={1.01} style={{ width: "100%" }}>
-                    <div className="category-row-card" style={{ boxShadow: `0 10px 30px -10px ${cat.accentGlow}` }}>
-                      {/* Left side category icon button */}
-                      <div className="category-icon-box">
-                        {cat.icon}
-                      </div>
+                  <div className="timeline-category-entry">
+                    {/* Glowing Cyan Point on the Vertical Line */}
+                    <div className="timeline-cyan-dot"></div>
 
-                      {/* Middle: Title, Number, and Description */}
-                      <div className="category-info-box">
-                        <div className="category-header">
-                          <span className="cat-num">{cat.number}</span>
-                          <h3 className="cat-title">{cat.title}</h3>
+                    <TiltCard maxTilt={6} scale={1.01} style={{ width: "100%" }}>
+                      <div className="category-row-card" style={{ boxShadow: `0 10px 30px -10px ${cat.accentGlow}` }}>
+                        {/* Circular Glowing Icon Badge */}
+                        <div className="category-icon-box">
+                          {cat.icon}
                         </div>
-                        <p className="cat-desc">{cat.desc}</p>
-                      </div>
 
-                      {/* Right: Skill pills with real icons & spring physics */}
-                      <div className="category-skills-box">
-                        {cat.skills.map((skill) => (
-                          <motion.div 
-                            key={skill.name} 
-                            className={`skill-pill-item ${skill.highlight ? 'highlight' : ''}`}
-                            whileHover={{ scale: 1.08, y: -2 }}
-                            whileTap={{ scale: 0.96 }}
-                          >
-                            <span className="skill-icon-svg">{skill.icon}</span>
-                            <span className="skill-name-txt">{skill.name}</span>
-                          </motion.div>
-                        ))}
+                        {/* Middle: Title, Number, and Description (Desktop) */}
+                        <div className="category-info-box">
+                          <div className="category-header">
+                            <span className="cat-num">{cat.number}</span>
+                            <h3 className="cat-title">{cat.title}</h3>
+                          </div>
+                          <p className="cat-desc">{cat.desc}</p>
+                        </div>
+
+                        {/* Mobile Header Row with Chevron */}
+                        <div className="mobile-category-header">
+                          <div className="mobile-cat-title-group">
+                            <span className="cat-num">{cat.number}</span>
+                            <h3 className="cat-title">{cat.title}</h3>
+                          </div>
+                          <span className="cat-chevron">›</span>
+                        </div>
+
+                        {/* Skill pills with real icons & spring physics */}
+                        <div className="category-skills-box">
+                          {cat.skills.map((skill) => (
+                            <motion.div 
+                              key={skill.name} 
+                              className={`skill-pill-item ${skill.highlight ? 'highlight' : ''}`}
+                              whileHover={{ scale: 1.06, y: -2 }}
+                              whileTap={{ scale: 0.96 }}
+                            >
+                              <span className="skill-icon-svg">{skill.icon}</span>
+                              <span className="skill-name-txt">{skill.name}</span>
+                            </motion.div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  </TiltCard>
+                    </TiltCard>
+                  </div>
                 </ScrollReveal>
               ))}
             </motion.div>
           </AnimatePresence>
+
+          {/* Bottom Banner (Always learning. Always building.) */}
+          <ScrollReveal delay={450}>
+            <div className="skills-bottom-banner">
+              <div className="banner-cube-icon">
+                <svg width="42" height="42" viewBox="0 0 64 64" fill="none">
+                  {/* Isometric Cubes */}
+                  <polygon points="32,4 52,15 32,26 12,15" fill="#38BDF8" opacity="0.9"/>
+                  <polygon points="12,15 32,26 32,50 12,39" fill="#0284C7"/>
+                  <polygon points="52,15 32,26 32,50 52,39" fill="#0369A1"/>
+
+                  <polygon points="16,28 32,37 16,46 0,37" fill="#00D2FF" opacity="0.8"/>
+                  <polygon points="0,37 16,46 16,62 0,53" fill="#0284C7"/>
+                  <polygon points="32,37 16,46 16,62 32,53" fill="#1D4ED8"/>
+
+                  <polygon points="48,28 64,37 48,46 32,37" fill="#38BDF8" opacity="0.8"/>
+                  <polygon points="32,37 48,46 48,62 32,53" fill="#0284C7"/>
+                  <polygon points="64,37 48,46 48,62 64,53" fill="#1E40AF"/>
+
+                  {/* Sparkle particles */}
+                  <circle cx="8" cy="18" r="1.5" fill="#00D2FF"/>
+                  <circle cx="56" cy="12" r="1.5" fill="#38BDF8"/>
+                  <circle cx="62" cy="44" r="1.5" fill="#00D2FF"/>
+                  <circle cx="2" cy="48" r="1.5" fill="#38BDF8"/>
+                </svg>
+              </div>
+              <div className="banner-text-details">
+                <h4 className="banner-title">Always learning. Always building.</h4>
+                <p className="banner-subtext">Exploring new technologies to solve real-world problems.</p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
 
@@ -552,6 +585,16 @@ export default function Skills() {
           top: 100px;
         }
 
+        .skills-header-top-row {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+        }
+
+        .skills-header-text {
+          flex: 1;
+        }
+
         .skills-main-title {
           font-size: clamp(2.4rem, 4vw, 3.2rem);
           font-weight: 800;
@@ -561,11 +604,23 @@ export default function Skills() {
           margin-bottom: 16px;
         }
 
+        .gradient-tech-text {
+          background: linear-gradient(135deg, #00d2ff 0%, #38bdf8 50%, #2563eb 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
         .skills-subtitle {
           font-size: 0.95rem;
           color: var(--text-secondary);
           line-height: 1.65;
           margin-bottom: 24px;
+        }
+
+        /* Mobile Orbit Planetary Graphic (Hidden on Desktop) */
+        .mobile-orbit-graphic {
+          display: none;
         }
 
         /* ── Filter Tabs Stack ───────────────────────── */
@@ -601,52 +656,81 @@ export default function Skills() {
         .active-tab-indicator {
           position: absolute;
           inset: 0;
-          border-radius: 8px;
           background: rgba(0, 210, 255, 0.12);
+          border-radius: 8px;
           border: 1px solid rgba(0, 210, 255, 0.4);
-          pointer-events: none;
-          z-index: 0;
+          z-index: -1;
         }
 
-        /* 3D Isometric Stack Graphic */
+        /* ── 3D Isometric Stack Graphic ──────────────── */
         .isometric-stack-wrap {
           position: relative;
-          width: 200px;
-          height: 160px;
-          margin-top: 10px;
+          width: 220px;
+          height: 140px;
+          margin: 10px auto 0;
+          perspective: 800px;
         }
 
         .stack-layer {
           position: absolute;
-          width: 160px;
-          height: 80px;
-          border-radius: 16px;
-          border: 1px solid rgba(0, 210, 255, 0.25);
-          background: linear-gradient(135deg, rgba(0, 210, 255, 0.08) 0%, rgba(14, 165, 233, 0.04) 100%);
-          backdrop-filter: blur(8px);
+          width: 140px;
+          height: 70px;
+          border-radius: 12px;
           transform: rotateX(60deg) rotateZ(-45deg);
-          box-shadow: 0 8px 25px rgba(0, 210, 255, 0.1);
-          transition: all 0.4s ease;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+          transition: transform 0.3s ease;
         }
 
-        .layer-1 { top: 0px; left: 15px; z-index: 4; border-color: rgba(0, 210, 255, 0.4); }
-        .layer-2 { top: 22px; left: 15px; z-index: 3; opacity: 0.8; }
-        .layer-3 { top: 44px; left: 15px; z-index: 2; opacity: 0.6; }
-        .layer-4 { top: 66px; left: 15px; z-index: 1; opacity: 0.4; }
+        .layer-1 {
+          bottom: 0;
+          left: 40px;
+          background: linear-gradient(135deg, rgba(0, 210, 255, 0.4), rgba(59, 130, 246, 0.2));
+          border: 1px solid rgba(0, 210, 255, 0.6);
+        }
 
-        .isometric-stack-wrap:hover .layer-1 { transform: rotateX(60deg) rotateZ(-45deg) translateZ(20px); }
-        .isometric-stack-wrap:hover .layer-2 { transform: rotateX(60deg) rotateZ(-45deg) translateZ(10px); }
+        .layer-2 {
+          bottom: 24px;
+          left: 40px;
+          background: linear-gradient(135deg, rgba(14, 165, 233, 0.35), rgba(37, 99, 235, 0.2));
+          border: 1px solid rgba(14, 165, 233, 0.5);
+        }
 
-        /* ── Right Column: Category Rows ─────────────── */
+        .layer-3 {
+          bottom: 48px;
+          left: 40px;
+          background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(29, 78, 216, 0.2));
+          border: 1px solid rgba(37, 99, 235, 0.4);
+        }
+
+        .layer-4 {
+          bottom: 72px;
+          left: 40px;
+          background: linear-gradient(135deg, rgba(56, 189, 248, 0.5), rgba(0, 210, 255, 0.3));
+          border: 1px solid rgba(56, 189, 248, 0.7);
+        }
+
+        /* ── Right Column: Categories ────────────────── */
         .skills-right-col {
+          position: relative;
           display: flex;
           flex-direction: column;
+          gap: 20px;
         }
 
         .categories-motion-grid {
           display: flex;
           flex-direction: column;
           gap: 16px;
+        }
+
+        .timeline-category-entry {
+          position: relative;
+          width: 100%;
+        }
+
+        .mobile-timeline-track,
+        .timeline-cyan-dot {
+          display: none;
         }
 
         .category-row-card {
@@ -677,6 +761,7 @@ export default function Skills() {
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-shrink: 0;
         }
 
         .category-row-card:hover .category-icon-box {
@@ -685,7 +770,7 @@ export default function Skills() {
           box-shadow: 0 0 14px var(--pill-border);
         }
 
-        /* Middle Info Box */
+        /* Middle Info Box (Desktop) */
         .category-info-box {
           display: flex;
           flex-direction: column;
@@ -720,11 +805,15 @@ export default function Skills() {
           line-height: 1.45;
         }
 
+        .mobile-category-header {
+          display: none;
+        }
+
         /* Right: Skills Box */
         .category-skills-box {
           display: flex;
           flex-wrap: wrap;
-          gap: 10px;
+          gap: 8px;
           align-items: center;
         }
 
@@ -732,10 +821,10 @@ export default function Skills() {
           display: inline-flex !important;
           flex-direction: row !important;
           align-items: center !important;
-          gap: 8px !important;
+          gap: 7px !important;
           padding: 6px 13px !important;
-          background: var(--background-subtle) !important;
-          border: 1px solid var(--card-border) !important;
+          background: rgba(15, 17, 23, 0.7) !important;
+          border: 1px solid rgba(255, 255, 255, 0.08) !important;
           border-radius: 8px !important;
           font-family: var(--font-mono) !important;
           font-size: 0.8rem !important;
@@ -747,24 +836,16 @@ export default function Skills() {
           transition: all 0.2s ease !important;
         }
 
+        :global(html.light-mode) .skill-pill-item {
+          background: #ffffff !important;
+          border-color: #e2e8f0 !important;
+        }
+
         .skill-pill-item:hover {
           border-color: var(--accent) !important;
           color: var(--text-primary) !important;
           background: rgba(0, 210, 255, 0.08) !important;
           box-shadow: 0 0 12px rgba(0, 210, 255, 0.2) !important;
-        }
-
-        .skill-pill-item.highlight {
-          background: var(--pill-bg) !important;
-          border-color: var(--pill-border) !important;
-          color: var(--pill-text) !important;
-          font-weight: 600 !important;
-        }
-
-        .skill-pill-item.highlight:hover {
-          background: rgba(0, 210, 255, 0.18) !important;
-          border-color: var(--accent) !important;
-          color: #38bdf8 !important;
         }
 
         .skill-icon-svg {
@@ -781,17 +862,334 @@ export default function Skills() {
           display: inline-block !important;
         }
 
+        /* ── Bottom Banner (Always learning. Always building.) ── */
+        .skills-bottom-banner {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          background: rgba(15, 17, 23, 0.7);
+          border: 1px solid rgba(0, 210, 255, 0.2);
+          border-radius: 16px;
+          padding: 18px 24px;
+          margin-top: 10px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        :global(html.light-mode) .skills-bottom-banner {
+          background: #ffffff;
+          border-color: rgba(2, 132, 199, 0.25);
+        }
+
+        .banner-cube-icon {
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .banner-title {
+          font-size: 0.98rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0 0 3px 0;
+        }
+
+        .banner-subtext {
+          font-size: 0.82rem;
+          color: var(--text-secondary);
+          margin: 0;
+        }
+
+        /* ── Mobile / Tablet Layout (< 968px) ─────────────────────── */
         @media (max-width: 968px) {
           .skills-container {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 28px;
           }
+
           .skills-left-col {
             position: static;
           }
-          .category-row-card {
-            grid-template-columns: 1fr;
+
+          .desktop-only {
+            display: none !important;
+          }
+
+          .desktop-break {
+            display: none;
+          }
+
+          .skills-header-top-row {
+            align-items: center;
             gap: 16px;
+          }
+
+          /* Mobile Orbit Graphic Display */
+          .mobile-orbit-graphic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+          }
+
+          .orbit-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+          }
+
+          .orbit-outer {
+            width: 96px;
+            height: 96px;
+            animation: spinOrbit 16s linear infinite;
+          }
+
+          .orbit-inner {
+            width: 68px;
+            height: 68px;
+            border-color: rgba(0, 210, 255, 0.35);
+            animation: spinOrbitRev 10s linear infinite;
+          }
+
+          .orbit-dot {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #00d2ff;
+            box-shadow: 0 0 8px #00d2ff;
+          }
+
+          .dot-1 { top: -2.5px; left: 45px; }
+          .dot-2 { top: 12px; right: -2.5px; }
+          .dot-3 { bottom: 12px; left: -2.5px; }
+
+          .orbit-center-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #090c13;
+            border: 1.5px solid #00d2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 16px rgba(0, 210, 255, 0.4);
+            z-index: 2;
+          }
+
+          @keyframes spinOrbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+
+          @keyframes spinOrbitRev {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+          }
+
+          /* Vertical Timeline Layout on Mobile */
+          .skills-section {
+            overflow: hidden;
+          }
+
+          .skills-container {
+            width: 92%;
+            max-width: 100%;
+            overflow: hidden;
+          }
+
+          .skills-right-col {
+            position: relative;
+            padding-left: 56px;
+            width: 100%;
+            box-sizing: border-box;
+          }
+
+          .mobile-timeline-track {
+            display: block;
+            position: absolute;
+            left: 20px;
+            top: 24px;
+            bottom: 60px;
+            width: 2px;
+            background: linear-gradient(180deg, #00d2ff 0%, rgba(0, 210, 255, 0.4) 60%, transparent 100%);
+          }
+
+          .timeline-category-entry {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+          }
+
+          .timeline-cyan-dot {
+            display: block;
+            position: absolute;
+            left: -38px;
+            top: 20px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00d2ff;
+            box-shadow: 0 0 10px #00d2ff;
+            z-index: 3;
+          }
+
+          .category-row-card {
+            display: flex;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            box-shadow: none !important;
+            padding: 4px 0 20px 0;
+            gap: 12px;
+            position: relative;
+            width: 100%;
+          }
+
+          /* Glowing Double-ring Circular Badge placed along the timeline */
+          .category-icon-box {
+            position: absolute;
+            left: -56px;
+            top: 2px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #0a0d14;
+            border: 1.5px solid #00d2ff;
+            box-shadow: 0 0 16px rgba(0, 210, 255, 0.35);
+            z-index: 4;
+          }
+
+          :global(html.light-mode) .category-icon-box {
+            background: #ffffff;
+            border-color: #0284c7;
+            box-shadow: 0 0 14px rgba(2, 132, 199, 0.3);
+          }
+
+          .category-info-box {
+            display: none;
+          }
+
+          .mobile-category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding-left: 2px;
+          }
+
+          .mobile-cat-title-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          .mobile-cat-title-group .cat-num {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #00d2ff;
+          }
+
+          .mobile-cat-title-group .cat-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+          }
+
+          .cat-chevron {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            line-height: 1;
+          }
+
+          .category-skills-box {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 2px;
+          }
+
+          .skill-pill-item {
+            background: rgba(15, 17, 23, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 6px 12px !important;
+            border-radius: 8px !important;
+            font-size: 0.78rem !important;
+          }
+
+          .skills-bottom-banner {
+            margin-left: -56px;
+            width: calc(100% + 56px);
+            max-width: calc(100% + 56px);
+            box-sizing: border-box;
+            padding: 16px;
+            gap: 14px;
+            border-radius: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .skills-main-title {
+            font-size: 2rem;
+          }
+          .skills-subtitle {
+            font-size: 0.86rem;
+            line-height: 1.5;
+          }
+          .mobile-orbit-graphic {
+            width: 80px;
+            height: 80px;
+          }
+          .orbit-outer {
+            width: 76px;
+            height: 76px;
+          }
+          .orbit-inner {
+            width: 54px;
+            height: 54px;
+          }
+          .orbit-center-icon {
+            width: 36px;
+            height: 36px;
+          }
+          .skills-right-col {
+            padding-left: 48px;
+          }
+          .mobile-timeline-track {
+            left: 17px;
+          }
+          .timeline-cyan-dot {
+            left: -33px;
+          }
+          .category-icon-box {
+            left: -48px;
+            width: 38px;
+            height: 38px;
+          }
+          .mobile-cat-title-group .cat-title {
+            font-size: 1rem;
+          }
+          .skill-pill-item {
+            padding: 5px 10px !important;
+            font-size: 0.75rem !important;
+          }
+          .skills-bottom-banner {
+            margin-left: -48px;
+            width: calc(100% + 48px);
+            max-width: calc(100% + 48px);
+            padding: 14px 12px;
+            gap: 12px;
+          }
+          .banner-title {
+            font-size: 0.88rem;
+          }
+          .banner-subtext {
+            font-size: 0.76rem;
           }
         }
       `}</style>

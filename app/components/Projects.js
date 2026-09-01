@@ -15,7 +15,8 @@ export default function Projects() {
       title: "Tensorik — AI & Tech Education Platform",
       desc: "Scalable backend platform with REST APIs serving 10,000+ users. Integrated Razorpay payments, rate limiting, and optimized PostgreSQL database schemas.",
       tags: ["Node.js", "TypeScript", "PostgreSQL", "Supabase", "Razorpay"],
-      link: "https://github.com/AbdullahAhmed903",
+      link: "https://tensorik.in/",
+      linkLabel: "Live",
       isFeatured: true,
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -69,7 +70,8 @@ export default function Projects() {
       title: "Khajamobiles E-Commerce Backend",
       desc: "E-commerce backend handling catalogs, inventory, orders, payments, and database migrations with a scalable architecture.",
       tags: ["Node.js", "Next.js", "TypeScript", "PostgreSQL", "Supabase"],
-      link: "https://github.com/AbdullahAhmed903",
+      link: "https://khajamobile.com/",
+      linkLabel: "Live",
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="8" cy="21" r="1"/>
@@ -198,7 +200,7 @@ export default function Projects() {
                       rel="noopener noreferrer" 
                       className="project-cta-link"
                     >
-                      <span>Code</span>
+                      <span>{project.linkLabel || "Code"}</span>
                       <span className="cta-arrow">↗</span>
                     </a>
                   </div>
@@ -509,6 +511,51 @@ export default function Projects() {
             flex-direction: column;
             align-items: flex-start;
             gap: 20px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .projects-section {
+            overflow: hidden;
+          }
+          .projects-main-heading {
+            font-size: clamp(2rem, 7vw, 2.8rem);
+          }
+          .project-feature-card {
+            padding: 18px 14px;
+            border-radius: 14px;
+          }
+          .project-item-title {
+            font-size: 1.05rem;
+          }
+          .project-item-desc {
+            font-size: 0.82rem;
+          }
+          .project-action-links {
+            flex-wrap: wrap;
+            gap: 8px;
+          }
+          .explore-github-banner {
+            padding: 20px 16px;
+            border-radius: 16px;
+          }
+          .banner-left-area {
+            gap: 14px;
+          }
+          .github-outer-ring {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+          }
+          .banner-headline {
+            font-size: 1.15rem;
+          }
+          .banner-subtext {
+            font-size: 0.82rem;
+          }
+          .banner-cta-button {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>

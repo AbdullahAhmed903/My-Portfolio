@@ -175,7 +175,7 @@ export default function ApiInspectorModal({ project, isOpen, onClose }) {
                 rel="noopener noreferrer"
                 className="btn-view-repo"
               >
-                <span>View Source Code on GitHub</span>
+                <span>{project.link?.includes("github.com") ? "View Source Code on GitHub" : "Visit Live Platform"}</span>
                 <span>↗</span>
               </a>
             </div>
@@ -488,6 +488,53 @@ export default function ApiInspectorModal({ project, isOpen, onClose }) {
 
             .btn-view-repo:hover {
               opacity: 0.9;
+            }
+
+            @media (max-width: 640px) {
+              .modal-backdrop-wrap {
+                padding: 12px;
+              }
+              .modal-window {
+                border-radius: 16px;
+                max-height: 90vh;
+              }
+              .modal-header {
+                padding: 16px 18px;
+              }
+              .modal-title {
+                font-size: 1rem;
+              }
+              .modal-subtitle {
+                font-size: 0.74rem;
+              }
+              .modal-tabs {
+                padding: 8px 12px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+              }
+              .modal-tab {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                white-space: nowrap;
+              }
+              .modal-body {
+                padding: 16px;
+              }
+              .endpoint-header {
+                flex-wrap: wrap;
+                gap: 6px;
+              }
+              .endpoint-path {
+                word-break: break-all;
+                font-size: 0.75rem;
+              }
+              .modal-footer {
+                padding: 12px 16px;
+              }
+              .btn-view-repo {
+                width: 100%;
+                justify-content: center;
+              }
             }
           `}</style>
         </div>

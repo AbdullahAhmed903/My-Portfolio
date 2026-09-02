@@ -838,9 +838,7 @@ export default function Hero() {
 
         @media (max-width: 768px) {
           .hero-stats-banner {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 10px !important;
-            padding: 14px 10px !important;
+            display: none !important;
           }
           .hero-action-buttons {
             flex-direction: column !important;

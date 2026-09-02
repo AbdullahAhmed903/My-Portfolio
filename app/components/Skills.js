@@ -98,6 +98,19 @@ const CATEGORIES = [
         ),
       },
       {
+        name: "System Design",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="8" height="8" rx="2"/>
+            <rect x="14" y="2" width="8" height="8" rx="2"/>
+            <rect x="8" y="14" width="8" height="8" rx="2"/>
+            <path d="M6 10v2a2 2 0 0 0 2 2h4"/>
+            <path d="M18 10v2a2 2 0 0 1-2 2"/>
+          </svg>
+        ),
+      },
+      {
         name: "Socket.IO",
         highlight: false,
         icon: (
@@ -169,7 +182,7 @@ const CATEGORIES = [
     number: "04",
     title: "Cloud & DevOps",
     desc: "Tools and platforms that power development and deployment.",
-    accentGlow: "rgba(255, 153, 0, 0.15)",
+    accentGlow: "rgba(0, 210, 255, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
@@ -464,7 +477,7 @@ export default function Skills() {
         {/* Right Column: Dynamic Category Cards on Desktop / Vertical Timeline on Mobile */}
         <div className="skills-right-col">
           {/* Vertical timeline line for mobile */}
-          <div className="mobile-timeline-track"></div>
+          <div className="skills-mobile-timeline-track"></div>
 
           <AnimatePresence mode="wait">
             <motion.div 
@@ -478,9 +491,6 @@ export default function Skills() {
               {filteredCategories.map((cat, index) => (
                 <ScrollReveal key={cat.number} delay={100 + index * 60}>
                   <div className="timeline-category-entry">
-                    {/* Glowing Cyan Point on the Vertical Line */}
-                    <div className="timeline-cyan-dot"></div>
-
                     <TiltCard maxTilt={6} scale={1.01} style={{ width: "100%" }}>
                       <div className="category-row-card" style={{ boxShadow: `0 10px 30px -10px ${cat.accentGlow}` }}>
                         {/* Circular Glowing Icon Badge */}
@@ -1008,14 +1018,16 @@ export default function Skills() {
             box-sizing: border-box;
           }
 
-          .mobile-timeline-track {
+          .skills-mobile-timeline-track {
             display: block;
             position: absolute;
-            left: 20px;
-            top: 24px;
-            bottom: 60px;
+            left: 21px;
+            top: 23px;
+            bottom: 140px;
             width: 2px;
-            background: linear-gradient(180deg, #00d2ff 0%, rgba(0, 210, 255, 0.4) 60%, transparent 100%);
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, #00d2ff 0%, #38bdf8 70%, #0284c7 100%);
+            box-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
           }
 
           .timeline-category-entry {
@@ -1026,16 +1038,7 @@ export default function Skills() {
           }
 
           .timeline-cyan-dot {
-            display: block;
-            position: absolute;
-            left: -38px;
-            top: 20px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #00d2ff;
-            box-shadow: 0 0 10px #00d2ff;
-            z-index: 3;
+            display: none !important;
           }
 
           .category-row-card {
@@ -1058,10 +1061,10 @@ export default function Skills() {
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            background: #0a0d14;
+            background: #08090c;
             border: 1.5px solid #00d2ff;
             box-shadow: 0 0 16px rgba(0, 210, 255, 0.35);
-            z-index: 4;
+            z-index: 10;
           }
 
           :global(html.light-mode) .category-icon-box {
@@ -1160,11 +1163,13 @@ export default function Skills() {
           .skills-right-col {
             padding-left: 48px;
           }
-          .mobile-timeline-track {
-            left: 17px;
+          .skills-mobile-timeline-track {
+            left: 19px;
+            transform: translateX(-50%);
           }
           .timeline-cyan-dot {
-            left: -33px;
+            left: -30px;
+            transform: translateX(-50%);
           }
           .category-icon-box {
             left: -48px;

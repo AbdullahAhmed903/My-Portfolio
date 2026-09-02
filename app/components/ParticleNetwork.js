@@ -7,10 +7,17 @@ export default function ParticleNetwork() {
   const mouseRef = useRef({ x: -1000, y: -1000, active: false });
   const particles = useRef([]);
   
-  const PARTICLE_COUNT = 45;
   const RADIUS = 1.6;
-  const LINE_DIST = 130;
-  const MOUSE_DIST = 160;
+
+  function getSettings() {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    return {
+      count: isMobile ? 6 : 45,
+      lineDist: isMobile ? 40 : 130,
+      mouseDist: isMobile ? 0 : 160,
+      maxOpacity: isMobile ? 0.03 : 0.12,
+    };
+  }
 
   function resizeCanvas(canvas) {
     const dpr = window.devicePixelRatio || 1;
@@ -24,9 +31,10 @@ export default function ParticleNetwork() {
   }
 
   function initParticles() {
-    particles.current = Array.from({ length: PARTICLE_COUNT }, () => {
+    const settings = getSettings();
+    particles.current = Array.from({ length: settings.count }, () => {
       const angle = Math.random() * 2 * Math.PI;
-      const speed = 0.25 + Math.random() * 0.35;
+      const speed = 0.2 + Math.random() * 0.3;
       return {
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
@@ -48,6 +56,7 @@ export default function ParticleNetwork() {
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
     const mouse = mouseRef.current;
+    const settings = getSettings();
 
     // Draw particle lines between each other
     for (let i = 0; i < particles.current.length; i++) {
@@ -57,10 +66,10 @@ export default function ParticleNetwork() {
         const dx = a.x - b.x;
         const dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < LINE_DIST) {
-          const opacity = (0.12 * (1 - dist / LINE_DIST)).toFixed(3);
+        if (dist < settings.lineDist) {
+          const opacity = (settings.maxOpacity * (1 - dist / settings.lineDist)).toFixed(3);
           ctx.strokeStyle = `rgba(${a.hue}, ${opacity})`;
-          ctx.lineWidth = 0.9;
+          ctx.lineWidth = 0.8;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -76,10 +85,10 @@ export default function ParticleNetwork() {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MOUSE_DIST) {
-          const opacity = (0.28 * (1 - dist / MOUSE_DIST)).toFixed(3);
+        if (dist < settings.mouseDist) {
+          const opacity = (0.2 * (1 - dist / settings.mouseDist)).toFixed(3);
           ctx.strokeStyle = `rgba(0, 210, 255, ${opacity})`;
-          ctx.lineWidth = 1.2;
+          ctx.lineWidth = 1.0;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);

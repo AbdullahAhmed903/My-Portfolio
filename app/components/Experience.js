@@ -11,7 +11,6 @@ export default function Experience() {
       role: "Junior Backend Developer",
       company: "Tensorik",
       desc: "Designed and developed production backend services and REST APIs for AI education, Flutter mobile LMS backend, and e-commerce using Node.js, NestJS, PostgreSQL, and Supabase.",
-      isCurrent: true,
       badgeIcon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
@@ -306,10 +305,11 @@ export default function Experience() {
 
         .col-timeline-line {
           position: absolute;
-          left: 6px;
+          left: 7px;
           top: 15px;
           bottom: 15px;
           width: 2px;
+          transform: translateX(-50%);
           background: linear-gradient(180deg, #00d2ff 0%, rgba(0, 210, 255, 0.15) 80%, transparent 100%);
         }
 
@@ -321,7 +321,8 @@ export default function Experience() {
 
         .timeline-node-point {
           position: absolute;
-          left: -28px;
+          left: -21px;
+          transform: translateX(-50%);
           width: 14px;
           height: 14px;
           border-radius: 50%;
@@ -465,13 +466,15 @@ export default function Experience() {
             font-size: clamp(2rem, 7vw, 2.8rem);
           }
           .timeline-stack {
-            padding-left: 20px;
+            padding-left: 24px;
           }
           .col-timeline-line {
-            left: 3px;
+            left: 7px;
+            transform: translateX(-50%);
           }
           .timeline-node-point {
-            left: -20px;
+            left: -17px;
+            transform: translateX(-50%);
             width: 12px;
             height: 12px;
           }

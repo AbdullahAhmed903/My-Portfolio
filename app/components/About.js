@@ -5,60 +5,12 @@ import TiltCard from "./TiltCard";
 import BorderBeam from "./BorderBeam";
 
 export default function About() {
-  const highlights = [
-    {
-      icon: (
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="16 18 22 12 16 6"/>
-          <polyline points="8 6 2 12 8 18"/>
-        </svg>
-      ),
-      label: "RESTful APIs",
-    },
-    {
-      icon: (
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m7.5 4.27 9 5.15"/>
-          <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
-          <path d="m3.3 7 8.7 5 8.7-5"/>
-          <path d="M12 22V12"/>
-        </svg>
-      ),
-      label: "Clean Architecture",
-    },
-    {
-      icon: (
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-        </svg>
-      ),
-      label: "AWS Cloud",
-    },
-    {
-      icon: (
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-        </svg>
-      ),
-      label: "Real-time Apps",
-    },
-    {
-      icon: (
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
-      ),
-      label: "Rate Limiting",
-    },
-  ];
-
   const cards = [
     {
-      tag: "Current Role",
-      title: "Backend Developer",
-      desc: "Tensorik — Building & Scaling EdTech Platform",
-      badge: "10K+ Users Impacted",
+      tag: "Work Experience",
+      title: "Backend Developer & Co-Lead",
+      desc: "Tensorik — AI/EdTech, LMS & E-commerce Systems",
+      badge: "Promoted to Co-Lead in 3 Months",
       badgeIcon: (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -74,7 +26,7 @@ export default function About() {
     },
     {
       tag: "Education",
-      title: "GPA 3.6 / 4.0",
+      title: "GPA 3.6 / 4.0 (Honors)",
       desc: "B.S. Information Systems",
       subline: "Port Said University",
       icon: (
@@ -85,8 +37,8 @@ export default function About() {
       ),
     },
     {
-      tag: "Specialization",
-      title: "AWS Cloud Architect",
+      tag: "Cloud Architecture",
+      title: "AWS Cloud Track",
       desc: "Egypt's Digital Pioneers Initiative",
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -95,9 +47,9 @@ export default function About() {
       ),
     },
     {
-      tag: "Activity",
-      title: "750+ Commits",
-      desc: "Production code, open-source repos & backend systems",
+      tag: "Core Engineering",
+      title: "Node.js · NestJS · Postgres",
+      desc: "Production REST APIs, Redis Queues & SOLID Design",
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="16 18 22 12 16 6"/>
@@ -132,22 +84,15 @@ export default function About() {
           <ScrollReveal delay={200}>
             <div className="about-paragraphs">
               <p>
-                I'm a Backend Developer with hands-on production experience building and scaling an AI & EdTech 
-                platform serving <span className="cyan-highlight">10,000+ users</span> at <span className="cyan-highlight">Tensorik</span>. 
-                I work on designing robust APIs, payment systems, admin dashboards, rate limiting, and optimized 
-                database schemas using <span className="cyan-highlight">Next.js, Supabase</span>, and <span className="cyan-highlight">Node.js</span>.
+                I'm a <span className="cyan-highlight">Backend Developer</span> with production experience building and architecting scalable backend systems using <span className="cyan-highlight">Node.js, NestJS, Express.js, TypeScript, PostgreSQL, and Supabase</span>. Most recently at <span className="cyan-highlight">Tensorik</span>, I progressed from Intern to <span className="cyan-highlight">Junior Backend Developer & Co-Lead within three months</span>, taking ownership of backend features across AI education platforms, LMS products, Flutter mobile backends, and e-commerce applications.
               </p>
               
               <p>
-                I have experience in <span className="cyan-highlight">RESTful API design</span>, authentication, role-based 
-                access control, and collaborating on production codebases via Git. I've integrated <span className="cyan-highlight">Razorpay payment gateway</span>, 
-                implemented API rate limiting, and optimized <span className="cyan-highlight">PostgreSQL</span> database schemas for performance.
+                My core focus is on engineering robust <span className="cyan-highlight">RESTful APIs</span>, database schemas, authentication/authorization, API rate limiting, and asynchronous background processing with <span className="cyan-highlight">Redis and BullMQ</span>. I also bring hands-on experience integrating payment gateways (<span className="cyan-highlight">Razorpay, Stripe</span>), third-party APIs, and building clean architectures following <span className="cyan-highlight">SOLID principles</span>.
               </p>
 
               <p>
-                I hold a <span className="cyan-highlight">Bachelor's Degree in Information Systems</span> (GPA: 3.6) from 
-                Port Said University and completed comprehensive backend training at <span className="cyan-highlight">Route Academy</span>, 
-                where I built systems using Node.js, Express.js, Mongoose, and Socket.IO following <span className="cyan-highlight">SOLID principles</span>.
+                I hold a <span className="cyan-highlight">Bachelor's Degree in Information Systems (GPA: 3.6)</span> from Port Said University. To continuously sharpen my skillset, I completed the <span className="cyan-highlight">AWS Cloud Architect track</span> through Egypt's Digital Pioneers Initiative (focusing on EC2, S3, IAM, and cloud infrastructure) and completed intensive backend diploma training at <span className="cyan-highlight">Route Academy</span>.
               </p>
             </div>
           </ScrollReveal>
@@ -204,41 +149,6 @@ export default function About() {
                   <span className="step-tag">Storage</span>
                   <span className="step-name">Postgres / Redis</span>
                 </div>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Tech Highlights Header & Pills */}
-          <ScrollReveal delay={300}>
-            <div className="tech-highlights-wrap">
-              <div className="tech-label-header">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/>
-                  <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-                  <path d="M12 2v2"/>
-                  <path d="M12 20v2"/>
-                  <path d="m4.93 4.93 1.41 1.41"/>
-                  <path d="m17.66 17.66 1.41 1.41"/>
-                  <path d="M2 12h2"/>
-                  <path d="M20 12h2"/>
-                  <path d="m6.34 17.66-1.41 1.41"/>
-                  <path d="m19.07 4.93-1.41 1.41"/>
-                </svg>
-                <span>TECH HIGHLIGHTS</span>
-              </div>
-
-              <div className="highlights-tags-row">
-                {highlights.map((item) => (
-                  <motion.span 
-                    key={item.label} 
-                    className="tech-highlight-pill"
-                    whileHover={{ scale: 1.06, y: -2 }}
-                    whileTap={{ scale: 0.96 }}
-                  >
-                    <span className="pill-icon">{item.icon}</span>
-                    <span className="pill-text">{item.label}</span>
-                  </motion.span>
-                ))}
               </div>
             </div>
           </ScrollReveal>
@@ -570,10 +480,11 @@ export default function About() {
 
         .timeline-connector-line {
           position: absolute;
-          left: 6px;
+          left: 7px;
           top: 24px;
           bottom: 24px;
           width: 2px;
+          transform: translateX(-50%);
           background: linear-gradient(180deg, #00d2ff 0%, rgba(0, 210, 255, 0.2) 60%, transparent 100%);
         }
 
@@ -591,7 +502,8 @@ export default function About() {
 
         .timeline-glowing-node {
           position: absolute;
-          left: -28px;
+          left: -21px;
+          transform: translateX(-50%);
           width: 14px;
           height: 14px;
           border-radius: 50%;
@@ -705,6 +617,9 @@ export default function About() {
             padding-left: 24px;
             padding-right: 0;
           }
+          .arch-flow-box {
+            display: none !important;
+          }
         }
 
         @media (max-width: 640px) {
@@ -771,8 +686,16 @@ export default function About() {
             width: 90%;
           }
           .about-right-col {
-            padding-left: 16px;
+            padding-left: 24px;
             padding-right: 4px;
+          }
+          .timeline-connector-line {
+            left: 7px;
+            transform: translateX(-50%);
+          }
+          .timeline-glowing-node {
+            left: -17px;
+            transform: translateX(-50%);
           }
           .about-actions-row {
             flex-direction: column;

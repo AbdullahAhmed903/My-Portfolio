@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
-export default function Counter({ value, duration = 2, suffix = "", prefix = "" }) {
+export default function Counter({ value, duration = 1.3, suffix = "", prefix = "" }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-20px" });
+  const isInView = useInView(ref, { once: true, margin: "50px 0px 0px 0px" });
   const [displayValue, setDisplayValue] = useState(0);
 
   // Extract pure number from string if provided like "10" or "750"

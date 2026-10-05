@@ -103,13 +103,15 @@ export default function ParticleNetwork() {
 
     // Draw glowing particles
     for (const p of particles.current) {
-      ctx.fillStyle = `rgba(${p.hue}, 0.8)`;
-      ctx.shadowColor = `rgba(${p.hue}, 0.5)`;
-      ctx.shadowBlur = 6;
+      ctx.fillStyle = `rgba(${p.hue}, 0.25)`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, RADIUS * 2.2, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.fillStyle = `rgba(${p.hue}, 0.9)`;
       ctx.beginPath();
       ctx.arc(p.x, p.y, RADIUS, 0, 2 * Math.PI);
       ctx.fill();
-      ctx.shadowBlur = 0; // reset
     }
 
     // Move particles
@@ -127,6 +129,7 @@ export default function ParticleNetwork() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     resizeCanvas(canvas);
     initParticles();
     animationRef.current = requestAnimationFrame(animate);
@@ -138,16 +141,25 @@ export default function ParticleNetwork() {
     const handleMouseLeave = () => {
       mouseRef.current.active = false;
     };
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationRef.current);
+      } else {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
 
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       cancelAnimationFrame(animationRef.current);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 

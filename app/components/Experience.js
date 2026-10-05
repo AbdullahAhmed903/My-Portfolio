@@ -7,35 +7,35 @@ import BorderBeam from "./BorderBeam";
 export default function Experience() {
   const workExperience = [
     {
-      date: "06/2026 – 09/2026",
+      date: "01/2026 – 08/2026",
       role: "Junior Backend Developer",
-      company: "Tensorik",
-      desc: "Designed and developed production backend services and REST APIs for AI education, Flutter mobile LMS backend, and e-commerce using Node.js, NestJS, PostgreSQL, and Supabase.",
+      company: "Tensorik · India",
+      desc: "Engineered production backend services and REST APIs for Tensorik's AI/tech education platform, MBT Institute, Flutter LMS mobile app, and e-commerce. Architected PostgreSQL/Supabase schemas, rate limiting, Redis caching, BullMQ jobs, and Razorpay payments.",
       badgeIcon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
         </svg>
       ),
-      tags: ["Node.js", "NestJS", "PostgreSQL", "Supabase"]
+      tags: ["Node.js", "NestJS", "PostgreSQL", "Supabase", "Redis", "BullMQ", "Razorpay"]
     },
     {
-      date: "03/2026 – 06/2026",
-      role: "Backend Developer Intern",
-      company: "Tensorik",
-      desc: "Implemented core REST APIs, database schemas, Razorpay payment workflows, API rate limiting, and backend business logic.",
+      date: "01/2025 – 01/2026",
+      role: "Freelance Backend Developer",
+      company: "Self-Employed · Remote",
+      desc: "Designed and developed backend systems and REST APIs for multiple freelance projects, including a doctor/clinic management system. Built patient records, appointment scheduling, RBAC, MongoDB schemas, Stripe payment processing, and Redis caching.",
       badgeIcon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="16 18 22 12 16 6"/>
           <polyline points="8 6 2 12 8 18"/>
         </svg>
       ),
-      tags: ["REST APIs", "Razorpay", "Rate Limiting", "SQL"]
+      tags: ["Node.js", "Express.js", "MongoDB", "Mongoose", "Stripe", "Redis", "RBAC"]
     },
     {
       date: "08/2024 – 10/2024",
       role: "Frontend Developer",
-      company: "CodeAlpha",
-      desc: "Built responsive interactive web applications with modern UI and client-side state management.",
+      company: "CodeAlpha · India",
+      desc: "Built three projects, including a Weather Website and Book Library, using HTML5, CSS3, and core JavaScript, with a focus on responsive static interfaces and fundamental DOM manipulation.",
       badgeIcon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect width="20" height="14" x="2" y="3" rx="2"/>
@@ -43,16 +43,16 @@ export default function Experience() {
           <line x1="12" x2="12" y1="17" y2="21"/>
         </svg>
       ),
-      tags: ["JavaScript", "HTML5", "CSS3", "React"]
+      tags: ["JavaScript", "HTML5", "CSS3", "DOM Manipulation"]
     },
   ];
 
   const educationAndTracks = [
     {
       date: "09/2020 – 06/2024",
-      role: "B.S. Information Systems",
-      company: "Port Said University (GPA: 3.6)",
-      desc: "Graduated with honors. Focused on database systems, software engineering, algorithms, and web architecture.",
+      role: "Bachelor of Information Systems (GPA: 3.6)",
+      company: "Faculty of Management Technology and Information Systems, Port Said University",
+      desc: "Graduated with honors (GPA: 3.6). Comprehensive focus on database systems, software engineering, data structures, algorithms, and web architecture.",
       badgeIcon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
@@ -62,32 +62,32 @@ export default function Experience() {
           <path d="m15.5 16.5 2 2"/>
         </svg>
       ),
-      tags: ["Honors 3.6 GPA", "Database Systems", "Software Eng"]
+      tags: ["Honors GPA: 3.6", "Information Systems", "Database Systems", "Software Eng"]
     },
     {
       date: "07/2024 – 10/2024",
-      role: "AWS Cloud Architect Track",
+      role: "AWS Cloud Track",
       company: "Egypt's Digital Pioneers Initiative",
-      desc: "In-depth cloud infrastructure, EC2, S3, IAM, VPC, and scalable cloud application design.",
+      desc: "Gained foundational AWS cloud knowledge, including EC2 for scalable hosting, RDS for database management, and IAM for secure access control to support backend solutions.",
       badgeIcon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
         </svg>
       ),
-      tags: ["AWS EC2", "S3 & IAM", "Cloud Architecture"]
+      tags: ["AWS EC2", "AWS RDS", "AWS IAM", "Cloud Solutions"]
     },
     {
       date: "09/2022 – 01/2023",
       role: "Backend Diploma (Node.js)",
       company: "Route Academy",
-      desc: "Comprehensive training in RESTful APIs, Express, MongoDB, Socket.IO, security, and SOLID principles.",
+      desc: "Developed backend projects, including an e-commerce platform and real-time applications, using Node.js, Express.js, Mongoose, and Socket.IO, with Joi-based validation and clean architecture following SOLID principles.",
       badgeIcon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           <path d="M9 12l2 2 4-4"/>
         </svg>
       ),
-      tags: ["Express.js", "MongoDB", "Socket.IO", "SOLID"]
+      tags: ["Node.js", "Express.js", "Mongoose", "Socket.IO", "SOLID Principles"]
     },
   ];
 

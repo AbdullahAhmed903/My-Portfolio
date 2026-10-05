@@ -12,9 +12,42 @@ export default function Projects() {
   const projects = [
     {
       number: "01",
+      title: "Tiqora — Event & Sports Ticketing Platform",
+      desc: "Architected an end-to-end event and sports ticketing platform, designing seamless event discovery workflows, secure multi-step checkout pipelines, and real-time booking confirmation workflows.",
+      tags: ["Node.js", "React.js", "Next.js", "TypeScript", "PostgreSQL", "Supabase", "Stripe", "Resend", "Tailwind CSS", "Zod"],
+      link: "https://github.com/AbdullahAhmed903",
+      linkLabel: "Code",
+      isFeatured: true,
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+          <path d="M13 5v2"/>
+          <path d="M13 17v2"/>
+          <path d="M13 11v2"/>
+        </svg>
+      ),
+      endpoints: [
+        { method: "GET", path: "/api/v1/events/feed", description: "Event discovery with category filtering and index scan" },
+        { method: "POST", path: "/api/v1/tickets/checkout", description: "Multi-step checkout pipeline with Stripe session creation" },
+        { method: "POST", path: "/api/v1/bookings/confirm", description: "Real-time booking confirmation & QR ticket generation" }
+      ],
+      samplePayload: {
+        bookingId: "tiq_bk_98214",
+        event: "Super Cup Finals 2026",
+        tier: "VIP Lounge",
+        ticketsCount: 2,
+        totalAmount: 180,
+        currency: "USD",
+        status: "confirmed",
+        ticketHash: "0x98f3b...e2a",
+        meta: { paymentMethod: "stripe_checkout", latencyMs: 18 }
+      }
+    },
+    {
+      number: "02",
       title: "Tensorik — AI & Tech Education Platform",
-      desc: "Scalable backend platform with REST APIs serving 10,000+ users. Integrated Razorpay payments, rate limiting, and optimized PostgreSQL database schemas.",
-      tags: ["Node.js", "TypeScript", "PostgreSQL", "Supabase", "Razorpay"],
+      desc: "Constructed an ed-tech platform featuring gated cohort dashboards, structured milestone roadmaps, automated participant verification, interactive skill-building tools with real-time feedback, and administrative controls for bulk student onboarding.",
+      tags: ["Node.js", "React.js", "Next.js", "TypeScript", "PostgreSQL", "Supabase", "Razorpay", "Resend", "Tailwind CSS", "Zod", "Redis"],
       link: "https://tensorik.in/",
       linkLabel: "Live",
       isFeatured: true,
@@ -27,8 +60,8 @@ export default function Projects() {
         </svg>
       ),
       endpoints: [
+        { method: "POST", path: "/api/v1/cohorts/verify", description: "Automated student onboarding & participant verification" },
         { method: "POST", path: "/api/v1/payments/razorpay/create-order", description: "Initialize payment session & verify signature" },
-        { method: "POST", path: "/api/v1/payments/webhook", description: "Handle asynchronous Razorpay payment captures with idempotency" },
         { method: "GET", path: "/api/v1/courses/progress", description: "Retrieve user course completion telemetry with Redis caching" }
       ],
       samplePayload: {
@@ -37,16 +70,18 @@ export default function Projects() {
         currency: "INR",
         status: "captured",
         userId: "usr_991823",
-        items: [{ courseId: "crs_backend_nest", title: "Mastering NestJS Architecture" }],
+        cohortId: "cohort_backend_adv",
         meta: { rateLimitRemaining: 58, responseTimeMs: 19 }
       }
     },
     {
-      number: "02",
+      number: "03",
       title: "MBT Mobile Learning App – Backend",
-      desc: "Backend for a Flutter-based LMS app with authentication, live classes, course progression, push notifications, and payment flows.",
-      tags: ["NestJS", "Node.js", "PostgreSQL", "Supabase", "REST APIs"],
+      desc: "Built an end-to-end LMS delivering live interactive sessions, on-demand course streaming, student progress tracking, and automated certification with device-restricted access controls and administrative dashboard.",
+      tags: ["Node.js", "NestJS", "TypeScript", "PostgreSQL", "BullMQ", "Razorpay", "Resend", "FCM", "Redis", "Cloudinary", "Zoom API", "Twilio"],
       link: "https://github.com/AbdullahAhmed903",
+      linkLabel: "Code",
+      isFeatured: true,
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
@@ -54,9 +89,9 @@ export default function Projects() {
         </svg>
       ),
       endpoints: [
-        { method: "POST", path: "/api/v1/auth/mobile/login", description: "Issue refresh tokens & JWT device sessions" },
-        { method: "GET", path: "/api/v1/live-classes/active", description: "Real-time streaming status with WebSocket signaling" },
-        { method: "PATCH", path: "/api/v1/user/lesson-sync", description: "Sync offline playback milestones" }
+        { method: "POST", path: "/api/v1/auth/mobile/device-session", description: "Device-restricted session binding & JWT issuance" },
+        { method: "GET", path: "/api/v1/live-classes/active", description: "Zoom API live streaming signaling & attendance tracking" },
+        { method: "POST", path: "/api/v1/notifications/push", description: "Dispatch targeted FCM alerts via BullMQ queue" }
       ],
       samplePayload: {
         sessionId: "sess_mbt_8829",
@@ -66,10 +101,10 @@ export default function Projects() {
       }
     },
     {
-      number: "03",
-      title: "Khajamobiles E-Commerce Backend",
-      desc: "E-commerce backend handling catalogs, inventory, orders, payments, and database migrations with a scalable architecture.",
-      tags: ["Node.js", "Next.js", "TypeScript", "PostgreSQL", "Supabase"],
+      number: "04",
+      title: "Khaja Mobile — E-Commerce Backend",
+      desc: "E-commerce platform handling full-catalog browsing, inventory management, secure Razorpay checkout pipelines, Redis caching, and transactional email confirmations via Resend.",
+      tags: ["Node.js", "React.js", "Next.js", "TypeScript", "PostgreSQL", "Razorpay", "Resend", "Tailwind CSS", "Zod", "Redis"],
       link: "https://khajamobile.com/",
       linkLabel: "Live",
       icon: (
@@ -82,14 +117,97 @@ export default function Projects() {
       endpoints: [
         { method: "GET", path: "/api/v1/products/search", description: "Full-text indexing with price & category facets" },
         { method: "POST", path: "/api/v1/cart/checkout", description: "Atomic inventory decrement transaction" }
-      ]
+      ],
+      samplePayload: {
+        orderId: "ord_km_7712",
+        itemsCount: 3,
+        total: 1240,
+        status: "paid",
+        receiptSent: true
+      }
     },
     {
-      number: "04",
-      title: "Doctor Appointment & Medical System",
-      desc: "Healthcare backend with appointment scheduling, medical records, Stripe payments, Redis caching, and BullMQ job queues.",
-      tags: ["Node.js", "Express.js", "MongoDB", "Stripe", "Redis", "BullMQ"],
+      number: "05",
+      title: "MBT Institute Platform",
+      desc: "Comprehensive educational institute portal featuring student admission workflows, syllabus exploration, batch schedules, and administrative role management.",
+      tags: ["Node.js", "React.js", "Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Zod"],
+      link: "https://github.com/AbdullahAhmed903",
+      linkLabel: "Code",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10"/>
+          <path d="M6 10h10"/>
+        </svg>
+      ),
+      endpoints: [
+        { method: "GET", path: "/api/v1/institute/programs", description: "Fetch accredited institute programs & curriculum" },
+        { method: "POST", path: "/api/v1/institute/admissions", description: "Zod-validated student enrollment registration" }
+      ],
+      samplePayload: {
+        applicationId: "adm_9012",
+        program: "Advanced Software Architecture",
+        status: "under_review",
+        timestamp: "2026-06-01T10:00:00Z"
+      }
+    },
+    {
+      number: "06",
+      title: "Green Line Car Travels",
+      desc: "Fleet transport and vehicle reservation platform providing scheduled route queries, seat availability, and multi-passenger booking confirmations.",
+      tags: ["Node.js", "React.js", "Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS", "Zod"],
+      link: "https://github.com/AbdullahAhmed903",
+      linkLabel: "Code",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.9C2.1 11.2 2 11.6 2 12v4c0 .6.4 1 1 1h2"/>
+          <circle cx="7" cy="17" r="2"/>
+          <path d="M9 17h6"/>
+          <circle cx="17" cy="17" r="2"/>
+        </svg>
+      ),
+      endpoints: [
+        { method: "GET", path: "/api/v1/routes/search", description: "Search city routes and trip departure times" },
+        { method: "POST", path: "/api/v1/bookings/reserve-seat", description: "Real-time seat locking with transaction integrity" }
+      ],
+      samplePayload: {
+        tripId: "trip_cairo_alex_99",
+        seatsReserved: ["A3", "A4"],
+        departure: "08:30 AM",
+        status: "locked"
+      }
+    },
+    {
+      number: "07",
+      title: "Task Manager Backend (RBAC)",
+      desc: "Enterprise task management system with role-based access control (RBAC), Prisma ORM data modeling, Swagger documentation, and automated email alerts.",
+      tags: ["Node.js", "NestJS", "TypeScript", "MySQL", "Prisma ORM", "JWT", "Swagger", "Nodemailer"],
+      link: "https://github.com/AbdullahAhmed903/TaskManager-nestjs-mysql.git",
+      linkLabel: "Code",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      ),
+      endpoints: [
+        { method: "POST", path: "/api/v1/tasks/assign", description: "RBAC Guard check & audit log dispatch" },
+        { method: "GET", path: "/api/v1/analytics/team-velocity", description: "Aggregated sprint metrics" }
+      ],
+      samplePayload: {
+        taskId: "tsk_8201",
+        assignedTo: "usr_eng_3",
+        roleRequirement: "ADMIN",
+        status: "in_progress"
+      }
+    },
+    {
+      number: "08",
+      title: "Doctor & Clinic Management System",
+      desc: "Healthcare management backend with doctor-patient appointment scheduling, Redis locking for race condition prevention, medical records, Stripe billing, and BullMQ queues.",
+      tags: ["Node.js", "Express.js", "JavaScript", "Mongoose", "Redis", "Joi", "Swagger", "Nodemailer", "JWT", "Stripe", "BullMQ"],
       link: "https://github.com/AbdullahAhmed903/DoctorSystem.git",
+      linkLabel: "Code",
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/>
@@ -100,31 +218,22 @@ export default function Projects() {
       endpoints: [
         { method: "POST", path: "/api/v1/appointments/book", description: "Check doctor availability slot with Redis lock" },
         { method: "POST", path: "/api/v1/prescriptions/upload", description: "Encrypted patient document upload" }
-      ]
+      ],
+      samplePayload: {
+        appointmentId: "apt_med_401",
+        doctor: "Dr. Sarah Adams",
+        slot: "14:00 - 14:30",
+        paymentStatus: "stripe_paid_verified",
+        lockReleased: true
+      }
     },
     {
-      number: "05",
-      title: "Task Manager Backend (RBAC)",
-      desc: "Enterprise task management system with role-based access control, JWT security, and clean modular architecture.",
-      tags: ["NestJS", "TypeScript", "MySQL", "RBAC", "SOLID"],
-      link: "https://github.com/AbdullahAhmed903/TaskManager-nestjs-mysql.git",
-      icon: (
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="M9 12l2 2 4-4"/>
-        </svg>
-      ),
-      endpoints: [
-        { method: "POST", path: "/api/v1/tasks/assign", description: "RBAC Guard check & audit log dispatch" },
-        { method: "GET", path: "/api/v1/analytics/team-velocity", description: "Aggregated sprint metrics" }
-      ]
-    },
-    {
-      number: "06",
+      number: "09",
       title: "Intern Hub Real-Time Platform",
-      desc: "Real-time platform connecting tech interns and companies with chat, notifications, and RESTful APIs.",
-      tags: ["Node.js", "Express", "Socket.IO", "MongoDB"],
+      desc: "Real-time platform connecting candidates and companies with live chat, WebSocket notifications, resume parsing, and asynchronous processing.",
+      tags: ["Node.js", "Express.js", "JavaScript", "Mongoose", "Redis", "Joi", "WebSocket", "Nodemailer", "JWT", "BullMQ"],
       link: "https://github.com/AbdullahAhmed903/Intern-Hub-Api.git",
+      linkLabel: "Code",
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -133,7 +242,13 @@ export default function Projects() {
       endpoints: [
         { method: "GET", path: "/api/v1/internships/feed", description: "Filter tech internships with pagination" },
         { method: "POST", path: "/api/v1/applications/submit", description: "Submit resume & alert hiring manager" }
-      ]
+      ],
+      samplePayload: {
+        candidateId: "usr_cnd_98",
+        applicationStatus: "submitted",
+        notificationsDispatched: 2,
+        socketEventSent: true
+      }
     },
   ];
 

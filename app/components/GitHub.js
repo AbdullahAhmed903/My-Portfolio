@@ -54,90 +54,18 @@ export default function GitHub() {
 
     async function loadGitHubData() {
       try {
-        // 1. Fetch user data (public repos count)
-        const userPromise = fetch("https://api.github.com/users/AbdullahAhmed903")
-          .then((res) => (res.ok ? res.json() : null))
-          .catch(() => null);
-
-        // 2. Fetch contributions breakdown across years
-        const contribPromise = fetch("https://github-contributions-api.jogruber.de/v4/AbdullahAhmed903")
-          .then((res) => (res.ok ? res.json() : null))
-          .catch(() => null);
-
-        // 3. Fetch public repos for language distribution
-        const reposPromise = fetch("https://api.github.com/users/AbdullahAhmed903/repos?per_page=100&sort=updated")
-          .then((res) => (res.ok ? res.json() : null))
-          .catch(() => null);
-
-        const [userData, contribData, reposData] = await Promise.all([
-          userPromise,
-          contribPromise,
-          reposPromise,
-        ]);
-
+        const res = await fetch("/api/github-stats");
+        if (!res.ok) return;
+        const data = await res.json();
         if (!isMounted) return;
 
-        setStats((prev) => {
-          let updatedRepos = prev.publicRepos;
-          let updatedLastYear = prev.lastYearContributions;
-          let updatedTotal = prev.totalContributions;
-          let updatedCurrentYear = prev.currentYearContributions;
-          let updatedLanguages = prev.languages;
-
-          if (userData?.public_repos) {
-            updatedRepos = userData.public_repos;
-          }
-
-          if (contribData?.total) {
-            if (contribData.total.lastYear) {
-              updatedLastYear = contribData.total.lastYear;
-            }
-            if (contribData.total[currentYear]) {
-              updatedCurrentYear = contribData.total[currentYear];
-            }
-            const allYearsSum = Object.entries(contribData.total)
-              .filter(([key]) => key !== "lastYear")
-              .reduce((acc, [, val]) => acc + (typeof val === "number" ? val : 0), 0);
-            if (allYearsSum > 0) {
-              updatedTotal = allYearsSum;
-            }
-          }
-
-          if (Array.isArray(reposData) && reposData.length > 0) {
-            const langCounts = {};
-            let totalCount = 0;
-            reposData.forEach((repo) => {
-              if (repo.language) {
-                langCounts[repo.language] = (langCounts[repo.language] || 0) + 1;
-                totalCount++;
-              }
-            });
-
-            if (totalCount > 0) {
-              const sortedLangs = Object.entries(langCounts)
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 4);
-
-              const computedLanguages = sortedLangs.map(([name, count]) => ({
-                name,
-                percent: Math.round((count / totalCount) * 100),
-                color: LANG_COLORS[name] || "#00D2FF",
-              }));
-
-              if (computedLanguages.length > 0) {
-                updatedLanguages = computedLanguages;
-              }
-            }
-          }
-
-          return {
-            publicRepos: updatedRepos,
-            totalContributions: updatedTotal,
-            lastYearContributions: updatedLastYear,
-            currentYearContributions: updatedCurrentYear,
-            languages: updatedLanguages,
-          };
-        });
+        setStats((prev) => ({
+          publicRepos: data.publicRepos || prev.publicRepos,
+          totalContributions: data.totalContributions || prev.totalContributions,
+          lastYearContributions: data.lastYearContributions || prev.lastYearContributions,
+          currentYearContributions: data.currentYearContributions || prev.currentYearContributions,
+          languages: data.languages || prev.languages,
+        }));
       } catch (err) {
         console.error("Error loading live GitHub statistics:", err);
       }
@@ -189,7 +117,7 @@ export default function GitHub() {
                   <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.22-.253-4.555-1.112-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.338 4.695-4.566 4.944.36.31.68.921.68 1.857 0 1.34-.012 2.422-.012 2.753 0 .268.18.579.688.481C19.138 20.203 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z" />
                   </svg>
-                  <span className="card-title">Contributions in the last year</span>
+                  <span className="card-title">GitHub Contribution Graph</span>
                 </div>
 
                 <div className="header-legend">
@@ -234,21 +162,6 @@ export default function GitHub() {
                   >
                     ›
                   </button>
-                </div>
-              </div>
-
-              {/* Bottom Counter Bar with Live Animated Counter */}
-              <div className="card-bottom-bar">
-                <div className="pulse-icon-box">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                  </svg>
-                </div>
-                <div className="counter-text">
-                  <strong className="counter-num">
-                    <Counter value={stats.lastYearContributions} suffix="+" />
-                  </strong>
-                  <span className="counter-desc">contributions in the last year</span>
                 </div>
               </div>
             </div>
@@ -646,7 +559,7 @@ export default function GitHub() {
         .chart-container-wrapper {
           position: relative;
           width: 100%;
-          margin-bottom: 16px;
+          margin-bottom: 0;
         }
 
         .chart-viewport {

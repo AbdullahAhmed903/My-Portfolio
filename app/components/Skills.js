@@ -9,7 +9,7 @@ const CATEGORIES = [
     id: "languages",
     number: "01",
     title: "Languages",
-    desc: "Core programming languages I work with.",
+    desc: "Core programming languages for robust application systems.",
     accentGlow: "rgba(49, 120, 198, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -19,7 +19,7 @@ const CATEGORIES = [
     ),
     skills: [
       {
-        name: "JavaScript",
+        name: "JavaScript (ES6+)",
         highlight: true,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
@@ -44,7 +44,7 @@ const CATEGORIES = [
     id: "backend",
     number: "02",
     title: "Backend & Systems",
-    desc: "Building robust APIs, services and scalable backend systems.",
+    desc: "Building robust APIs, microservices and scalable distributed systems.",
     accentGlow: "rgba(0, 210, 255, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -67,22 +67,22 @@ const CATEGORIES = [
         ),
       },
       {
-        name: "Express.js",
-        highlight: true,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="2" y="4" width="20" height="16" rx="4"/>
-            <path d="M7 15l4-6M11 15l-4-6M15 15h4M15 9h4M15 12h3"/>
-          </svg>
-        ),
-      },
-      {
         name: "NestJS",
         highlight: true,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
             <path d="M22.5 7.4c-.2-.7-.7-1.3-1.4-1.6L13.8 2.2c-.8-.4-1.8-.4-2.6 0L4 5.8c-.7.3-1.2.9-1.4 1.6C2 9.5 2 14.5 4 17.6c.3.5.7.9 1.2 1.2l6.8 3.5c.8.4 1.8.4 2.6 0l6.8-3.5c.5-.3.9-.7 1.2-1.2 2-3.1 2-8.1-.1-10.2z" fill="#EA2845"/>
             <path d="M12 6.5l3.8 2.2v4.4L12 15.3l-3.8-2.2V8.7L12 6.5z" fill="#FFF"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Express.js",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <rect x="2" y="4" width="20" height="16" rx="4"/>
+            <path d="M7 15l4-6M11 15l-4-6M15 15h4M15 9h4M15 12h3"/>
           </svg>
         ),
       },
@@ -98,19 +98,6 @@ const CATEGORIES = [
         ),
       },
       {
-        name: "System Design",
-        highlight: true,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="2" width="8" height="8" rx="2"/>
-            <rect x="14" y="2" width="8" height="8" rx="2"/>
-            <rect x="8" y="14" width="8" height="8" rx="2"/>
-            <path d="M6 10v2a2 2 0 0 0 2 2h4"/>
-            <path d="M18 10v2a2 2 0 0 1-2 2"/>
-          </svg>
-        ),
-      },
-      {
         name: "Socket.IO",
         highlight: false,
         icon: (
@@ -120,13 +107,22 @@ const CATEGORIES = [
           </svg>
         ),
       },
+      {
+        name: "BullMQ",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DC382D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        ),
+      },
     ],
   },
   {
     id: "databases",
     number: "03",
-    title: "Databases & ORM",
-    desc: "Databases and ORM tools I use for data modeling.",
+    title: "Databases & Caching",
+    desc: "PostgreSQL, Supabase, document stores, and in-memory caches.",
     accentGlow: "rgba(34, 197, 94, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -142,6 +138,15 @@ const CATEGORIES = [
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
             <path d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.9 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.7.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 4-1.3 6.9-5.1 6.9-9.5C22 6.5 17.5 2 12 2z" fill="#336791"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Supabase",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path d="M13.4 2.2c-.6-.7-1.7-.3-1.7.6v8.4H4.5c-.8 0-1.2.9-.7 1.5l8.9 10.1c.6.7 1.7.3 1.7-.6v-8.4h7.2c.8 0 1.2-.9.7-1.5L13.4 2.2z" fill="#3ECF8E"/>
           </svg>
         ),
       },
@@ -166,12 +171,85 @@ const CATEGORIES = [
         ),
       },
       {
-        name: "Prisma ORM",
+        name: "Redis",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path d="M22 8.5L12 3 2 8.5 12 14l10-5.5z" fill="#D82C20"/>
+            <path d="M2 14.5L12 20l10-5.5v-2L12 18 2 12.5v2z" fill="#A81D13"/>
+            <path d="M2 18.5L12 24l10-5.5v-2L12 22 2 16.5v2z" fill="#75130C"/>
+          </svg>
+        ),
+      },
+    ],
+  },
+  {
+    id: "architecture",
+    number: "04",
+    title: "Architecture & Practices",
+    desc: "Data structures, OOP paradigms, system design, and clean architecture.",
+    accentGlow: "rgba(168, 85, 247, 0.18)",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    ),
+    skills: [
+      {
+        name: "Data Structures & Algorithms",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A855F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="5" r="3"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="18" r="3"/>
+            <path d="M12 8v4M9.5 15L7.5 13M14.5 15l2-2"/>
+          </svg>
+        ),
+      },
+      {
+        name: "OOP",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+        ),
+      },
+      {
+        name: "System Design",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="2" width="8" height="8" rx="2"/>
+            <rect x="14" y="2" width="8" height="8" rx="2"/>
+            <rect x="8" y="14" width="8" height="8" rx="2"/>
+            <path d="M6 10v2a2 2 0 0 0 2 2h4"/>
+            <path d="M18 10v2a2 2 0 0 1-2 2"/>
+          </svg>
+        ),
+      },
+      {
+        name: "SOLID Principles",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Error Handling & Validation",
         highlight: false,
         icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2L2 22h20L12 2z"/>
-            <path d="M12 6v12"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
         ),
       },
@@ -179,9 +257,9 @@ const CATEGORIES = [
   },
   {
     id: "cloud",
-    number: "04",
+    number: "05",
     title: "Cloud & DevOps",
-    desc: "Tools and platforms that power development and deployment.",
+    desc: "Cloud infrastructure, containerization, and automated CI/CD.",
     accentGlow: "rgba(0, 210, 255, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -190,7 +268,7 @@ const CATEGORIES = [
     ),
     skills: [
       {
-        name: "AWS",
+        name: "AWS (EC2, RDS, IAM)",
         highlight: true,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
@@ -228,24 +306,13 @@ const CATEGORIES = [
           </svg>
         ),
       },
-      {
-        name: "Redis",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M22 8.5L12 3 2 8.5 12 14l10-5.5z" fill="#D82C20"/>
-            <path d="M2 14.5L12 20l10-5.5v-2L12 18 2 12.5v2z" fill="#A81D13"/>
-            <path d="M2 18.5L12 24l10-5.5v-2L12 22 2 16.5v2z" fill="#75130C"/>
-          </svg>
-        ),
-      },
     ],
   },
   {
     id: "fullstack",
-    number: "05",
-    title: "Frontend & Tools",
-    desc: "Building responsive and dynamic user experiences.",
+    number: "06",
+    title: "Frontend & UI",
+    desc: "Modern reactive user interfaces, component design, and styling.",
     accentGlow: "rgba(97, 218, 251, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -256,7 +323,7 @@ const CATEGORIES = [
     ),
     skills: [
       {
-        name: "React",
+        name: "React.js",
         highlight: true,
         icon: (
           <svg width="16" height="16" viewBox="0 0 24 24">
@@ -274,6 +341,15 @@ const CATEGORIES = [
           <svg width="16" height="16" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="11" fill="#000" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
             <path d="M15 8v8M9 8v8l7-8" stroke="#FFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Tailwind CSS",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z" fill="#38BDF8"/>
           </svg>
         ),
       },
@@ -301,40 +377,51 @@ const CATEGORIES = [
           </svg>
         ),
       },
-      {
-        name: "Tailwind CSS",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z" fill="#38BDF8"/>
-          </svg>
-        ),
-      },
-      {
-        name: "TypeScript",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <rect width="24" height="24" rx="4" fill="#3178C6"/>
-            <path d="M4.5 10.5h6v2.3H8.7V20H6.3v-7.2H4.5v-2.3zm10.7 7c.6.8 1.5 1.3 2.7 1.3 1.2 0 1.9-.6 1.9-1.4 0-.9-.7-1.3-2.2-1.8-2.1-.7-3.4-1.6-3.4-3.4 0-1.9 1.5-3.3 3.6-3.3 1.6 0 2.7.6 3.4 1.7l-1.6 1.1c-.4-.7-1-1-1.8-1-1 0-1.6.6-1.6 1.2 0 .7.6 1.1 2.1 1.6 2.2.8 3.5 1.7 3.5 3.6 0 2.2-1.7 3.5-4 3.5-2 0-3.4-.8-4.1-2.2l1.5-1z" fill="#FFF"/>
-          </svg>
-        ),
-      },
     ],
   },
   {
-    id: "tools",
-    number: "06",
-    title: "Other Tools",
-    desc: "Workflow utilities, payment processing and testing tools.",
+    id: "integrations",
+    number: "07",
+    title: "Payments & Integrations",
+    desc: "Payment gateways, third-party integrations, and API tooling.",
     accentGlow: "rgba(0, 210, 255, 0.15)",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        <path d="m9 12 2 2 4-4"/>
+        <rect width="20" height="14" x="2" y="5" rx="2"/>
+        <line x1="2" x2="22" y1="10" y2="10"/>
       </svg>
     ),
     skills: [
+      {
+        name: "Stripe",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <rect width="24" height="24" rx="4" fill="#635BFF"/>
+            <path d="M14.5 10.4c0-.7-.6-1.1-1.6-1.1-1.4 0-3.1.5-4.4 1.2V7.1c1.5-.6 3.1-.9 4.6-.9 3.5 0 5.6 1.8 5.6 4.7 0 4.6-6.2 3.9-6.2 5.9 0 .8.7 1.2 1.8 1.2 1.6 0 3.6-.7 5-1.5v3.4c-1.6.7-3.4 1-5.1 1-3.6 0-6-1.8-6-4.8 0-4.9 6.3-4.1 6.3-5.7z" fill="#FFF"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Razorpay",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <rect width="24" height="24" rx="4" fill="#0C2340"/>
+            <path d="M14 6l-6 12h4l4-8h-3l1-4z" fill="#00BAF2"/>
+          </svg>
+        ),
+      },
+      {
+        name: "Third-party APIs",
+        highlight: true,
+        icon: (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+        ),
+      },
       {
         name: "Swagger / OpenAPI",
         highlight: false,
@@ -356,25 +443,6 @@ const CATEGORIES = [
           </svg>
         ),
       },
-      {
-        name: "Razorpay",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <rect width="24" height="24" rx="4" fill="#0C2340"/>
-            <path d="M14 6l-6 12h4l4-8h-3l1-4z" fill="#00BAF2"/>
-          </svg>
-        ),
-      },
-      {
-        name: "BullMQ",
-        highlight: false,
-        icon: (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DC382D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-          </svg>
-        ),
-      },
     ],
   },
 ];
@@ -382,10 +450,12 @@ const CATEGORIES = [
 const FILTER_TABS = [
   { id: "all", label: "All Skills" },
   { id: "backend", label: "Backend" },
-  { id: "databases", label: "Databases" },
+  { id: "databases", label: "Databases & Caching" },
+  { id: "architecture", label: "Architecture & DSA" },
   { id: "cloud", label: "Cloud & DevOps" },
   { id: "languages", label: "Languages" },
-  { id: "fullstack", label: "Full Stack" },
+  { id: "fullstack", label: "Frontend" },
+  { id: "integrations", label: "Payments & APIs" },
 ];
 
 export default function Skills() {

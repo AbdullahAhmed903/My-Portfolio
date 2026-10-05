@@ -12,12 +12,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Abdullah Ahmed Fathy - Backend Developer",
-  description: "Backend Developer specializing in Node.js, Next.js, and scalable systems. Currently at Tensorik building educational platforms.",
+  title: "Abdullah Ahmed Fathy - Full-Stack Developer (Backend-Focused)",
+  description: "Full-Stack Developer (Backend-Focused) proficient in Node.js, NestJS, Express.js, TypeScript, Next.js, PostgreSQL, and Supabase. Building scalable end-to-end backend systems.",
   icons: {
-    icon: "https://i.ibb.co/3592vhkV/384A7585.jpg",
-    shortcut: "https://i.ibb.co/3592vhkV/384A7585.jpg",
-    apple: "https://i.ibb.co/3592vhkV/384A7585.jpg",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -25,7 +25,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        <link rel="icon" href="https://i.ibb.co/3592vhkV/384A7585.jpg" type="image/jpeg" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body>{children}</body>
     </html>

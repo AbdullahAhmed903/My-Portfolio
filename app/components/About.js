@@ -8,9 +8,9 @@ export default function About() {
   const cards = [
     {
       tag: "Work Experience",
-      title: "Backend Developer & Co-Lead",
-      desc: "Tensorik — AI/EdTech, LMS & E-commerce Systems",
-      badge: "Promoted to Co-Lead in 3 Months",
+      title: "Junior Backend Developer",
+      desc: "Tensorik — AI EdTech, LMS Mobile & E-Commerce",
+      badge: "01/2026 – 08/2026",
       badgeIcon: (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -25,10 +25,35 @@ export default function About() {
       ),
     },
     {
+      tag: "Freelance Engineering",
+      title: "Freelance Backend Developer",
+      desc: "Clinic & Healthcare Systems · Express, Mongo, Stripe & Redis",
+      badge: "01/2025 – 01/2026",
+      badgeIcon: (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+      ),
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+          <polyline points="2 17 12 22 22 17"/>
+          <polyline points="2 12 12 17 22 12"/>
+        </svg>
+      ),
+    },
+    {
       tag: "Education",
-      title: "GPA 3.6 / 4.0 (Honors)",
-      desc: "B.S. Information Systems",
-      subline: "Port Said University",
+      title: "B.S. Information Systems",
+      desc: "Faculty of Management Tech & IS, Port Said University",
+      badge: "GPA 3.6 / 4.0 (Honors)",
+      badgeIcon: (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="7"/>
+          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+        </svg>
+      ),
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
@@ -39,7 +64,7 @@ export default function About() {
     {
       tag: "Cloud Architecture",
       title: "AWS Cloud Track",
-      desc: "Egypt's Digital Pioneers Initiative",
+      desc: "Egypt's Digital Pioneers Initiative (EC2, RDS, IAM)",
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
@@ -48,8 +73,8 @@ export default function About() {
     },
     {
       tag: "Core Engineering",
-      title: "Node.js · NestJS · Postgres",
-      desc: "Production REST APIs, Redis Queues & SOLID Design",
+      title: "DSA · OOP · SOLID · System Design",
+      desc: "Scalable REST APIs, Redis Caching, BullMQ & Clean Architecture",
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="16 18 22 12 16 6"/>
@@ -84,15 +109,16 @@ export default function About() {
           <ScrollReveal delay={200}>
             <div className="about-paragraphs">
               <p>
-                I'm a <span className="cyan-highlight">Backend Developer</span> with production experience building and architecting scalable backend systems using <span className="cyan-highlight">Node.js, NestJS, Express.js, TypeScript, PostgreSQL, and Supabase</span>. Most recently at <span className="cyan-highlight">Tensorik</span>, I progressed from Intern to <span className="cyan-highlight">Junior Backend Developer & Co-Lead within three months</span>, taking ownership of backend features across AI education platforms, LMS products, Flutter mobile backends, and e-commerce applications.
+                I'm a <span className="cyan-highlight">Full-Stack Developer (Backend-Focused)</span> proficient in{" "}
+                <span className="cyan-highlight">Node.js, NestJS, Express.js, TypeScript, Next.js, Mongoose, PostgreSQL, and Supabase</span>. Most recently, I served as a Junior Backend Developer at <span className="cyan-highlight">Tensorik</span>, owning backend architecture and REST APIs across an AI/tech education platform, a Flutter-based LMS mobile app, and an e-commerce platform, while contributing to frontend UI development in Next.js.
               </p>
               
               <p>
-                My core focus is on engineering robust <span className="cyan-highlight">RESTful APIs</span>, database schemas, authentication/authorization, API rate limiting, and asynchronous background processing with <span className="cyan-highlight">Redis and BullMQ</span>. I also bring hands-on experience integrating payment gateways (<span className="cyan-highlight">Razorpay, Stripe</span>), third-party APIs, and building clean architectures following <span className="cyan-highlight">SOLID principles</span>.
+                I have a proven track record of independently designing, building, and deploying scalable end-to-end backend systems from requirement gathering to production. My engineering foundation is built on <span className="cyan-highlight">Data Structures & Algorithms</span>, <span className="cyan-highlight">Object-Oriented Programming (OOP)</span>, <span className="cyan-highlight">System Design</span>, relational database modeling, rate limiting, and asynchronous background jobs with <span className="cyan-highlight">BullMQ and Redis</span>.
               </p>
 
               <p>
-                I hold a <span className="cyan-highlight">Bachelor's Degree in Information Systems (GPA: 3.6)</span> from Port Said University. To continuously sharpen my skillset, I completed the <span className="cyan-highlight">AWS Cloud Architect track</span> through Egypt's Digital Pioneers Initiative (focusing on EC2, S3, IAM, and cloud infrastructure) and completed intensive backend diploma training at <span className="cyan-highlight">Route Academy</span>.
+                I hold a <span className="cyan-highlight">Bachelor's Degree in Information Systems (GPA: 3.6 / Honors)</span> from Port Said University. I deepened my cloud engineering knowledge through the <span className="cyan-highlight">AWS Cloud track</span> (EC2, RDS, IAM) with Egypt's Digital Pioneers Initiative and completed an intensive backend diploma at <span className="cyan-highlight">Route Academy</span>.
               </p>
             </div>
           </ScrollReveal>

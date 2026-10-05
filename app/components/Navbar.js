@@ -158,9 +158,14 @@ export default function Navbar() {
           <div className="brand-group">
             <a href="#home" onClick={(e) => handleNavClick(e, "home")} className="brand-link">
               <img 
-                src="https://i.ibb.co/3592vhkV/384A7585.jpg" 
+                src="/avatar-small.webp" 
                 alt="Abdullah" 
-                className="brand-avatar" 
+                width={36}
+                height={36}
+                className="brand-avatar"
+                onError={(e) => {
+                  e.currentTarget.src = "/profile.webp";
+                }}
               />
               <span className="brand-name">Abdullah Ahmed</span>
             </a>
@@ -223,9 +228,14 @@ export default function Navbar() {
           <div className="mobile-top-pill">
             <a href="#home" onClick={(e) => handleNavClick(e, "home")} className="mobile-brand-link">
               <img 
-                src="https://i.ibb.co/3592vhkV/384A7585.jpg" 
+                src="/avatar-small.webp" 
                 alt="Abdullah" 
+                width={34}
+                height={34}
                 className="mobile-avatar" 
+                onError={(e) => {
+                  e.currentTarget.src = "/profile.webp";
+                }}
               />
               <span className="mobile-brand-text">Abdullah</span>
             </a>
@@ -261,13 +271,18 @@ export default function Navbar() {
             <div className="drawer-header">
               <div className="drawer-brand">
                 <img 
-                  src="https://i.ibb.co/3592vhkV/384A7585.jpg" 
+                  src="/avatar-small.webp" 
                   alt="Abdullah" 
+                  width={44}
+                  height={44}
                   className="drawer-avatar" 
+                  onError={(e) => {
+                    e.currentTarget.src = "/profile.webp";
+                  }}
                 />
                 <div className="drawer-name-stack">
                   <span className="drawer-title">Abdullah Ahmed</span>
-                  <span className="drawer-sub">Backend Developer</span>
+                  <span className="drawer-sub">Full-Stack Developer (Backend-Focused)</span>
                 </div>
               </div>
 

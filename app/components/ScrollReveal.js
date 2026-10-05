@@ -14,8 +14,8 @@ export default function ScrollReveal({ children, delay = 0, className = "" }) {
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
+        threshold: 0.05,
+        rootMargin: "50px 0px 0px 0px",
       }
     );
 
@@ -42,8 +42,9 @@ export default function ScrollReveal({ children, delay = 0, className = "" }) {
       <style jsx>{`
         .scroll-reveal {
           opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          transform: translateY(18px);
+          transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          will-change: opacity, transform;
         }
 
         .scroll-reveal.visible {

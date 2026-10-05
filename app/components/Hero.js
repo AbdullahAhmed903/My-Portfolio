@@ -17,6 +17,35 @@ const TELEMETRY_LOGS = [
 export default function Hero() {
   const [imgError, setImgError] = useState(false);
   const [logIndex, setLogIndex] = useState(0);
+  const [gitStats, setGitStats] = useState({
+    commits: 1650,
+    projects: 23,
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadHeroStats() {
+      try {
+        const res = await fetch("/api/github-stats");
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!isMounted) return;
+
+        setGitStats({
+          commits: data.commits || 1805,
+          projects: data.projects || 24,
+        });
+      } catch (err) {
+        console.error("Error loading hero stats:", err);
+      }
+    }
+
+    loadHeroStats();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -47,7 +76,7 @@ export default function Hero() {
             transition={{ delay: 0.1, duration: 0.5 }}
           >
             <span className="status-pulse-dot"></span>
-            <span>Backend Developer</span>
+            <span>Full-Stack Developer (Backend-Focused)</span>
           </motion.div>
 
           <motion.h1 
@@ -75,10 +104,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Backend developer with production experience at <span className="highlight-text">Tensorik</span>, building 
-            and scaling an educational platform serving <span className="highlight-text">10,000+ users</span>. 
-            Specialized in payment integration, API design, database optimization, and rate limiting using{" "}
-            <span className="highlight-text">Next.js, Supabase</span>, and <span className="highlight-text">Node.js</span>.
+            Full-Stack Developer with a primary focus on backend engineering, proficient in{" "}
+            <span className="highlight-text">Node.js, NestJS, Express.js, TypeScript, Next.js, PostgreSQL, Mongoose</span>, and{" "}
+            <span className="highlight-text">Supabase</span>. Experienced at <span className="highlight-text">Tensorik</span> owning backend architecture and REST APIs across AI education, mobile LMS, and e-commerce platforms, with a proven track record of designing, building, and deploying scalable end-to-end systems.
           </motion.p>
 
           {/* Live Backend Telemetry Console Banner */}
@@ -232,11 +260,22 @@ export default function Hero() {
                 <div className="photo-container">
                   {!imgError ? (
                     <img
-                      src="https://i.ibb.co/3592vhkV/384A7585.jpg"
+                      src="/profile.webp"
                       alt="Abdullah Ahmed"
                       className="hero-profile-image"
-                      onError={() => setImgError(true)}
+                      width={420}
+                      height={420}
+                      onError={(e) => {
+                        if (e.currentTarget.src.includes(".webp")) {
+                          e.currentTarget.src = "/profile.jpg";
+                        } else if (!e.currentTarget.src.includes("ibb.co")) {
+                          e.currentTarget.src = "https://i.ibb.co/3592vhkV/384A7585.jpg";
+                        } else {
+                          setImgError(true);
+                        }
+                      }}
                       loading="eager"
+                      fetchPriority="high"
                     />
                   ) : (
                     <div className="profile-placeholder">
@@ -252,7 +291,7 @@ export default function Hero() {
                 <div className="floating-status-box">
                   <div className="status-cyan-bar"></div>
                   <div className="status-info-txt">
-                    <h4 className="status-headline">Node.js & Backend Developer</h4>
+                    <h4 className="status-headline">Full-Stack Developer (Backend-Focused)</h4>
                     <p className="status-subline">Building reliable, scalable and high-performance systems.</p>
                   </div>
                   <div className="status-live-badge">
@@ -276,7 +315,7 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="stat-metric-value">
-                <Counter value={10} suffix="K+" />
+                <Counter value={750} suffix="+" />
               </div>
               <div className="stat-metric-label">Users Served</div>
             </div>
@@ -290,7 +329,7 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="stat-metric-value">
-                <Counter value={750} suffix="+" />
+                <Counter value={gitStats.commits} suffix="+" />
               </div>
               <div className="stat-metric-label">Commits</div>
             </div>
@@ -304,7 +343,7 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="stat-metric-value">
-                <Counter value={12} suffix="+" />
+                <Counter value={gitStats.projects} suffix="+" />
               </div>
               <div className="stat-metric-label">Projects</div>
             </div>
@@ -317,7 +356,7 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="stat-metric-value">
-                <Counter value={1} suffix="+ Yrs" />
+                <Counter value={2} suffix="+ Yrs" />
               </div>
               <div className="stat-metric-label">Experience</div>
             </div>

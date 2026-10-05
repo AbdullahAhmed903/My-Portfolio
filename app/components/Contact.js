@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import confetti from "canvas-confetti";
 import ScrollReveal from "./ScrollReveal";
 import TiltCard from "./TiltCard";
 import BorderBeam from "./BorderBeam";
@@ -14,14 +13,18 @@ export default function Contact() {
 
   const email = "abdullahahmed02000@gmail.com";
 
-  const triggerCelebration = () => {
-    // Electric Cyan & Cobalt Blue & Emerald Confetti Blast
-    confetti({
-      particleCount: 75,
-      spread: 70,
-      origin: { y: 0.8 },
-      colors: ["#00D2FF", "#38BDF8", "#0284C7", "#22C55E"],
-    });
+  const triggerCelebration = async () => {
+    try {
+      const confetti = (await import("canvas-confetti")).default;
+      confetti({
+        particleCount: 75,
+        spread: 70,
+        origin: { y: 0.8 },
+        colors: ["#00D2FF", "#38BDF8", "#0284C7", "#22C55E"],
+      });
+    } catch {
+      // Gracefully continue
+    }
   };
 
   const handleCopyEmail = () => {
@@ -84,6 +87,23 @@ export default function Contact() {
             <TiltCard maxTilt={5} scale={1.01} style={{ width: "100%", maxWidth: "680px" }}>
               <div className="contact-interactive-card">
                 <BorderBeam duration={10} size={300} colorFrom="#00D2FF" colorTo="#0EA5E9" />
+
+                {/* Location & Phone Meta Pills Row */}
+                <div className="contact-meta-pills-row">
+                  <div className="contact-meta-pill">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <span>New Cairo, Egypt</span>
+                  </div>
+                  <a href="tel:+201090524452" className="contact-meta-pill interactive">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>+201090524452</span>
+                  </a>
+                </div>
 
                 {/* Email & Copy Buttons Row */}
                 <div className="contact-actions-row">
@@ -313,6 +333,40 @@ export default function Contact() {
           overflow: hidden;
           width: 100%;
           text-align: left;
+        }
+
+        .contact-meta-pills-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-bottom: 20px;
+        }
+
+        .contact-meta-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 6px 14px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.09);
+          border-radius: 9999px;
+          font-family: var(--font-mono);
+          font-size: 0.8rem;
+          color: var(--text-secondary);
+          transition: all 0.2s ease;
+        }
+
+        .contact-meta-pill.interactive {
+          cursor: pointer;
+        }
+
+        .contact-meta-pill.interactive:hover {
+          border-color: #22c55e;
+          color: #22c55e;
+          background: rgba(34, 197, 94, 0.08);
+          box-shadow: 0 0 12px rgba(34, 197, 94, 0.2);
         }
 
         .contact-actions-row {

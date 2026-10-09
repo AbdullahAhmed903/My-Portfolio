@@ -1,4 +1,5 @@
 "use client";
+import "./ScrollReveal.css";
 import { useEffect, useRef, useState } from "react";
 
 export default function ScrollReveal({ children, delay = 0, className = "" }) {
@@ -39,19 +40,6 @@ export default function ScrollReveal({ children, delay = 0, className = "" }) {
       }}
     >
       {children}
-      <style jsx>{`
-        .scroll-reveal {
-          opacity: 0;
-          transform: translateY(18px);
-          transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          will-change: opacity, transform;
-        }
-
-        .scroll-reveal.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      `}</style>
-    </div>
+      </div>
   );
 }

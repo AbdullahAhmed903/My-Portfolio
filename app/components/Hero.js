@@ -604,6 +604,20 @@ export default function Hero() {
           cursor: pointer;
         }
 
+        :global(html.light-mode) .btn-secondary-touch {
+          background: #ffffff;
+          border: 1.5px solid #cbd5e1;
+          color: #0f172a;
+          box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+        }
+
+        :global(html.light-mode) .btn-secondary-touch:hover {
+          border-color: var(--accent);
+          color: var(--accent);
+          background: rgba(2, 132, 199, 0.05);
+          box-shadow: 0 4px 14px rgba(2, 132, 199, 0.15);
+        }
+
         .hero-social-section {
           display: flex;
           align-items: center;
@@ -637,11 +651,23 @@ export default function Hero() {
           color: var(--text-secondary);
         }
 
+        :global(html.light-mode) .social-box-btn {
+          background: #ffffff;
+          border: 1px solid #cbd5e1;
+          color: #475569;
+        }
+
         .social-box-btn:hover {
           color: var(--accent);
           border-color: var(--accent);
           background: rgba(0, 210, 255, 0.08);
           box-shadow: 0 0 12px rgba(0, 210, 255, 0.2);
+        }
+
+        :global(html.light-mode) .social-box-btn:hover {
+          color: var(--accent);
+          border-color: var(--accent);
+          background: rgba(2, 132, 199, 0.08);
         }
 
         /* ── Right Column: Hero Card ────────────────────────────── */

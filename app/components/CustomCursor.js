@@ -67,20 +67,10 @@ export default function CustomCursor() {
       {/* Ambient Large Glow Spotlight */}
       <motion.div
         aria-hidden="true"
+        className="custom-cursor-spotlight"
         style={{
           x: spotlightX,
           y: spotlightY,
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "400px",
-          height: "400px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(0, 210, 255, 0.45) 0%, rgba(14, 165, 233, 0.25) 45%, transparent 70%)",
-          pointerEvents: "none",
-          zIndex: 1,
-          mixBlendMode: "screen",
-          willChange: "transform",
         }}
         animate={{
           scale: isHovered ? 1.25 : 1,
@@ -92,24 +82,66 @@ export default function CustomCursor() {
       {/* Sharp Precision Inner Dot */}
       <motion.div
         aria-hidden="true"
+        className={`custom-cursor-dot ${isHovered ? "is-hovered" : ""}`}
         style={{
           x: dotX,
           y: dotY,
           width: isHovered ? 36 : 12,
           height: isHovered ? 36 : 12,
-          position: "fixed",
-          top: 0,
-          left: 0,
-          borderRadius: "50%",
-          pointerEvents: "none",
-          zIndex: 9998,
-          backgroundColor: isHovered ? "rgba(0, 210, 255, 0.15)" : "#00D2FF",
-          border: isHovered ? "1.5px solid rgba(0, 210, 255, 0.8)" : "none",
-          boxShadow: isHovered ? "0 0 15px rgba(0, 210, 255, 0.6)" : "0 0 8px #00D2FF",
-          willChange: "transform",
         }}
         transition={{ duration: 0.15 }}
       />
+
+      <style jsx global>{`
+        .custom-cursor-spotlight {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 400px;
+          height: 400px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(0, 210, 255, 0.45) 0%, rgba(14, 165, 233, 0.25) 45%, transparent 70%);
+          pointer-events: none;
+          z-index: 1;
+          mix-blend-mode: screen;
+          will-change: transform;
+        }
+
+        :global(html.light-mode) .custom-cursor-spotlight {
+          background: radial-gradient(circle, rgba(2, 132, 199, 0.3) 0%, rgba(37, 99, 235, 0.15) 45%, transparent 70%);
+          mix-blend-mode: multiply;
+        }
+
+        .custom-cursor-dot {
+          position: fixed;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9998;
+          background-color: #00D2FF;
+          box-shadow: 0 0 8px #00D2FF;
+          will-change: transform;
+          transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .custom-cursor-dot.is-hovered {
+          background-color: rgba(0, 210, 255, 0.15);
+          border: 1.5px solid rgba(0, 210, 255, 0.8);
+          box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+        }
+
+        :global(html.light-mode) .custom-cursor-dot {
+          background-color: #0284c7;
+          box-shadow: 0 0 8px rgba(2, 132, 199, 0.8), 0 0 2px rgba(15, 23, 42, 0.2);
+        }
+
+        :global(html.light-mode) .custom-cursor-dot.is-hovered {
+          background-color: rgba(2, 132, 199, 0.15);
+          border: 1.5px solid #0284c7;
+          box-shadow: 0 0 15px rgba(2, 132, 199, 0.5);
+        }
+      `}</style>
     </>
   );
 }

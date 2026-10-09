@@ -426,11 +426,22 @@ export default function Navbar() {
           background: rgba(255, 255, 255, 0.05) !important;
         }
 
+        :global(html.light-mode) .navbar-pill.is-top .nav-link-btn:hover {
+          color: var(--accent) !important;
+          background: rgba(2, 132, 199, 0.08) !important;
+        }
+
         .navbar-pill.is-top .nav-link-btn.active {
-          color: #00d2ff !important;
+          color: var(--accent) !important;
           font-weight: 600 !important;
           background: rgba(0, 210, 255, 0.1) !important;
           border-color: rgba(0, 210, 255, 0.3) !important;
+        }
+
+        :global(html.light-mode) .navbar-pill.is-top .nav-link-btn.active {
+          color: var(--accent) !important;
+          background: rgba(2, 132, 199, 0.12) !important;
+          border-color: rgba(2, 132, 199, 0.35) !important;
         }
 
         .navbar-pill.is-top .nav-icon {
@@ -483,11 +494,24 @@ export default function Navbar() {
           transform: translateY(-2px);
         }
 
+        :global(html.light-mode) .navbar-pill.is-scrolled .nav-link-btn:hover {
+          color: var(--accent) !important;
+          background: rgba(2, 132, 199, 0.1) !important;
+          border-color: rgba(2, 132, 199, 0.35) !important;
+        }
+
         .navbar-pill.is-scrolled .nav-link-btn.active {
           color: #00d2ff !important;
           background: rgba(0, 210, 255, 0.18) !important;
           border-color: #00d2ff !important;
           box-shadow: 0 0 14px rgba(0, 210, 255, 0.35) !important;
+        }
+
+        :global(html.light-mode) .navbar-pill.is-scrolled .nav-link-btn.active {
+          color: var(--accent) !important;
+          background: rgba(2, 132, 199, 0.15) !important;
+          border-color: var(--accent) !important;
+          box-shadow: 0 0 14px rgba(2, 132, 199, 0.25) !important;
         }
 
         .navbar-pill.is-scrolled .nav-icon {
@@ -564,6 +588,12 @@ export default function Navbar() {
           text-decoration: none;
         }
 
+        :global(html.light-mode) .action-icon-btn {
+          background: rgba(15, 23, 42, 0.04);
+          border: 1px solid rgba(15, 23, 42, 0.08);
+          color: var(--text-secondary);
+        }
+
         .action-icon-btn:hover {
           color: var(--accent);
           border-color: var(--accent);
@@ -571,16 +601,20 @@ export default function Navbar() {
           transform: translateY(-2px);
         }
 
+        :global(html.light-mode) .action-icon-btn:hover {
+          background: rgba(2, 132, 199, 0.08);
+        }
+
         .dock-tooltip {
           position: absolute;
           top: calc(100% + 10px);
           left: 50%;
           transform: translateX(-50%) translateY(4px);
-          background: #0f1117;
+          background: #11141c;
           padding: 4px 10px;
           border-radius: 6px;
-          border: 1px solid var(--card-border);
-          color: var(--text-primary);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          color: #f1f5f9;
           font-family: var(--font-mono);
           font-size: 0.72rem;
           font-weight: 600;
@@ -589,8 +623,15 @@ export default function Navbar() {
           opacity: 0;
           visibility: hidden;
           transition: all 0.15s ease;
-          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-          z-index: 10;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+          z-index: 1000;
+        }
+
+        :global(html.light-mode) .dock-tooltip {
+          background: #0f172a !important;
+          color: #ffffff !important;
+          border: 1px solid rgba(15, 23, 42, 0.2) !important;
+          box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2) !important;
         }
 
         .navbar-pill.is-scrolled .nav-link-btn:hover .dock-tooltip,

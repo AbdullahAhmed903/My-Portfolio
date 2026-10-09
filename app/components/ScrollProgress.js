@@ -11,6 +11,7 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
+      className="scroll-progress-indicator"
       style={{
         scaleX,
         transformOrigin: "0%",
@@ -19,8 +20,6 @@ export default function ScrollProgress() {
         left: 0,
         right: 0,
         height: "3px",
-        background: "linear-gradient(90deg, #00D2FF 0%, #0EA5E9 50%, #2563EB 100%)",
-        boxShadow: "0 0 12px rgba(0, 210, 255, 0.8), 0 0 24px rgba(14, 165, 233, 0.5)",
         zIndex: 9999,
         pointerEvents: "none"
       }}

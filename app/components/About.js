@@ -498,6 +498,74 @@ export default function About() {
           border-radius: 10px;
         }
 
+        /* ── About Light Mode Overrides ────────────────────────── */
+        :global(html.light-mode) .arch-flow-box {
+          background: #ffffff;
+          border: 1.5px solid rgba(2, 132, 199, 0.25);
+          box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+        }
+
+        :global(html.light-mode) .arch-flow-badge {
+          color: #0284c7;
+        }
+
+        :global(html.light-mode) .flow-pulse {
+          background: #0284c7;
+          box-shadow: 0 0 6px #0284c7;
+        }
+
+        :global(html.light-mode) .flow-sub {
+          color: #64748b;
+        }
+
+        :global(html.light-mode) .arch-step {
+          background: #f8fafc;
+          border: 1px solid #cbd5e1;
+        }
+
+        :global(html.light-mode) .arch-step.highlight-step {
+          background: rgba(2, 132, 199, 0.08);
+          border-color: rgba(2, 132, 199, 0.45);
+        }
+
+        :global(html.light-mode) .step-tag {
+          color: #64748b;
+        }
+
+        :global(html.light-mode) .step-name {
+          color: #0f172a;
+        }
+
+        :global(html.light-mode) .step-connector {
+          color: #94a3b8;
+        }
+
+        :global(html.light-mode) .flow-packet {
+          background: #0284c7;
+          box-shadow: 0 0 6px #0284c7;
+        }
+
+        :global(html.light-mode) .btn-get-touch-link {
+          background: #ffffff;
+          border: 1.5px solid #cbd5e1;
+          color: #0f172a;
+          box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+        }
+
+        :global(html.light-mode) .btn-get-touch-link:hover {
+          border-color: var(--accent);
+          color: var(--accent);
+          background: rgba(2, 132, 199, 0.05);
+          box-shadow: 0 4px 14px rgba(2, 132, 199, 0.15);
+        }
+
+        :global(html.light-mode) .tech-highlight-pill {
+          background: #ffffff;
+          border-color: #cbd5e1;
+          color: #0f172a;
+          box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+        }
+
         /* ── Right Column: Timeline Cards ────────────────────────── */
         .about-right-col {
           position: relative;

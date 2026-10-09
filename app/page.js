@@ -6,6 +6,7 @@ import Experience from "./components/Experience";
 import GitHub from "./components/GitHub";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
 import CustomCursor from "./components/CustomCursor";
 import ParticleNetwork from "./components/ParticleNetwork";
@@ -53,6 +54,8 @@ export default function Home() {
           <Contact />
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

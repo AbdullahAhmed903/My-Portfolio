@@ -71,8 +71,8 @@ body.light-mode {
   --nav-link: rgba(15, 23, 42, 0.7);
   --nav-link-hover: #0f172a;
 
-  --footer-bg: #f8fafc;
-  --footer-border: #e2e8f0;
+  --footer-bg: #090c15;
+  --footer-border: rgba(255, 255, 255, 0.1);
 
   --grid-line: rgba(2, 132, 199, 0.035);
   --glow-shadow: 0 0 35px rgba(2, 132, 199, 0.1);
@@ -214,9 +214,18 @@ code, pre, .font-mono {
 }
 
 /* ── Scrollbars ─────────────────────────────────────────── */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) #08090c;
+}
+
+html.light-mode {
+  scrollbar-color: #94a3b8 #f1f5f9;
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -224,12 +233,46 @@ code, pre, .font-mono {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--card-border);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Light Mode Browser Scrollbar */
+html.light-mode ::-webkit-scrollbar-track,
+body.light-mode ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light-mode ::-webkit-scrollbar-thumb,
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 9999px;
+  border: 2px solid #f1f5f9;
+  background-clip: padding-box;
+}
+
+html.light-mode ::-webkit-scrollbar-thumb:hover,
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
+
+/* ── Top Scroll Progress Bar Indicator ──────────────────── */
+.scroll-progress-indicator {
+  background: linear-gradient(90deg, #00d2ff 0%, #0ea5e9 50%, #2563eb 100%);
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.7), 0 0 24px rgba(14, 165, 233, 0.4);
+}
+
+html.light-mode .scroll-progress-indicator {
+  background: linear-gradient(90deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
+  box-shadow: 0 1px 6px rgba(2, 132, 199, 0.35);
 }
 
 /* ── Animations ─────────────────────────────────────────── */

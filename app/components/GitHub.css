@@ -1,0 +1,654 @@
+.github-section {
+          width: 100%;
+        }
+
+        .github-container {
+          max-width: 1250px;
+          width: 92%;
+          margin: 0 auto;
+        }
+
+        .github-heading {
+          font-size: clamp(2.4rem, 4vw, 3.2rem);
+          font-weight: 800;
+          color: var(--text-primary);
+          letter-spacing: -0.03em;
+          margin: 0 0 10px 0;
+        }
+
+        .github-subtitle {
+          font-size: 0.95rem;
+          color: var(--text-secondary);
+          margin: 0 0 32px 0;
+        }
+
+        /* ── Main Contribution Graph Card ────────────────────────── */
+        .contribution-main-card {
+          position: relative;
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          border-radius: 18px;
+          padding: 24px 28px;
+          box-shadow: var(--card-shadow);
+          overflow: hidden;
+        }
+
+        .contribution-card-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 20px;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .header-left {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: var(--text-primary);
+        }
+
+        .card-title {
+          font-size: 1rem;
+          font-weight: 700;
+          letter-spacing: -0.01em;
+        }
+
+        .header-legend {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .legend-txt {
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          color: var(--text-muted);
+        }
+
+        .legend-squares {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .l-sq {
+          width: 10px;
+          height: 10px;
+          border-radius: 2px;
+        }
+
+        .sq-0 { background: #1e293b; }
+        .sq-1 { background: #0e4429; }
+        .sq-2 { background: #006d32; }
+        .sq-3 { background: #26a641; }
+        .sq-4 { background: #39d353; }
+
+        .chart-container-wrapper {
+          position: relative;
+          width: 100%;
+          margin-bottom: 0;
+        }
+
+        .chart-viewport {
+          width: 100%;
+          overflow-x: auto;
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
+          touch-action: pan-x pan-y;
+          padding-bottom: 8px;
+        }
+
+        .chart-viewport::-webkit-scrollbar {
+          height: 6px;
+        }
+
+        .chart-viewport::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 4px;
+        }
+
+        .chart-viewport::-webkit-scrollbar-thumb {
+          background: rgba(34, 197, 94, 0.4);
+          border-radius: 4px;
+        }
+
+        .chart-viewport::-webkit-scrollbar-thumb:hover {
+          background: rgba(34, 197, 94, 0.7);
+        }
+
+        .chart-img {
+          width: 100%;
+          min-width: 650px;
+          height: auto;
+          display: block;
+        }
+
+        .chart-scroll-hint {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 6px 4px 0 4px;
+        }
+
+        .scroll-hint-text {
+          font-size: 0.74rem;
+          color: var(--text-muted);
+          font-family: var(--font-mono);
+          letter-spacing: -0.01em;
+        }
+
+        .scroll-arrow-btn {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          color: var(--text-primary);
+          width: 28px;
+          height: 28px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.1rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          user-select: none;
+        }
+
+        .scroll-arrow-btn:hover {
+          background: rgba(34, 197, 94, 0.15);
+          border-color: #22c55e;
+          color: #22c55e;
+        }
+
+        .card-bottom-bar {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-top: 14px;
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .pulse-icon-box {
+          display: flex;
+          align-items: center;
+        }
+
+        .counter-text {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.88rem;
+          color: var(--text-secondary);
+        }
+
+        .counter-num {
+          font-family: var(--font-mono);
+          color: #22c55e;
+          font-weight: 800;
+        }
+
+        /* ── 5-Card Stats Grid ────────────────────────────────────── */
+        .github-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 16px;
+          margin-bottom: 32px;
+        }
+
+        .stat-metric-card {
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          border-radius: 16px;
+          padding: 20px 18px;
+          display: flex;
+          flex-direction: column;
+          box-shadow: var(--card-shadow);
+          height: 100%;
+        }
+
+        .metric-icon-box {
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 14px;
+        }
+
+        .green-box { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.25); }
+        .cyan-box { background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.25); }
+        .blue-box { background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.25); }
+        .orange-box { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.25); }
+
+        .metric-big-num {
+          font-size: 1.6rem;
+          font-weight: 800;
+          font-family: var(--font-mono);
+          line-height: 1.1;
+          margin-bottom: 4px;
+        }
+
+        .green-text { color: #22c55e; }
+        .cyan-text { color: #00d2ff; }
+        .blue-text { color: #38bdf8; font-size: 1.25rem; }
+        .orange-text { color: #fb923c; }
+
+        .metric-label {
+          font-size: 0.88rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 4px;
+        }
+
+        .metric-subline {
+          font-size: 0.74rem;
+          color: var(--text-muted);
+          line-height: 1.35;
+        }
+
+        /* Lang Card */
+        .lang-card {
+          padding: 16px;
+        }
+
+        .lang-header {
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 12px;
+        }
+
+        .lang-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .lang-row {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+        }
+
+        .lang-info {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .lang-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+        }
+
+        .lang-name {
+          font-size: 0.72rem;
+          color: var(--text-secondary);
+          flex: 1;
+        }
+
+        .lang-percent {
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          color: var(--text-muted);
+          align-self: flex-end;
+          margin-top: -16px;
+        }
+
+        .lang-bar-track {
+          width: 100%;
+          height: 4px;
+          background: rgba(255, 255, 255, 0.06);
+          border-radius: 2px;
+          overflow: hidden;
+        }
+
+        .lang-bar-fill {
+          height: 100%;
+          border-radius: 2px;
+        }
+
+        /* ── Center CTA Button ────────────────────────────────────── */
+        .github-cta-wrapper {
+          display: flex;
+          justify-content: center;
+        }
+
+        .github-profile-link-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 13px 28px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 12px;
+          color: var(--text-primary);
+          font-weight: 600;
+          font-size: 0.92rem;
+          box-shadow: var(--card-shadow);
+        }
+
+        .github-profile-link-btn:hover {
+          border-color: var(--accent);
+          color: var(--accent);
+          background: rgba(0, 210, 255, 0.06);
+          box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+        }
+
+        .arrow {
+          font-size: 1.1rem;
+        }
+
+        .mobile-github-redesign {
+          display: none;
+        }
+
+        @media (max-width: 1100px) {
+          .github-cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .github-heading {
+            font-size: clamp(2rem, 7vw, 2.8rem);
+          }
+          .github-cards-grid {
+            display: none !important;
+          }
+          .github-cta-wrapper {
+            display: none !important;
+          }
+          .mobile-github-redesign {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 28px;
+          }
+          .contribution-main-card {
+            padding: 18px 14px;
+            border-radius: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .contribution-main-card {
+            padding: 16px 10px;
+          }
+          .contribution-card-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+          .header-legend {
+            width: 100%;
+            justify-content: space-between;
+          }
+        }
+
+        /* Mobile Impact Section Header */
+        .mobile-impact-header {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 24px;
+        }
+
+        .mobile-impact-line {
+          width: 18px;
+          height: 2px;
+          background: #00d2ff;
+          border-radius: 2px;
+        }
+
+        .mobile-impact-title {
+          font-size: 0.82rem;
+          font-weight: 700;
+          font-family: var(--font-mono);
+          letter-spacing: 0.1em;
+          color: #00d2ff;
+        }
+
+        /* Mobile Vertical Timeline */
+        .github-mobile-timeline-container {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding-left: 58px;
+        }
+
+        .github-mobile-timeline-track {
+          position: absolute;
+          left: 25px;
+          top: 27px;
+          bottom: 27px;
+          width: 2px;
+          transform: translateX(-50%);
+          background: linear-gradient(180deg, #22c55e 0%, #00d2ff 35%, #0ea5e9 70%, #f97316 100%);
+          box-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+          z-index: 1;
+        }
+
+        .github-mobile-timeline-item {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          z-index: 2;
+        }
+
+        .github-mobile-timeline-item:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        .github-mobile-node {
+          display: none !important;
+        }
+
+        /* Hexagon Icon Wrapper */
+        .github-mobile-hex-wrapper {
+          position: absolute;
+          left: -58px;
+          top: 0;
+          width: 50px;
+          height: 54px;
+          min-width: 50px;
+          margin-left: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 4;
+        }
+
+        .github-mobile-hex-svg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .green-hex .github-mobile-hex-svg polygon { fill: #08090c; stroke: rgba(34, 197, 94, 0.8); stroke-width: 2.5; }
+        .cyan-hex .github-mobile-hex-svg polygon { fill: #08090c; stroke: rgba(0, 210, 255, 0.8); stroke-width: 2.5; }
+        .blue-hex .github-mobile-hex-svg polygon { fill: #08090c; stroke: rgba(14, 165, 233, 0.8); stroke-width: 2.5; }
+        .orange-hex .github-mobile-hex-svg polygon { fill: #08090c; stroke: rgba(249, 115, 22, 0.8); stroke-width: 2.5; }
+
+        html.light-mode .green-hex .github-mobile-hex-svg polygon { fill: #ffffff; }
+        html.light-mode .cyan-hex .github-mobile-hex-svg polygon { fill: #ffffff; }
+        html.light-mode .blue-hex .github-mobile-hex-svg polygon { fill: #ffffff; }
+        html.light-mode .orange-hex .github-mobile-hex-svg polygon { fill: #ffffff; }
+
+        .github-mobile-hex-icon {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .github-mobile-timeline-content {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          flex: 1;
+        }
+
+        .mobile-metric-val {
+          font-size: 1.55rem;
+          font-weight: 800;
+          font-family: var(--font-mono);
+          line-height: 1.15;
+        }
+
+        .mobile-metric-title {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+
+        .mobile-metric-sub {
+          font-size: 0.78rem;
+          color: var(--text-muted);
+          line-height: 1.3;
+        }
+
+        /* Mobile Languages Container */
+        .mobile-langs-container {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .mobile-lang-card {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 12px;
+          padding: 12px 14px;
+        }
+
+        .mobile-lang-badge {
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          border: 1px solid;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.85rem;
+          font-weight: 800;
+          font-family: var(--font-mono);
+          min-width: 36px;
+        }
+
+        .mobile-lang-main {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .mobile-lang-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .mobile-lang-name {
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+
+        .mobile-lang-pct {
+          font-size: 0.8rem;
+          font-weight: 700;
+          font-family: var(--font-mono);
+          color: var(--text-muted);
+        }
+
+        .mobile-lang-track {
+          width: 100%;
+          height: 5px;
+          background: rgba(255, 255, 255, 0.06);
+          border-radius: 3px;
+          overflow: hidden;
+        }
+
+        .mobile-lang-fill {
+          height: 100%;
+          border-radius: 3px;
+        }
+
+        /* Mobile GitHub CTA Button Card */
+        .mobile-github-card-btn {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 32px;
+          padding: 16px 18px;
+          background: rgba(0, 210, 255, 0.03);
+          border: 1px solid rgba(0, 210, 255, 0.3);
+          border-radius: 14px;
+          text-decoration: none;
+          color: var(--text-primary);
+          box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+          transition: all 0.2s ease;
+        }
+
+        .mobile-github-card-btn:active {
+          scale: 0.98;
+          background: rgba(0, 210, 255, 0.08);
+          border-color: rgba(0, 210, 255, 0.5);
+        }
+
+        .mobile-cta-left {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .mobile-cta-avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-primary);
+        }
+
+        .mobile-cta-texts {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .mobile-cta-head {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+
+        .mobile-cta-link {
+          font-size: 0.78rem;
+          font-family: var(--font-mono);
+          color: #00d2ff;
+        }
+
+        .mobile-cta-arrow {
+          color: #00d2ff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }

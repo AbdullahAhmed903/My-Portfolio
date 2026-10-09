@@ -1,4 +1,5 @@
 "use client";
+import "./BorderBeam.css";
 
 export default function BorderBeam({
   duration = 8,
@@ -37,16 +38,6 @@ export default function BorderBeam({
           transform: "translate(-50%, -50%)"
         }}
       />
-      <style jsx>{`
-        @keyframes beamSpin {
-          0% {
-            transform: translate(-50%, -50%) rotate(0deg);
-          }
-          100% {
-            transform: translate(-50%, -50%) rotate(360deg);
-          }
-        }
-      `}</style>
-    </div>
+      </div>
   );
 }
